@@ -1,0 +1,20 @@
+@mixin breakpoint($b) {
+    @if $b == 'lg' {
+        @media (min-width: $breakpointLarge) {
+            @content;
+        }
+    }
+    @if $b == 'md' {
+        @media (min-width: $breakpointMedium) {
+            @content;
+        }
+    }
+    @if $b == 'sm' {
+        @media (min-width: $breakpointSmall) {
+            @content;
+        }
+    }
+    @if $b == 'xs' {
+        @content;
+    }
+}

@@ -1,0 +1,12 @@
+.flex-parent {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 23.4px 0;
+}
+
+.flex-parent__child-top,
+.flex-parent__child-bottom {
+	display: flex;
+	align-items: flex-end;
+}
