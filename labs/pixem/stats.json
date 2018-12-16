@@ -1,8 +1,8 @@
 {
   "assetsByChunkName": {
     "component---src-layouts-index-tsx": [
-      "component---src-layouts-index-tsx-e64b39fdc1a40a7c1420.js",
-      "component---src-layouts-index-tsx-e64b39fdc1a40a7c1420.js.map"
+      "component---src-layouts-index-tsx-9a4ff5e27127e16b5799.js",
+      "component---src-layouts-index-tsx-9a4ff5e27127e16b5799.js.map"
     ],
     "path---": [
       "path----557518bd178906f8d58a.js",
@@ -23,18 +23,18 @@
       "path---editor-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-pages-index-tsx": [
-      "component---src-pages-index-tsx-8afca14a6bbc0fd91fbf.js",
-      "component---src-pages-index-tsx-8afca14a6bbc0fd91fbf.js.map"
+      "component---src-pages-index-tsx-acb20d06d81d0bf8f484.js",
+      "component---src-pages-index-tsx-acb20d06d81d0bf8f484.js.map"
     ],
     "app": [
-      "app-8f063b66b369be889704.js",
+      "app-3984709d08048d7eae0f.js",
       "build-js-styles.css",
-      "app-8f063b66b369be889704.js.map",
+      "app-3984709d08048d7eae0f.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-pages-editor-tsx": [
-      "component---src-pages-editor-tsx-90d9f623f8a25dee947d.js",
-      "component---src-pages-editor-tsx-90d9f623f8a25dee947d.js.map"
+      "component---src-pages-editor-tsx-49497f6761ad21b66153.js",
+      "component---src-pages-editor-tsx-49497f6761ad21b66153.js.map"
     ]
   }
 }
