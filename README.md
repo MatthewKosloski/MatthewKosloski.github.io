@@ -1,17 +1,3 @@
 # MatthewKosloski.github.io
 
-Source code for personal website.
-
-## Usage
-
-Development:
-
-```
-gulp
-```
-
-Production
-
-```
-gulp build
-```
+The source code for my personal [website](https://matthewkosloski.me/).
