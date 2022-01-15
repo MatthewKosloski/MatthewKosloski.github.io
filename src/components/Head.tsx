@@ -46,7 +46,7 @@ function Head({
         lang: 'en-US',
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s &mdash; ${defaultTitle}` : null}
+      titleTemplate={defaultTitle ? `%s &mdash; ${defaultTitle}` : undefined}
       meta={[
         {
           name: `description`,
