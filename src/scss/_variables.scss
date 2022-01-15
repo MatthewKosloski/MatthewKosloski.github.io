@@ -1,0 +1,24 @@
+$steps: (
+  'zero': 0,
+  'quarter': 0.25,
+  'half': 0.5,
+  'three-fourths': 0.75,
+  'one': 1,
+  'two': 2,
+  'three': 3,
+  'four': 4,
+  'five': 5,
+);
+
+$relative-unit-em: 'em';
+$relative-unit-rem: 'rem';
+
+$typography-line-height: 1.5;
+
+$breakpoints-px: (
+  xs: 0px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
