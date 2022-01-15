@@ -39,29 +39,29 @@ const MenuButtonIcon = function ({ isExpanded }: { isExpanded: boolean }) {
 };
 
 const StyledHeader = styled.header`
-  padding-top: ${(p) => p.theme.vr.two.rem};
+  padding-top: ${p => p.theme.vr.two.rem};
   ${sm(css`
     padding-left: 0;
     padding-right: 0;
   `)};
   h2 {
-    color: ${(p) => p.theme.color.white};
-    margin-bottom: ${(p) => p.theme.vr.quarter.rem};
+    color: ${p => p.theme.color.white};
+    margin-bottom: ${p => p.theme.vr.quarter.rem};
   }
   h3 {
     font-size: 1rem;
     font-weight: 400;
-    font-family: ${(p) => p.theme.typography.body};
-    color: ${(p) => p.theme.color.white500};
+    font-family: ${p => p.theme.typography.body};
+    color: ${p => p.theme.color.white500};
   }
 `;
 
 const HeaderWrapper = styled.div`
-  background-color: ${(p) => p.theme.color.haitiPurple};
-  padding: ${(p) => p.theme.vr.one.em};
+  background-color: ${p => p.theme.color.haitiPurple};
+  padding: ${p => p.theme.vr.one.em};
   ${sm(css`
-    padding: 0 ${(p) => p.theme.vr.two.rem} ${(p) => p.theme.vr.four.rem}
-      ${(p) => p.theme.vr.two.rem};
+    padding: 0 ${p => p.theme.vr.two.rem} ${p => p.theme.vr.four.rem}
+      ${p => p.theme.vr.two.rem};
   `)};
 `;
 
@@ -69,11 +69,11 @@ const StyledMenuPopover = styled(MenuPopover)`
   left: 0 !important;
   width: 100%;
   height: 100%;
-  background-color: ${(p) => p.theme.color.haitiPurple};
+  background-color: ${p => p.theme.color.haitiPurple};
 `;
 
 const StyledMenuItems = styled(MenuItems)`
-  background-color: ${(p) => p.theme.color.haitiPurple};
+  background-color: ${p => p.theme.color.haitiPurple};
   border: 0;
 `;
 
@@ -81,22 +81,22 @@ const StyledMenuButton = styled(MenuButton)`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  color: ${(p) => p.theme.color.white};
+  color: ${p => p.theme.color.white};
 `;
 
 const StyledMenuLink = styled(MenuLink)`
-  padding: ${(p) => p.theme.vr.one.em};
+  padding: ${p => p.theme.vr.one.em};
   text-transform: uppercase;
   letter-spacing: ${pxToEm(1)};
   font-weight: 700;
-  color: ${(p) => p.theme.color.white500};
-  border-top: ${pxToEm(2)} solid ${(p) => p.theme.color.white100};
+  color: ${p => p.theme.color.white500};
+  border-top: ${pxToEm(2)} solid ${p => p.theme.color.white100};
   &:last-child {
-    border-bottom: ${pxToEm(2)} solid ${(p) => p.theme.color.white100};
+    border-bottom: ${pxToEm(2)} solid ${p => p.theme.color.white100};
   }
   &:hover {
-    background-color: ${(p) => p.theme.color.eastSidePurple};
-    color: ${(p) => p.theme.color.grapePurple};
+    background-color: ${p => p.theme.color.eastSidePurple};
+    color: ${p => p.theme.color.grapePurple};
   }
 `;
 
@@ -109,10 +109,10 @@ const StyledNav = styled.nav`
 const Logo = styled.a`
   text-decoration: none;
   h1 {
-    margin-bottom: ${(p) => p.theme.vr.zero.em};
-    padding: ${(p) => p.theme.vr.half.rem} ${(p) => p.theme.vr.quarter.rem}
-      ${(p) => p.theme.vr.quarter.rem};
-    color: ${(p) => p.theme.color.white};
+    margin-bottom: ${p => p.theme.vr.zero.em};
+    padding: ${p => p.theme.vr.half.rem} ${p => p.theme.vr.quarter.rem}
+      ${p => p.theme.vr.quarter.rem};
+    color: ${p => p.theme.color.white};
   }
 `;
 
@@ -157,9 +157,9 @@ const Wrapper = styled.div<{ isNewspaper: boolean }>`
   width: 1200px;
   max-width: 100%;
   margin: 0 auto;
-  box-shadow: ${(p) =>
+  box-shadow: ${p =>
     p.isNewspaper ? '0px 0px 4px 0px rgb(0 0 0 / 10%)' : 'none'};
-  background-color: ${(p) =>
+  background-color: ${p =>
     p.isNewspaper ? p.theme.color.white : 'transparent'};
 `;
 
