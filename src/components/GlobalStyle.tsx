@@ -1,8 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
-import {
-  breakpoint,
-  Breakpoints,
-} from '../utils';
+import { breakpoint, Breakpoints } from '../utils';
 import { pxToEm, pxToRem, vr } from '../theme';
 
 const steps: { [key: string]: string } = {};
