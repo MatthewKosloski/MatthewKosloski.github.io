@@ -1,7 +1,6 @@
 import React, { createElement, HTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
-import { pxToEm, pxToRem } from '../theme';
-import { breakpoint, Breakpoints, Steps } from '../utils';
+import { pxToEm, sm } from '../theme';
 
 const SectionWrapper = styled.section.attrs(
   ({
@@ -18,7 +17,7 @@ const SectionWrapper = styled.section.attrs(
   border-bottom: ${({ borderBottom, theme }) =>
     borderBottom ? `${pxToEm(1)} solid ${theme.color.gray50}` : `none`};
   padding: ${(p) => p.theme.vr.two.rem} ${(p) => p.theme.vr.one.em};
-  ${breakpoint(Breakpoints.SM)(css`
+  ${sm(css`
     padding: ${(p) => p.theme.vr.four.rem} ${(p) => p.theme.vr.two.rem};
   `)};
 `;

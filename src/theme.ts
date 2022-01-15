@@ -1,10 +1,17 @@
-import { DefaultTheme } from 'styled-components';
+import {
+  DefaultTheme,
+  FlattenInterpolation,
+  ThemeProps,
+} from 'styled-components';
+
 import {
   verticalRhythm,
   modularScaleRem,
   pxToRelativeUnit,
   RelativeUnit,
   Steps,
+  Breakpoints,
+  breakpoint,
 } from './utils';
 
 const rootFontSizeMd = 112.5;
@@ -16,6 +23,18 @@ export const pxToEm = (px: number) =>
   pxToRelativeUnit(px, rootFontSizeMd, RelativeUnit.EM);
 export const pxToRem = (px: number) =>
   pxToRelativeUnit(px, rootFontSizeMd, RelativeUnit.REM);
+
+// Convenient wrappers around breakpoint that add a type to the input.
+export const xs = (css: FlattenInterpolation<ThemeProps<DefaultTheme>>) =>
+  breakpoint(Breakpoints.XS)(css);
+export const sm = (css: FlattenInterpolation<ThemeProps<DefaultTheme>>) =>
+  breakpoint(Breakpoints.SM)(css);
+export const md = (css: FlattenInterpolation<ThemeProps<DefaultTheme>>) =>
+  breakpoint(Breakpoints.MD)(css);
+export const lg = (css: FlattenInterpolation<ThemeProps<DefaultTheme>>) =>
+  breakpoint(Breakpoints.LG)(css);
+export const xl = (css: FlattenInterpolation<ThemeProps<DefaultTheme>>) =>
+  breakpoint(Breakpoints.XL)(css);
 
 export const color = {
   white: '#fff',
@@ -55,7 +74,7 @@ export const grid = {
   numberColumns: 12,
 };
 
-export const breakpoint = {
+export const bps = {
   xs: 0,
   sm: 576,
   md: 768,
@@ -118,7 +137,7 @@ const theme: DefaultTheme = {
   color,
   typography,
   grid,
-  breakpoint,
+  breakpoint: bps,
   vr,
   ms,
 };

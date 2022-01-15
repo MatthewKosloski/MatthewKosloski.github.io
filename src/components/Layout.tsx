@@ -11,7 +11,7 @@ import {
   MenuLink,
   useMenuButtonContext,
 } from '@reach/menu-button';
-import theme, { pxToEm } from '../theme';
+import theme, { pxToEm, sm } from '../theme';
 import GlobalStyle from './GlobalStyle';
 import HamburgerIcon from './icons/HamburgerIcon';
 import withScreenReaderText from './hoc/withScreenReaderText';
@@ -22,7 +22,6 @@ import GridCol from './GridCol';
 import Head from './Head';
 import CloseIcon from './icons/CloseIcon';
 import Section from './Section';
-import { breakpoint, Breakpoints } from '../utils';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -41,7 +40,7 @@ const MenuButtonIcon = function ({ isExpanded }: { isExpanded: boolean }) {
 
 const StyledHeader = styled.header`
   padding-top: ${(p) => p.theme.vr.two.rem};
-  ${breakpoint(Breakpoints.SM)(css`
+  ${sm(css`
     padding-left: 0;
     padding-right: 0;
   `)};
@@ -60,7 +59,7 @@ const StyledHeader = styled.header`
 const HeaderWrapper = styled.div`
   background-color: ${(p) => p.theme.color.haitiPurple};
   padding: ${(p) => p.theme.vr.one.em};
-  ${breakpoint(Breakpoints.SM)(css`
+  ${sm(css`
     padding: 0 ${(p) => p.theme.vr.two.rem} ${(p) => p.theme.vr.four.rem}
       ${(p) => p.theme.vr.two.rem};
   `)};

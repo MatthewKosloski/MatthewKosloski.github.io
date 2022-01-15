@@ -6,12 +6,12 @@ import InstagramIcon from './icons/InstagramIcon';
 import UnsplashIcon from './icons/UnsplashIcon';
 import DribbbleIcon from './icons/DribbbleIcon';
 import TwitterIcon from './icons/TwitterIcon';
-import { pxToEm } from '../theme';
+import { pxToEm, sm } from '../theme';
 import withScreenReaderText from './hoc/withScreenReaderText';
 import { breakpoint, Breakpoints } from '../utils';
 
 const ListWrapper = styled.ul`
-  ${breakpoint(Breakpoints.SM)(css`
+  ${sm(css`
     flex-wrap: nowrap;
   `)};
   display: flex;
@@ -22,7 +22,7 @@ const ListWrapper = styled.ul`
 `;
 
 const SocialItem = styled.li`
-  ${breakpoint(Breakpoints.SM)(css`
+  ${sm(css`
     &:not(:last-child) {
       margin-right: ${(p) => p.theme.vr.one.em};
     }

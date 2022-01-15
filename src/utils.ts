@@ -75,23 +75,12 @@ function pxToRelativeUnit(px: number, ratio: number, unit: RelativeUnit) {
  *     color: red;
  *   `;
  * @param bp A breakpoint.
- * @param shouldDisplay True if the breakpoint should be displayed; False otherwise.
  */
-function breakpoint(bp: Breakpoints, shouldDisplay = true) {
-  return (content: any) => {
-    return shouldDisplay
-      ? css`
-          @media (min-width: ${bp}px) {
-            ${content}
-          }
-        `
-      : '';
-  };
-}
+const breakpoint = (bp: Breakpoints) => (content: any) =>
+  css`
+    @media (min-width: ${bp}px) {
+      ${content}
+    }
+  `;
 
-export {
-  verticalRhythm,
-  modularScaleRem,
-  pxToRelativeUnit,
-  breakpoint
-};
+export { verticalRhythm, modularScaleRem, pxToRelativeUnit, breakpoint };
