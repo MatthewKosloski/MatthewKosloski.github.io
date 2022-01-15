@@ -24,21 +24,21 @@ const ListWrapper = styled.ul`
 const SocialItem = styled.li`
   ${sm(css`
     &:not(:last-child) {
-      margin-right: ${p => p.theme.vr.one.em};
+      margin-right: ${(p) => p.theme.vr.one.em};
     }
     flex: 0 0 auto;
     padding: 0;
   `)};
   flex-basis: 33%;
   max-width: 33%;
-  padding: ${p => p.theme.vr.half.em};
+  padding: ${(p) => p.theme.vr.half.em};
 `;
 
 const SocialLink = styled.a`
-  padding: ${p => p.theme.vr.half.em};
+  padding: ${(p) => p.theme.vr.half.em};
   border-radius: ${pxToEm(5)};
-  background-color: ${p => p.theme.color.eastSidePurple};
-  color: ${p => p.theme.color.grapePurple};
+  background-color: ${(p) => p.theme.color.eastSidePurple};
+  color: ${(p) => p.theme.color.grapePurple};
   transition: 0.15s ease-in-out;
   svg,
   & {

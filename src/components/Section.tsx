@@ -16,9 +16,9 @@ const SectionWrapper = styled.section.attrs(
 )`
   border-bottom: ${({ borderBottom, theme }) =>
     borderBottom ? `${pxToEm(1)} solid ${theme.color.gray50}` : `none`};
-  padding: ${p => p.theme.vr.two.rem} ${p => p.theme.vr.one.em};
+  padding: ${(p) => p.theme.vr.two.rem} ${(p) => p.theme.vr.one.em};
   ${sm(css`
-    padding: ${p => p.theme.vr.four.rem} ${p => p.theme.vr.two.rem};
+    padding: ${(p) => p.theme.vr.four.rem} ${(p) => p.theme.vr.two.rem};
   `)};
 `;
 
@@ -31,7 +31,7 @@ interface SectionProps {
 }
 
 const TitleWrapper = styled.div`
-  margin-bottom: ${p => p.theme.vr.three.rem};
+  margin-bottom: ${(p) => p.theme.vr.three.rem};
 `;
 
 function Section({
