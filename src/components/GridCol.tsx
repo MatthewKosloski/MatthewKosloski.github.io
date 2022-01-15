@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { breakpoint, Breakpoints } from '../utils';
-// import { Breakpoints } from '../theme';
 
 interface GridColProps {
   xs?: number;
