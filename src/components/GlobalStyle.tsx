@@ -2,11 +2,6 @@ import { createGlobalStyle, css } from 'styled-components';
 import { breakpoint, Breakpoints } from '../utils';
 import { pxToEm, pxToRem, vr } from '../theme';
 
-const steps: { [key: string]: string } = {};
-Object.keys(vr).forEach((step: string) => {
-  steps[step] = vr[step].rem;
-});
-
 const GlobalStyle = createGlobalStyle`
   *,
   *::before,
