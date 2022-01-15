@@ -2,8 +2,6 @@ import { createGlobalStyle, css } from 'styled-components';
 import {
   breakpoint,
   Breakpoints,
-  spacingUtilityClasses,
-  forEachBreakpoint,
 } from '../utils';
 import { pxToEm, pxToRem, vr } from '../theme';
 
@@ -11,8 +9,6 @@ const steps: { [key: string]: string } = {};
 Object.keys(vr).forEach((step: string) => {
   steps[step] = vr[step].rem;
 });
-
-const spacingClasses = spacingUtilityClasses(steps);
 
 const GlobalStyle = createGlobalStyle`
   *,
