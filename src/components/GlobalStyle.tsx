@@ -1,6 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { breakpoint, Breakpoints } from '../utils';
-import { pxToEm, pxToRem, vr } from '../theme';
+import { pxToEm, pxToRem, sm, md } from '../theme';
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -22,15 +21,15 @@ const GlobalStyle = createGlobalStyle`
   html {
     font: ${({ theme: { typography } }) =>
       `${typography.rootFontSizeSmPercent} / ${typography.lineHeight} ${typography.body}`};
-    ${breakpoint(Breakpoints.MD)(css`
+    ${md(css`
       font-size: ${({ theme: { typography } }) =>
         typography.rootFontSizeMdPercent};
     `)}
   }
   
   body {
-    background-color: ${(p) => p.theme.color.doctorGray};
-    color: ${(p) => p.theme.color.gray600};
+    background-color: ${p => p.theme.color.doctorGray};
+    color: ${p => p.theme.color.gray600};
   }
 
   body.has-expanded-mobile-menu {
@@ -48,8 +47,8 @@ const GlobalStyle = createGlobalStyle`
   .h3,
   h4,
   .h4 {
-    font-family: ${(p) => p.theme.typography.heading};
-    color: ${(p) => p.theme.color.ghostlyPurple};
+    font-family: ${p => p.theme.typography.heading};
+    color: ${p => p.theme.color.ghostlyPurple};
     font-weight: 700;
   }
   
@@ -65,7 +64,7 @@ const GlobalStyle = createGlobalStyle`
   blockquote,
   ul,
   ol {
-    margin-bottom: ${(p) => p.theme.vr.one.rem};
+    margin-bottom: ${p => p.theme.vr.one.rem};
     &:last-child {
       margin-bottom: 0;
     }
@@ -77,33 +76,33 @@ const GlobalStyle = createGlobalStyle`
   
   h1,
   .h1 {
-    font-size: ${(p) => p.theme.ms.two};
+    font-size: ${p => p.theme.ms.two};
     font-weight: 900;
-    ${breakpoint(Breakpoints.SM)(css`
-      font-size: ${(p) => p.theme.ms.three};
+    ${sm(css`
+      font-size: ${p => p.theme.ms.three};
     `)}
   }
   
   h2,
   .h2,
   .lead--large {
-    font-size: ${(p) => p.theme.ms.two};
+    font-size: ${p => p.theme.ms.two};
   }
   
   h3,
   .h3,
   .lead {
-    font-size: ${(p) => p.theme.ms.one};
+    font-size: ${p => p.theme.ms.one};
   }
   
   h4,
   .h4 {
-    font-size: ${(p) => p.theme.ms.zero};
-    margin-bottom: ${(p) => p.theme.vr.half.rem};
+    font-size: ${p => p.theme.ms.zero};
+    margin-bottom: ${p => p.theme.vr.half.rem};
   }
   
   a {
-    color: ${(p) => p.theme.color.ghostlyPurple};
+    color: ${p => p.theme.color.ghostlyPurple};
     text-decoration-thickness: ${pxToEm(2)};
     &:hover {
       text-decoration: none;
@@ -112,24 +111,24 @@ const GlobalStyle = createGlobalStyle`
   
   blockquote {
     font-style: italic;
-    border-left: ${(p) => `${pxToEm(2)} solid ${p.theme.color.gray200}`};
-    padding-left: ${(p) => p.theme.vr.half.rem};
+    border-left: ${p => `${pxToEm(2)} solid ${p.theme.color.gray200}`};
+    padding-left: ${p => p.theme.vr.half.rem};
   }
   
   small,
   .small {
-    font-size: ${(p) => p.theme.typography.smallFontSizeRem};
+    font-size: ${p => p.theme.typography.smallFontSizeRem};
   }
   
   sup[id^='fn'] a {
-    font-size: ${(p) => p.theme.typography.smallFontSizeRem};
+    font-size: ${p => p.theme.typography.smallFontSizeRem};
     text-decoration: none;
   }
   
   code {
-    font-size: ${(p) => p.theme.typography.smallFontSizeRem};
-    background-color: ${(p) => p.theme.color.haitiPurple};
-    color: ${(p) => p.theme.color.manateeGray};
+    font-size: ${p => p.theme.typography.smallFontSizeRem};
+    background-color: ${p => p.theme.color.haitiPurple};
+    color: ${p => p.theme.color.manateeGray};
     padding: ${pxToEm(5)};
     border-radius: ${pxToEm(5)};
   }
@@ -140,20 +139,20 @@ const GlobalStyle = createGlobalStyle`
       background-color: transparent;
     }
 
-    background-color: ${(p) => p.theme.color.haitiPurple};
-    padding: ${(p) => p.theme.vr.one.rem};
+    background-color: ${p => p.theme.color.haitiPurple};
+    padding: ${p => p.theme.vr.one.rem};
     border-radius: ${pxToEm(5)};
   }
   
   hr {
     border: 0;
-    border-top: ${pxToRem(2)} solid ${(p) => p.theme.color.gray200};
-    margin: ${(p) => p.theme.vr.three.rem} auto;
+    border-top: ${pxToRem(2)} solid ${p => p.theme.color.gray200};
+    margin: ${p => p.theme.vr.three.rem} auto;
     width: 33%;
   }
 
   .color-gray600 {
-    color: ${(p) => p.theme.color.gray600};
+    color: ${p => p.theme.color.gray600};
   }
 `;
 
