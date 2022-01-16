@@ -13,6 +13,8 @@ declare module 'styled-components' {
       rootFontSizeMd: number;
       rootFontSizeMdPercent: string;
       smallFontSizeRem: string;
+      letterSpacingEm: string;
+      largeFontSizeRem: string;
     };
     grid: {
       numberColumns: number;

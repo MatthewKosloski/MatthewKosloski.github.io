@@ -69,6 +69,8 @@ export const typography = {
   rootFontSizeMd: rootFontSizeMd,
   rootFontSizeMdPercent: `${rootFontSizeMd}%`,
   smallFontSizeRem: pxToRem(15),
+  largeFontSizeRem: pxToRem(20),
+  letterSpacingEm: pxToEm(0.5),
 };
 
 export const grid = {
