@@ -1,0 +1,44 @@
+experiences:
+  - 
+    title: Applied Systems
+    subtitle: Full Stack Developer
+    description: Contributing to the Epic Transformation initiative, which is an enormous undertaking wherein Applied Epic, Applied's flagship product, is gradually transformed from a monolithic desktop app to a web app with a microservice back-end architecture.
+    date:
+      from: 2021-5-1
+  - 
+    title: Federal Reserve Bank of Chicago
+    subtitle: Application Developer Intern
+    description: |
+      Worked with six engineers, a team lead, and a product owner to deliver software solutions to the Federal Reserve's seventh district employees.
+      Implemented features and UX enhancements, using Angular, TypeScript/JavaScript, C#/.Net, and Entity Framework, for internal applications related to budgeting, hardware/software ordering, and information security.
+      Collaborated with other IT interns to develop a proof-of-concept for securely building Docker images and running containers in a sandbox environment outside the Fed's corporate network.
+    date:
+      from: 2020-6-1
+      to: 2020-8-1
+  - 
+    title: Applied Systems
+    subtitle: Web Application Developer Intern
+    description: |
+      Interned on the Internal Apps team and built event-driven software (a CLI with C#/.Net Core and a web app with React and Node) that leveraged Salesforce Platform Events.
+      Adopted the Atomic Design Methodology and built a custom design system containing user interface components and layout and typography utilities.
+    date:
+      from: 2019-5-1
+      to: 2019-8-1
+  - 
+    title: Connect-123 International
+    subtitle: Freelance Web Developer
+    description: |
+      Collaborated with the CTO on designing a new inquiry flow to acquire more leads.
+      Enhanced the existing web inquiry form by enabling eligable applicants to schedule a video interview.
+    date:
+      from: 2017-6-1
+      to: 2017-10-1
+  - 
+    title: Fogarty Enterprises Inc.
+    subtitle: Freelance Web Designer and Developer
+    description: |
+      Gathered requirements and domain knowledge to support the creation of an information architecture and high-fidelity design mockups.
+      Created a business website for the client using the WordPress CMS by developing a custom theme and a supporting plugin.
+    date:
+      from: 2017-1-1
+      to: 2017-4-1

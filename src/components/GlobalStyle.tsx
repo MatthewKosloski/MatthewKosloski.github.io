@@ -37,6 +37,7 @@ const GlobalStyle = createGlobalStyle`
     left: 0;
     right: 0;
     height: 100vh;
+    overflow-y: scroll;
   }
   
   h1,

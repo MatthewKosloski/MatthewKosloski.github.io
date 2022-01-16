@@ -26,6 +26,8 @@ import Section from './Section';
 interface LayoutProps {
   children: React.ReactNode;
   location: WindowLocation;
+  pageTitle?: string;
+  pageSubtitle?: string;
 }
 
 const MenuButtonIcon = function ({ isExpanded }: { isExpanded: boolean }) {
@@ -41,8 +43,8 @@ const MenuButtonIcon = function ({ isExpanded }: { isExpanded: boolean }) {
 const StyledHeader = styled.header`
   padding-top: ${(p) => p.theme.vr.two.rem};
   ${sm(css`
-    padding-left: 0;
-    padding-right: 0;
+    padding-top: ${(p) => p.theme.vr.five.rem};
+    max-width: 75%;
   `)};
   h2 {
     color: ${(p) => p.theme.color.white};
@@ -58,7 +60,8 @@ const StyledHeader = styled.header`
 
 const HeaderWrapper = styled.div`
   background-color: ${(p) => p.theme.color.haitiPurple};
-  padding: ${(p) => p.theme.vr.one.em};
+  background: linear-gradient(-45deg, rgba(48,9,80,1) 0%, rgba(94,40,139,1) 25%, rgba(115,21,195,1) 50%, rgba(67,3,121,1) 75%, rgba(54,18,84,1) 100%);
+  padding: ${(p) => p.theme.vr.one.em} ${(p) => p.theme.vr.one.em} ${(p) => p.theme.vr.two.em} ${(p) => p.theme.vr.one.em};
   ${sm(css`
     padding: 0 ${(p) => p.theme.vr.two.rem} ${(p) => p.theme.vr.four.rem}
       ${(p) => p.theme.vr.two.rem};
@@ -70,6 +73,7 @@ const StyledMenuPopover = styled(MenuPopover)`
   width: 100%;
   height: 100%;
   background-color: ${(p) => p.theme.color.haitiPurple};
+  z-index: 2;
 `;
 
 const StyledMenuItems = styled(MenuItems)`
@@ -178,7 +182,7 @@ function Footer({
   );
 }
 
-function Layout({ children, location }: LayoutProps) {
+function Layout({ children, location, pageTitle, pageSubtitle }: LayoutProps) {
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -197,14 +201,16 @@ function Layout({ children, location }: LayoutProps) {
                 <DesktopMenu />
               </div>
             </StyledNav>
-            <Grid>
-              <GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
-                <StyledHeader>
-                  <h2>Page Title</h2>
-                  <h3>Page Subtitle</h3>
-                </StyledHeader>
-              </GridCol>
-            </Grid>
+            {pageTitle || pageSubtitle ? (
+              <Grid>
+                <GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
+                  <StyledHeader>
+                    {pageTitle && <h2>{pageTitle}</h2>}
+                    {pageSubtitle && <h3>{pageSubtitle}</h3>}
+                  </StyledHeader>
+                </GridCol>
+              </Grid>
+            ) : null}
           </HeaderWrapper>
           <main>{children}</main>
           <Footer title="Contact">
