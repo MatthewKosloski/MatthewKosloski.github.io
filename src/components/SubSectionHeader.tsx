@@ -2,17 +2,18 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { pxToRem } from '../theme';
 
-const Wrapper = styled.header.attrs(
-  ({ variant }: { variant: SubSectionHeaderVariant }) => ({
-    variant,
-  })
-)`
+interface WrapperProps {
+  isSmall: boolean;
+  isLarge: boolean;
+}
+
+const Wrapper = styled.header<WrapperProps>`
   margin-bottom: ${(p) => p.theme.vr.one.rem};
   & > :first-child {
     margin: 0;
     color: ${(p) => p.theme.color.gray600};
     ${(p) =>
-      p.variant === SubSectionHeaderVariant.SMALL &&
+      p.isSmall &&
       css`
         font-size: ${pxToRem(20)};
         margin-bottom: ${p.theme.vr.quarter.rem};
@@ -43,7 +44,14 @@ function SubSectionHeader({
   children,
   variant = SubSectionHeaderVariant.LARGE,
 }: SubSectionHeaderProps) {
-  return <Wrapper variant={variant}>{children}</Wrapper>;
+  return (
+    <Wrapper
+      isSmall={variant === SubSectionHeaderVariant.SMALL}
+      isLarge={variant === SubSectionHeaderVariant.LARGE}
+    >
+      {children}
+    </Wrapper>
+  );
 }
 
 export default SubSectionHeader;
