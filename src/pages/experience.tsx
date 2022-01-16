@@ -8,7 +8,7 @@ import {
   SubSectionHeader,
   Timeline,
 } from '../components';
-import YAMLData from '../../content/experiences.yml';
+import experienceYaml from '../../content/experiences.yml';
 
 interface Props {
   location: WindowLocation;
@@ -24,7 +24,7 @@ function ExperiencePage({ location }: Props) {
       <Section title="Work Experience">
         <Grid>
           <GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
-            <Timeline dataSource={YAMLData} />
+            <Timeline dataSource={experienceYaml} />
           </GridCol>
         </Grid>
       </Section>
