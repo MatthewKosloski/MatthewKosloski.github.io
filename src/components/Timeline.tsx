@@ -50,13 +50,11 @@ const FromTo = styled.small`
 const Summary = styled.div<{ isFirst: boolean }>`
   position: relative;
   width: 100%;
-  ${sm(css`
-    width: 85%;
-  `)}
   padding: 0 0 ${(p) => p.theme.vr.three.rem}
     calc(${pointSize}px + ${(p) => p.theme.vr.one.rem});
   ${sm(css`
     padding-left: calc(${pointSize}px + ${(p) => p.theme.vr.two.rem});
+    width: 85%;
   `)}
   &:before {
     content: '';
