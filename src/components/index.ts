@@ -7,6 +7,7 @@ import { default as DesktopMenu } from './DesktopMenu';
 import { default as Section } from './Section';
 import { default as SubSectionHeader } from './SubSectionHeader';
 import { default as Timeline } from './Timeline';
+import { default as ButtonLink } from './ButtonLink';
 
 export {
   Grid,
@@ -18,4 +19,5 @@ export {
   Section,
   SubSectionHeader,
   Timeline,
+  ButtonLink,
 };

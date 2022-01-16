@@ -7,7 +7,12 @@ import {
   Section,
   SubSectionHeader,
   Timeline,
+  ButtonLink,
 } from '../components';
+import {
+  ButtonLinkRoundness,
+  ButtonLinkVariant,
+} from '../components/ButtonLink';
 import experienceYaml from '../../content/experiences.yml';
 
 interface Props {
@@ -25,6 +30,21 @@ function ExperiencePage({ location }: Props) {
         <Grid>
           <GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
             <Timeline dataSource={experienceYaml} />
+          </GridCol>
+          <GridCol xs={12} alignCenterXs>
+            <ButtonLink
+              href=""
+              roundness={ButtonLinkRoundness.FULLY}
+            >
+              View Resume
+            </ButtonLink>
+            <ButtonLink
+              href=""
+              roundness={ButtonLinkRoundness.FULLY}
+              variant={ButtonLinkVariant.SECONDARY}
+            >
+              View LinkedIn
+            </ButtonLink>
           </GridCol>
         </Grid>
       </Section>
@@ -47,6 +67,13 @@ function ExperiencePage({ location }: Props) {
               from scratch. The compiler translates the high-level program to
               x86-64 assembly code (AT&amp;T syntax).
             </p>
+            <ButtonLink
+              href=""
+              roundness={ButtonLinkRoundness.FULLY}
+              variant={ButtonLinkVariant.SECONDARY}
+            >
+              Senior Project Paper
+            </ButtonLink>
           </GridCol>
         </Grid>
       </Section>
