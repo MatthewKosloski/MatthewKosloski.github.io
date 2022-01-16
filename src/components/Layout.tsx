@@ -60,8 +60,16 @@ const StyledHeader = styled.header`
 
 const HeaderWrapper = styled.div`
   background-color: ${(p) => p.theme.color.haitiPurple};
-  background: linear-gradient(-45deg, rgba(48,9,80,1) 0%, rgba(94,40,139,1) 25%, rgba(115,21,195,1) 50%, rgba(67,3,121,1) 75%, rgba(54,18,84,1) 100%);
-  padding: ${(p) => p.theme.vr.one.em} ${(p) => p.theme.vr.one.em} ${(p) => p.theme.vr.two.em} ${(p) => p.theme.vr.one.em};
+  background: linear-gradient(
+    -45deg,
+    rgba(48, 9, 80, 1) 0%,
+    rgba(94, 40, 139, 1) 25%,
+    rgba(115, 21, 195, 1) 50%,
+    rgba(67, 3, 121, 1) 75%,
+    rgba(54, 18, 84, 1) 100%
+  );
+  padding: ${(p) => p.theme.vr.one.em} ${(p) => p.theme.vr.one.em}
+    ${(p) => p.theme.vr.two.em} ${(p) => p.theme.vr.one.em};
   ${sm(css`
     padding: 0 ${(p) => p.theme.vr.two.rem} ${(p) => p.theme.vr.four.rem}
       ${(p) => p.theme.vr.two.rem};
