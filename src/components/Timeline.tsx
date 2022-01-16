@@ -1,8 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { SubSectionHeader } from '.';
 import { SubSectionHeaderVariant } from './SubSectionHeader';
+import { sm } from '../theme';
+
+const pointSize = 16;
 
 const Item = styled.li`
   list-style: none;
@@ -10,6 +13,10 @@ const Item = styled.li`
   position: relative;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  ${sm(css`
+    flex-direction: row;
+  `)}
   &:last-child > :last-child {
     padding-bottom: ${(p) => p.theme.vr.one.rem};
   }
@@ -18,31 +25,51 @@ const Item = styled.li`
 const FromTo = styled.small`
   color: ${(p) => p.theme.color.gray600};
   display: inline-block;
-  width: 15%;
+  padding-left: calc(${pointSize}px + ${(p) => p.theme.vr.one.rem});
+  position: absolute;
+  left: 0;
+  top: -${(p) => p.theme.vr.one.rem};
+  ${sm(css`
+    width: 15%;
+    padding-left: 0;
+    position: static;
+  `)}
   span {
     margin: 0 ${(p) => p.theme.vr.quarter.rem};
     &:after {
       content: '';
-      display: block;
+      display: inline-block;
+      ${sm(css`
+        display: block;
+      `)}
     }
   }
 `;
 
 const Summary = styled.div<{ isFirst: boolean }>`
   position: relative;
-  width: 85%;
+  width: 100%;
+  ${sm(css`
+    width: 85%;
+  `)}
   padding: 0 0 ${(p) => p.theme.vr.three.rem}
-    calc(${(p) => p.theme.vr.one.rem} + 16px + ${(p) => p.theme.vr.one.rem});
+    calc(${pointSize}px + ${(p) => p.theme.vr.one.rem});
+  ${sm(css`
+    padding-left: calc(${pointSize}px + ${(p) => p.theme.vr.two.rem});
+  `)}
   &:before {
     content: '';
     position: absolute;
     background-color: ${(p) => (p.isFirst ? '#d3d3d3' : p.theme.color.white)};
     border: 2px solid #d4d4d4;
     border-radius: 100px;
-    width: 16px;
-    height: 16px;
-    left: ${(p) => p.theme.vr.one.rem};
-    top: 8px;
+    width: ${pointSize}px;
+    height: ${pointSize}px;
+    left: 0;
+    top: ${pointSize / 2}px;
+    ${sm(css`
+      left: ${(p) => p.theme.vr.one.rem};
+    `)}
     z-index: 1;
   }
   &:after {
@@ -51,8 +78,11 @@ const Summary = styled.div<{ isFirst: boolean }>`
     background-color: #d4d4d4;
     width: 2px;
     height: 100%;
-    left: calc(${(p) => p.theme.vr.one.rem} + 8px - 0.5px);
-    top: 8px;
+    left: calc(${pointSize / 2}px - 0.5px);
+    top: ${pointSize / 2}px;
+    ${sm(css`
+      left: calc(${(p) => p.theme.vr.one.rem} + ${pointSize / 2}px - 0.5px);
+    `)}
   }
 `;
 
@@ -91,9 +121,9 @@ function Timeline({ dataSource }: TimelineProps) {
                   <h3>{title}</h3>
                   <h4>{subtitle}</h4>
                 </SubSectionHeader>
-                {description.split('\n').map((d) => (
-                  <p key={uuidv4()}>{d}</p>
-                ))}
+                {description
+                  .split('\n')
+                  .map((d) => (d.trim() ? <p key={uuidv4()}>{d}</p> : null))}
               </Summary>
             </Item>
           );
