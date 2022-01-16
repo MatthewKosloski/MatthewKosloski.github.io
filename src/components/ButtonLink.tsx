@@ -63,7 +63,7 @@ const Wrapper = styled.a<WrapperProps>`
     color: ${(p) => p.isSecondary && p.theme.color.grapePurple};
   }
   &:not(:last-child) {
-    margin-right: ${p => p.theme.vr.one.rem};
+    margin-right: ${(p) => p.theme.vr.one.rem};
   }
 `;
 

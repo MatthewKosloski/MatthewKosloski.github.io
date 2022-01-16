@@ -22,7 +22,7 @@ const Wrapper = styled.header.attrs(
     text-transform: uppercase;
     color: ${(p) => p.theme.color.gray300};
     font-size: ${(p) => p.theme.typography.smallFontSizeRem};
-    letter-spacing: ${p => p.theme.typography.letterSpacingEm};
+    letter-spacing: ${(p) => p.theme.typography.letterSpacingEm};
     span {
       padding: 0 ${(p) => p.theme.vr.quarter.em};
     }

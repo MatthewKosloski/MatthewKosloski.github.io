@@ -32,10 +32,7 @@ function ExperiencePage({ location }: Props) {
             <Timeline dataSource={experienceYaml} />
           </GridCol>
           <GridCol xs={12} alignCenterXs>
-            <ButtonLink
-              href=""
-              roundness={ButtonLinkRoundness.FULLY}
-            >
+            <ButtonLink href="" roundness={ButtonLinkRoundness.FULLY}>
               View Resume
             </ButtonLink>
             <ButtonLink
