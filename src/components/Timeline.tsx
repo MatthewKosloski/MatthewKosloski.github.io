@@ -3,9 +3,10 @@ import styled, { css } from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { SubSectionHeader } from '.';
 import { SubSectionHeaderVariant } from './SubSectionHeader';
-import { sm } from '../theme';
+import { sm, pxToEm } from '../theme';
 
 const pointSize = 16;
+const lineSize = 2;
 
 const Item = styled.li`
   list-style: none;
@@ -60,8 +61,9 @@ const Summary = styled.div<{ isFirst: boolean }>`
   &:before {
     content: '';
     position: absolute;
-    background-color: ${(p) => (p.isFirst ? '#d3d3d3' : p.theme.color.white)};
-    border: 2px solid #d4d4d4;
+    background-color: ${(p) =>
+      p.isFirst ? p.theme.color.gray200Hex : p.theme.color.white};
+    border: ${pxToEm(lineSize)} solid ${(p) => p.theme.color.gray200Hex};
     border-radius: 100px;
     width: ${pointSize}px;
     height: ${pointSize}px;
@@ -75,13 +77,13 @@ const Summary = styled.div<{ isFirst: boolean }>`
   &:after {
     content: '';
     position: absolute;
-    background-color: #d4d4d4;
-    width: 2px;
+    background-color: ${(p) => p.theme.color.gray200Hex};
+    width: ${pxToEm(lineSize)};
     height: 100%;
-    left: calc(${pointSize / 2}px - 0.5px);
+    left: calc(${pointSize / 2}px);
     top: ${pointSize / 2}px;
     ${sm(css`
-      left: calc(${(p) => p.theme.vr.one.rem} + ${pointSize / 2}px - 0.5px);
+      left: calc(${(p) => p.theme.vr.one.rem} + ${pointSize / 2}px);
     `)}
   }
 `;

@@ -47,6 +47,7 @@ export const color = {
   gray50: 'rgba(0, 0, 0, 0.05)',
   gray100: 'rgba(0, 0, 0, 0.1)',
   gray200: 'rgba(0, 0, 0, 0.2)',
+  gray200Hex: '#d4d4d4',
   gray300: 'rgba(0, 0, 0, 0.3)',
   gray400: 'rgba(0, 0, 0, 0.4)',
   gray500: 'rgba(0, 0, 0, 0.5)',
