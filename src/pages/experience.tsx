@@ -32,14 +32,8 @@ function ExperiencePage({ location }: Props) {
             <Timeline dataSource={experienceYaml} />
           </GridCol>
           <GridCol xs={12} alignCenterXs>
-            <ButtonLink href="" roundness={ButtonLinkRoundness.FULLY}>
-              View Resume
-            </ButtonLink>
-            <ButtonLink
-              href=""
-              roundness={ButtonLinkRoundness.FULLY}
-              variant={ButtonLinkVariant.SECONDARY}
-            >
+            <ButtonLink href="">View Resume</ButtonLink>
+            <ButtonLink href="" variant={ButtonLinkVariant.SECONDARY}>
               View LinkedIn
             </ButtonLink>
           </GridCol>
@@ -64,11 +58,7 @@ function ExperiencePage({ location }: Props) {
               from scratch. The compiler translates the high-level program to
               x86-64 assembly code (AT&amp;T syntax).
             </p>
-            <ButtonLink
-              href=""
-              roundness={ButtonLinkRoundness.FULLY}
-              variant={ButtonLinkVariant.SECONDARY}
-            >
+            <ButtonLink href="" variant={ButtonLinkVariant.SECONDARY}>
               Senior Project Paper
             </ButtonLink>
           </GridCol>

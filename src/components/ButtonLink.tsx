@@ -71,7 +71,7 @@ function ButtonLink({
   children,
   variant = ButtonLinkVariant.PRIMARY,
   size = ButtonLinkSize.SMALL,
-  roundness = ButtonLinkRoundness.ROUNDED,
+  roundness = ButtonLinkRoundness.FULLY,
   ...rest
 }: ButtonLinkProps & JSX.IntrinsicElements['a']) {
   return (
