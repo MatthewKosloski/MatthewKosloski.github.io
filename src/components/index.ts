@@ -8,6 +8,9 @@ import { default as Section } from './Section';
 import { default as SubSectionHeader } from './SubSectionHeader';
 import { default as Timeline } from './Timeline';
 import { default as ButtonLink } from './ButtonLink';
+import { default as Flex } from './Flex';
+import { default as FlexCol } from './FlexCol';
+import { default as Project } from './Project';
 
 export {
   Grid,
@@ -20,4 +23,7 @@ export {
   SubSectionHeader,
   Timeline,
   ButtonLink,
+  Flex,
+  FlexCol,
+  Project,
 };
