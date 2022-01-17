@@ -49,7 +49,7 @@ const Wrapper = styled.a<WrapperProps>`
   text-decoration: none;
   transition: background-color 0.15s ease-in-out;
   text-align: center;
-  display: inline-block;
+  display: block;
   text-transform: uppercase;
   letter-spacing: ${(p) => p.theme.typography.letterSpacingEm};
   font-weight: 700;
