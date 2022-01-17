@@ -86,10 +86,6 @@ const Summary = styled.div<{ isFirst: boolean }>`
   }
 `;
 
-interface TimelineProps {
-  dataSource: { experiences: Experiences };
-}
-
 function getShortMonthName(date: Date) {
   return date.toLocaleString('default', { month: 'short' });
 }
@@ -98,10 +94,17 @@ function truncateYear(year: number) {
   return `'${String(year).substring(2)}`;
 }
 
-function Timeline({ dataSource }: TimelineProps) {
+interface TimelineProps {
+  dataSource: { experiences: Experiences };
+  limit?: number;
+}
+
+function Timeline({ dataSource: { experiences }, limit = 0 }: TimelineProps) {
+  const isValidLimit = limit > 0 && limit < experiences.length;
+  const limitedDataSource = isValidLimit ? experiences.slice(0, limit) : experiences;
   return (
     <ul>
-      {dataSource.experiences.map(
+      {limitedDataSource.map(
         ({ title, subtitle, description, date }, i) => {
           const fromDate = new Date(date.from);
           const toDate = new Date(date.to ?? '');
