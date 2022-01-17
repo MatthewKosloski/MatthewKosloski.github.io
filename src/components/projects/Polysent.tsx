@@ -14,10 +14,10 @@ function PolysentProject({ featureOnLeft = false }: BaseProjectProps) {
       title="Polysent"
       subtitle="A Single Page Web Application"
       featuredComponent={<FeaturedComponent />}
-      buttonPrimary={<ButtonLink href="#">Source Code</ButtonLink>}
+      buttonPrimary={<ButtonLink href="#">Live Demo</ButtonLink>}
       buttonSecondary={
         <ButtonLink variant={ButtonLinkVariant.SECONDARY} href="#">
-          Live Demo
+          Source Code
         </ButtonLink>
       }
       featureOnLeft={featureOnLeft}
