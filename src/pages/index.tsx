@@ -7,6 +7,7 @@ import {
   Layout,
   Section,
 } from '../components';
+import { Projects } from '../components/projects';
 import { BasePageProps } from './types';
 
 function IndexPage({ location }: BasePageProps) {
@@ -51,9 +52,7 @@ function IndexPage({ location }: BasePageProps) {
         </Grid>
       </Section>
       <Section title="Most Recent Project">
-        <p className="u-text-center:xs">
-          <em>Torrey project will be here.</em>
-        </p>
+        <Projects limit={1} />
       </Section>
       <Section title="Selected Blog Posts">
         <p className="u-text-center:xs">
