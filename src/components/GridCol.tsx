@@ -17,12 +17,30 @@ interface GridColProps {
   alignCenterMd?: boolean;
   alignCenterLg?: boolean;
   alignCenterXl?: boolean;
+  orderLastXs?: boolean;
+  orderLastSm?: boolean;
+  orderLastMd?: boolean;
+  orderLastLg?: boolean;
+  orderLastXl?: boolean;
+  orderInitialXs?: boolean;
+  orderInitialSm?: boolean;
+  orderInitialMd?: boolean;
+  orderInitialLg?: boolean;
+  orderInitialXl?: boolean;
 }
 
 const alignCenterCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const orderLastCss = css`
+  order: 999;
+`;
+
+const orderInitialCss = css`
+  order: initial;
 `;
 
 const GridCol = styled.div<GridColProps>`
@@ -85,6 +103,36 @@ const GridCol = styled.div<GridColProps>`
 
   ${({ alignCenterXl }) =>
     alignCenterXl && breakpoint(Breakpoints.XL)(alignCenterCss)};
+
+  ${({ orderLastXs }) =>
+    orderLastXs && breakpoint(Breakpoints.XS)(orderLastCss)};
+
+  ${({ orderLastSm }) =>
+    orderLastSm && breakpoint(Breakpoints.SM)(orderLastCss)};
+
+  ${({ orderLastMd }) =>
+    orderLastMd && breakpoint(Breakpoints.MD)(orderLastCss)};
+
+  ${({ orderLastLg }) =>
+    orderLastLg && breakpoint(Breakpoints.LG)(orderLastCss)};
+
+  ${({ orderLastXl }) =>
+    orderLastXl && breakpoint(Breakpoints.XL)(orderLastCss)};
+
+  ${({ orderInitialXs }) =>
+    orderInitialXs && breakpoint(Breakpoints.XS)(orderInitialCss)};
+
+  ${({ orderInitialSm }) =>
+    orderInitialSm && breakpoint(Breakpoints.SM)(orderInitialCss)};
+
+  ${({ orderInitialMd }) =>
+    orderInitialMd && breakpoint(Breakpoints.MD)(orderInitialCss)};
+
+  ${({ orderInitialLg }) =>
+    orderInitialLg && breakpoint(Breakpoints.LG)(orderInitialCss)};
+
+  ${({ orderInitialXl }) =>
+    orderInitialXl && breakpoint(Breakpoints.XL)(orderInitialCss)};
 `;
 
 export default GridCol;
