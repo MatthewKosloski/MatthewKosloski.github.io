@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { WindowLocation } from '@reach/router';
-import {
-  Grid,
-  GridCol,
-  Layout,
-  Section,
-} from '../components';
+import { Grid, GridCol, Layout, Section } from '../components';
 
 interface Props {
   location: WindowLocation;
@@ -13,10 +8,7 @@ interface Props {
 
 function BlogPage({ location }: Props) {
   return (
-    <Layout
-      location={location}
-      pageTitle="Blog"
-    >
+    <Layout location={location} pageTitle="Blog">
       <Section>
         <Grid>
           <GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
