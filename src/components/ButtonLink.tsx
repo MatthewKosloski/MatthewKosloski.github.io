@@ -47,7 +47,7 @@ const Wrapper = styled.a<WrapperProps>`
   padding: ${(p) => p.theme.vr.half.rem} ${(p) => p.theme.vr.one.rem};
   padding-bottom: calc(${(p) => p.theme.vr.half.rem} - ${pxToEm(2)});
   text-decoration: none;
-  transition: background-color 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
   text-align: center;
   display: block;
   text-transform: uppercase;
