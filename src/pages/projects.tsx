@@ -1,13 +1,9 @@
 import * as React from 'react';
-import { WindowLocation } from '@reach/router';
 import { Layout, Section } from '../components';
 import { TorreyProject, PolysentProject } from '../components/projects';
+import { BasePageProps } from './types';
 
-interface Props {
-  location: WindowLocation;
-}
-
-function ProjectsPage({ location }: Props) {
+function ProjectsPage({ location }: BasePageProps) {
   return (
     <Layout
       location={location}

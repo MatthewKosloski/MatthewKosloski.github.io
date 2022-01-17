@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { WindowLocation } from '@reach/router';
 import {
   Grid,
   GridCol,
@@ -14,12 +13,9 @@ import {
   ButtonLinkVariant,
 } from '../components/ButtonLink';
 import experienceYaml from '../../content/experiences.yml';
+import { BasePageProps } from './types';
 
-interface Props {
-  location: WindowLocation;
-}
-
-function ExperiencePage({ location }: Props) {
+function ExperiencePage({ location }: BasePageProps) {
   return (
     <Layout
       location={location}

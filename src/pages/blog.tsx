@@ -1,12 +1,8 @@
 import * as React from 'react';
-import { WindowLocation } from '@reach/router';
 import { Grid, GridCol, Layout, Section } from '../components';
+import { BasePageProps } from './types';
 
-interface Props {
-  location: WindowLocation;
-}
-
-function BlogPage({ location }: Props) {
+function BlogPage({ location }: BasePageProps) {
   return (
     <Layout location={location} pageTitle="Blog">
       <Section>
