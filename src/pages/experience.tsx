@@ -8,10 +8,7 @@ import {
   Timeline,
   ButtonLink,
 } from '../components';
-import {
-  ButtonLinkRoundness,
-  ButtonLinkVariant,
-} from '../components/ButtonLink';
+import { ButtonLinkVariant } from '../components/ButtonLink';
 import experienceYaml from '../../content/experiences.yml';
 import { BasePageProps } from './types';
 
