@@ -43,11 +43,13 @@ interface SubSectionHeaderProps {
 function SubSectionHeader({
   children,
   variant = SubSectionHeaderVariant.LARGE,
-}: SubSectionHeaderProps) {
+  ...rest
+}: SubSectionHeaderProps & JSX.IntrinsicElements['header']) {
   return (
     <Wrapper
       isSmall={variant === SubSectionHeaderVariant.SMALL}
       isLarge={variant === SubSectionHeaderVariant.LARGE}
+      {...rest}
     >
       {children}
     </Wrapper>
