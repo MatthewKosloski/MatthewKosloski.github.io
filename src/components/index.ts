@@ -27,5 +27,5 @@ export {
   Flex,
   FlexCol,
   Project,
-  ExperienceTimeline
+  ExperienceTimeline,
 };

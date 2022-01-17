@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { Grid, GridCol, Layout, Section } from '../components';
+import {
+  ExperienceTimeline,
+  Grid,
+  GridCol,
+  Layout,
+  Section,
+} from '../components';
 import { BasePageProps } from './types';
 
 function IndexPage({ location }: BasePageProps) {
@@ -34,9 +40,11 @@ function IndexPage({ location }: BasePageProps) {
         </Grid>
       </Section>
       <Section title="Recent Experience">
-        <p className="u-text-center:xs">
-          <em>Timeline will be here.</em>
-        </p>
+        <Grid>
+          <GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
+            <ExperienceTimeline limit={2} />
+          </GridCol>
+        </Grid>
       </Section>
       <Section title="Most Recent Project">
         <p className="u-text-center:xs">

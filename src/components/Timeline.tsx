@@ -101,37 +101,37 @@ interface TimelineProps {
 
 function Timeline({ dataSource: { experiences }, limit = 0 }: TimelineProps) {
   const isValidLimit = limit > 0 && limit < experiences.length;
-  const limitedDataSource = isValidLimit ? experiences.slice(0, limit) : experiences;
+  const limitedDataSource = isValidLimit
+    ? experiences.slice(0, limit)
+    : experiences;
   return (
     <ul>
-      {limitedDataSource.map(
-        ({ title, subtitle, description, date }, i) => {
-          const fromDate = new Date(date.from);
-          const toDate = new Date(date.to ?? '');
-          return (
-            <Item key={uuidv4()}>
-              <FromTo>
-                {getShortMonthName(fromDate)}{' '}
-                {truncateYear(fromDate.getFullYear())} <span>&mdash;</span>{' '}
-                {date.to
-                  ? `${getShortMonthName(toDate)} ${truncateYear(
-                      toDate.getFullYear()
-                    )}`
-                  : 'Present'}
-              </FromTo>
-              <Summary isFirst={i === 0}>
-                <SubSectionHeader variant={SubSectionHeaderVariant.SMALL}>
-                  <h3>{title}</h3>
-                  <h4>{subtitle}</h4>
-                </SubSectionHeader>
-                {description
-                  .split('\n')
-                  .map((d) => (d.trim() ? <p key={uuidv4()}>{d}</p> : null))}
-              </Summary>
-            </Item>
-          );
-        }
-      )}
+      {limitedDataSource.map(({ title, subtitle, description, date }, i) => {
+        const fromDate = new Date(date.from);
+        const toDate = new Date(date.to ?? '');
+        return (
+          <Item key={uuidv4()}>
+            <FromTo>
+              {getShortMonthName(fromDate)}{' '}
+              {truncateYear(fromDate.getFullYear())} <span>&mdash;</span>{' '}
+              {date.to
+                ? `${getShortMonthName(toDate)} ${truncateYear(
+                    toDate.getFullYear()
+                  )}`
+                : 'Present'}
+            </FromTo>
+            <Summary isFirst={i === 0}>
+              <SubSectionHeader variant={SubSectionHeaderVariant.SMALL}>
+                <h3>{title}</h3>
+                <h4>{subtitle}</h4>
+              </SubSectionHeader>
+              {description
+                .split('\n')
+                .map((d) => (d.trim() ? <p key={uuidv4()}>{d}</p> : null))}
+            </Summary>
+          </Item>
+        );
+      })}
     </ul>
   );
 }
