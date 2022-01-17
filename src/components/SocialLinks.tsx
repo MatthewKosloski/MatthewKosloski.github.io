@@ -37,8 +37,7 @@ const SocialItem = styled.li`
 const SocialLink = styled.a`
   padding: ${(p) => p.theme.vr.half.em};
   border-radius: ${pxToEm(5)};
-  background-color: ${(p) => p.theme.color.eastSidePurple};
-  color: ${(p) => p.theme.color.grapePurple};
+  color: ${(p) => p.theme.color.ghostlyPurple};
   transition: 0.15s ease-in-out;
   svg,
   & {

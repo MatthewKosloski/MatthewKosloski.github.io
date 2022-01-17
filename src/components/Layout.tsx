@@ -213,15 +213,8 @@ function Layout({ children, location, pageTitle, pageSubtitle }: LayoutProps) {
             ) : null}
           </HeaderWrapper>
           <main>{children}</main>
-          <Footer title="Contact">
+          <Footer>
             <Grid>
-              <GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
-                <p className="u-text-center:xs u-mb--two:xs">
-                  If you'd like to get in contact with me, email me at{' '}
-                  <em>firstlast</em>@me.com, where <em>firstlast</em> is a
-                  concatenation of my first and last name.
-                </p>
-              </GridCol>
               <GridCol xs={12} sm={8} smOffset={3}>
                 <SocialLinks />
               </GridCol>
