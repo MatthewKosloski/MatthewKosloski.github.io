@@ -5,11 +5,10 @@ import {
   Layout,
   Section,
   SubSectionHeader,
-  Timeline,
   ButtonLink,
+  ExperienceTimeline,
 } from '../components';
 import { ButtonLinkVariant } from '../components/ButtonLink';
-import experienceYaml from '../../content/experiences.yml';
 import { BasePageProps } from './types';
 
 function ExperiencePage({ location }: BasePageProps) {
@@ -22,7 +21,7 @@ function ExperiencePage({ location }: BasePageProps) {
       <Section title="Work Experience">
         <Grid>
           <GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
-            <Timeline dataSource={experienceYaml} />
+            <ExperienceTimeline />
           </GridCol>
           <GridCol xs={12} alignCenterXs>
             <ButtonLink href="">View Resume</ButtonLink>

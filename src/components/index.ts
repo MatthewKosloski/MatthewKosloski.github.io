@@ -11,6 +11,7 @@ import { default as ButtonLink } from './ButtonLink';
 import { default as Flex } from './Flex';
 import { default as FlexCol } from './FlexCol';
 import { default as Project } from './Project';
+import { default as ExperienceTimeline } from './ExperienceTimeline';
 
 export {
   Grid,
@@ -26,4 +27,5 @@ export {
   Flex,
   FlexCol,
   Project,
+  ExperienceTimeline
 };
