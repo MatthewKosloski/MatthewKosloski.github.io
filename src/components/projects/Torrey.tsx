@@ -14,7 +14,7 @@ function TorreyProject({ featureOnLeft = false }: BaseProjectProps) {
       title="Torrey"
       subtitle="A Compiler to x86-64 Assembly"
       featuredComponent={<FeaturedComponent />}
-      buttonPrimary={<ButtonLink href="#">Source Code</ButtonLink>}
+      buttonPrimary={<ButtonLink variant={ButtonLinkVariant.SECONDARY} href="#">Source Code</ButtonLink>}
       buttonSecondary={
         <ButtonLink variant={ButtonLinkVariant.SECONDARY} href="#">
           Latest Release
@@ -27,12 +27,12 @@ function TorreyProject({ featureOnLeft = false }: BaseProjectProps) {
         compile-time and compiles to 64-bit x86 assembly code.
       </p>
       <p>
-        Releases are automated by a continuous integration (CI) pipeline which
-        also compiles and tests the compiler and builds the runtime.
+        Releases are versioned using Semver Semantic Versioning and are automated by a continuous integration (CI) pipeline which
+        also compiles and tests the compiler and builds the compiler jar and runtime object file.
       </p>
       <p>
-        Currently, I'm also working on building a playground environment that
-        enables one to compile, link, and execute Torrey programs from the web
+        Currently, I'm developing a playground environment that
+        enables one to compile, link, and execute Torrey programs directly from the web
         browser.
       </p>
     </Project>
