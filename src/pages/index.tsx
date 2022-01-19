@@ -41,18 +41,21 @@ function IndexPage({ location }: BasePageProps) {
           </GridCol>
         </Grid>
       </Section>
-      <Section title="Recent Experience">
+      <Section title="Most Recent Experience">
         <Grid>
           <GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
             <ExperienceTimeline limit={2} />
           </GridCol>
           <GridCol xs={12} alignCenterXs>
-            <ButtonLink href="#">More Experience</ButtonLink>
+            <ButtonLink href="#">View All Experience</ButtonLink>
           </GridCol>
         </Grid>
       </Section>
       <Section title="Most Recent Project">
         <Projects limit={1} />
+        <GridCol xs={12} alignCenterXs>
+          <ButtonLink href="#">View All Projects</ButtonLink>
+        </GridCol>
       </Section>
       <Section title="Selected Blog Posts">
         <p className="u-text-center:xs">
