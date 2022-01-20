@@ -13,6 +13,7 @@ import { default as FlexCol } from './FlexCol';
 import { default as Project } from './Project';
 import { default as ExperienceTimeline } from './ExperienceTimeline';
 import { default as SocialLinks } from './SocialLinks';
+import { default as Wrapper } from './Wrapper';
 
 export {
   Grid,
@@ -30,4 +31,5 @@ export {
   Project,
   ExperienceTimeline,
   SocialLinks,
+  Wrapper
 };
