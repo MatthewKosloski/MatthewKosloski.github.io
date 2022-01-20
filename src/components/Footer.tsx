@@ -4,15 +4,15 @@ import { Section, Grid, GridCol, SocialLinks, Wrapper } from '.';
 
 const SocialMediaLinkSection = styled(Section).attrs(() => ({
   as: 'footer',
-  borderBottom: true
+  borderBottom: true,
 }))`
-  padding: ${p => p.theme.vr.two.rem};
+  padding: ${(p) => p.theme.vr.two.rem};
   padding-bottom: 0;
 `;
 
 const SmallTextWrapper = styled.div`
   text-align: center;
-  padding: ${p => p.theme.vr.two.rem} ${p => p.theme.vr.half.rem};
+  padding: ${(p) => p.theme.vr.two.rem} ${(p) => p.theme.vr.half.rem};
 `;
 
 function Footer() {
@@ -28,8 +28,11 @@ function Footer() {
       <SmallTextWrapper>
         <p>
           <small>
-            This website is <a href="https://github.com/MatthewKosloski/MatthewKosloski.github.io">open source</a> on GitHub. Feel free
-            to fork it!
+            This website is{' '}
+            <a href="https://github.com/MatthewKosloski/MatthewKosloski.github.io">
+              open source
+            </a>{' '}
+            on GitHub. Feel free to fork it!
           </small>
         </p>
       </SmallTextWrapper>
