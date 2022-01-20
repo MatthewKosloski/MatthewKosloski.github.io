@@ -5,7 +5,7 @@ import {
   modularScaleRem,
   pxToRelativeUnit,
   RelativeUnit,
-  Steps
+  Steps,
 } from './utils';
 
 const rootFontSizeMd = 112.5;
@@ -13,9 +13,9 @@ const lineHeight = 1.5;
 
 // Wrappers around pxToRelativeUnit that use the root
 // font size as the ratio.
-export const pxToEm = (px: number) =>
+const pxToEm = (px: number) =>
   pxToRelativeUnit(px, rootFontSizeMd, RelativeUnit.EM);
-export const pxToRem = (px: number) =>
+const pxToRem = (px: number) =>
   pxToRelativeUnit(px, rootFontSizeMd, RelativeUnit.REM);
 
 const breakpoints = {
@@ -128,6 +128,11 @@ const ms = {
   five: modularScaleRem(Steps.FIVE, lineHeight),
 };
 
+const utils = {
+  pxToEm,
+  pxToRem,
+};
+
 const theme: DefaultTheme = {
   color,
   typography,
@@ -135,6 +140,7 @@ const theme: DefaultTheme = {
   vr,
   ms,
   media,
+  utils,
 };
 
 export default theme;

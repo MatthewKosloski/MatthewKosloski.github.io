@@ -1,9 +1,8 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { SubSectionHeader } from '.';
 import { SubSectionHeaderVariant } from './SubSectionHeader';
-import { sm, pxToEm } from '../theme';
 
 const pointSize = 16;
 const lineSize = 2;
@@ -65,7 +64,8 @@ const Summary = styled.div<{ isFirst: boolean }>`
     position: absolute;
     background-color: ${(p) =>
       p.isFirst ? p.theme.color.gray200Hex : p.theme.color.white};
-    border: ${pxToEm(lineSize)} solid ${(p) => p.theme.color.gray200Hex};
+    border: ${(p) => p.theme.utils.pxToEm(lineSize)} solid
+      ${(p) => p.theme.color.gray200Hex};
     border-radius: 100px;
     width: ${pointSize}px;
     height: ${pointSize}px;
@@ -80,7 +80,7 @@ const Summary = styled.div<{ isFirst: boolean }>`
     content: '';
     position: absolute;
     background-color: ${(p) => p.theme.color.gray200Hex};
-    width: ${pxToEm(lineSize)};
+    width: ${(p) => p.theme.utils.pxToEm(lineSize)};
     height: 100%;
     left: calc(${pointSize / 2}px);
     top: ${pointSize / 2}px;

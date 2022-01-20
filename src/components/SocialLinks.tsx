@@ -6,7 +6,6 @@ import InstagramIcon from './icons/InstagramIcon';
 import UnsplashIcon from './icons/UnsplashIcon';
 import DribbbleIcon from './icons/DribbbleIcon';
 import TwitterIcon from './icons/TwitterIcon';
-import { pxToEm } from '../theme';
 import withScreenReaderText from './hoc/withScreenReaderText';
 
 const ListWrapper = styled.ul`
@@ -35,7 +34,7 @@ const SocialItem = styled.li`
 
 const SocialLink = styled.a`
   padding: ${(p) => p.theme.vr.half.em};
-  border-radius: ${pxToEm(5)};
+  border-radius: ${(p) => p.theme.utils.pxToEm(5)};
   color: ${(p) => p.theme.color.ghostlyPurple};
   transition: 0.15s ease-in-out;
   svg,

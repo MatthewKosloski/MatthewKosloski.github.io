@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { pxToRem } from '../theme';
 
 interface WrapperProps {
   isSmall: boolean;
@@ -15,7 +14,7 @@ const Wrapper = styled.header<WrapperProps>`
     ${(p) =>
       p.isSmall &&
       css`
-        font-size: ${pxToRem(20)};
+        font-size: ${(p) => p.theme.utils.pxToRem(20)};
         margin-bottom: ${p.theme.vr.quarter.rem};
       `};
   }

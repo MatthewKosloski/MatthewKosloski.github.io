@@ -31,5 +31,9 @@ declare module 'styled-components' {
     media: {
       [key: string]: string;
     };
+    utils: {
+      pxToEm: (px: number) => string;
+      pxToRem: (px: number) => string;
+    };
   }
 }

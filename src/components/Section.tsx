@@ -1,6 +1,5 @@
 import React, { createElement, HTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { pxToEm } from '../theme';
 
 const SectionWrapper = styled.section.attrs(
   ({
@@ -15,7 +14,9 @@ const SectionWrapper = styled.section.attrs(
   })
 )`
   border-bottom: ${({ borderBottom, theme }) =>
-    borderBottom ? `${pxToEm(1)} solid ${theme.color.gray50}` : `none`};
+    borderBottom
+      ? `${(p) => p.theme.utils.pxToEm(1)} solid ${theme.color.gray50}`
+      : `none`};
   padding: ${(p) => p.theme.vr.two.rem} ${(p) => p.theme.vr.one.em};
 
   ${({ theme }) => `${theme.media.sm} {

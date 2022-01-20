@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { pxToEm } from '../theme';
 
 export enum ButtonLinkVariant {
   PRIMARY,
@@ -36,16 +35,18 @@ interface WrapperProps {
 }
 
 const Wrapper = styled.a<WrapperProps>`
-  border: ${pxToEm(2)} solid
+  border: ${(p) => p.theme.utils.pxToEm(2)} solid
     ${(p) => (p.isSecondary ? p.theme.color.eastSidePurple : 'transparent')};
   background-color: ${(p) =>
     p.isPrimary ? p.theme.color.eastSidePurple : 'transparent'};
   color: ${(p) =>
     p.isPrimary ? p.theme.color.grapePurple : p.theme.color.eastSidePurple};
   border-radius: ${(p) => p.isFullyRounded && '100px'};
-  border-radius: ${(p) => p.isRounded && pxToEm(5)};
+  border-radius: ${(p) => p.isRounded && p.theme.utils.pxToEm(5)};
   padding: ${(p) => p.theme.vr.half.rem} ${(p) => p.theme.vr.one.rem};
-  padding-bottom: calc(${(p) => p.theme.vr.half.rem} - ${pxToEm(2)});
+  padding-bottom: calc(
+    ${(p) => p.theme.vr.half.rem} - ${(p) => p.theme.utils.pxToEm(2)}
+  );
   text-decoration: none;
   transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
   text-align: center;

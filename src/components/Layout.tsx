@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import styled, { css, ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { WindowLocation } from '@reach/router';
 import '../scss/global.scss';
 import '@reach/menu-button/styles.css';
@@ -11,7 +11,7 @@ import {
   MenuLink,
   useMenuButtonContext,
 } from '@reach/menu-button';
-import theme, { pxToEm, sm } from '../theme';
+import theme from '../theme';
 import GlobalStyle from './GlobalStyle';
 import HamburgerIcon from './icons/HamburgerIcon';
 import withScreenReaderText from './hoc/withScreenReaderText';
@@ -93,12 +93,14 @@ const StyledMenuButton = styled(MenuButton)`
 const StyledMenuLink = styled(MenuLink)`
   padding: ${(p) => p.theme.vr.one.em};
   text-transform: uppercase;
-  letter-spacing: ${pxToEm(1)};
+  letter-spacing: ${(p) => p.theme.utils.pxToEm(1)};
   font-weight: 700;
   color: ${(p) => p.theme.color.white500};
-  border-top: ${pxToEm(2)} solid ${(p) => p.theme.color.white100};
+  border-top: ${(p) => p.theme.utils.pxToEm(2)} solid
+    ${(p) => p.theme.color.white100};
   &:last-child {
-    border-bottom: ${pxToEm(2)} solid ${(p) => p.theme.color.white100};
+    border-bottom: ${(p) => p.theme.utils.pxToEm(2)} solid
+      ${(p) => p.theme.color.white100};
   }
   &:hover {
     background-color: ${(p) => p.theme.color.eastSidePurple};

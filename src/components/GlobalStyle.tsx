@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { pxToEm, pxToRem } from '../theme';
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -105,7 +104,7 @@ const GlobalStyle = createGlobalStyle`
   
   a {
     color: ${(p) => p.theme.color.ghostlyPurple};
-    text-decoration-thickness: ${pxToEm(2)};
+    text-decoration-thickness: ${(p) => p.theme.utils.pxToEm(2)};
     &:hover {
       text-decoration: none;
     }
@@ -113,7 +112,8 @@ const GlobalStyle = createGlobalStyle`
   
   blockquote {
     font-style: italic;
-    border-left: ${(p) => `${pxToEm(2)} solid ${p.theme.color.gray200}`};
+    border-left: ${(p) =>
+      `${(p) => p.theme.utils.pxToEm(2)} solid ${p.theme.color.gray200}`};
     padding-left: ${(p) => p.theme.vr.half.rem};
   }
   
@@ -131,8 +131,8 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${(p) => p.theme.typography.smallFontSizeRem};
     background-color: ${(p) => p.theme.color.haitiPurple};
     color: ${(p) => p.theme.color.manateeGray};
-    padding: ${pxToEm(5)};
-    border-radius: ${pxToEm(5)};
+    padding: ${(p) => p.theme.utils.pxToEm(5)};
+    border-radius: ${(p) => p.theme.utils.pxToEm(5)};
   }
   
   pre {
@@ -143,12 +143,13 @@ const GlobalStyle = createGlobalStyle`
 
     background-color: ${(p) => p.theme.color.haitiPurple};
     padding: ${(p) => p.theme.vr.one.rem};
-    border-radius: ${pxToEm(5)};
+    border-radius: ${(p) => p.theme.utils.pxToEm(5)};
   }
   
   hr {
     border: 0;
-    border-top: ${pxToRem(2)} solid ${(p) => p.theme.color.gray200};
+    border-top: ${(p) => p.theme.utils.pxToRem(2)} solid ${(p) =>
+  p.theme.color.gray200};
     margin: ${(p) => p.theme.vr.three.rem} auto;
     width: 33%;
   }
