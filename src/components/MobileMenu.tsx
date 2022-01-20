@@ -66,7 +66,6 @@ function MenuIcon({ isExpanded }: { isExpanded: boolean }) {
 
 function MobileMenuInner() {
   const { isExpanded } = useMenuButtonContext();
-
   const activeBodyClass = 'has-expanded-mobile-menu';
 
   useEffect(() => {
