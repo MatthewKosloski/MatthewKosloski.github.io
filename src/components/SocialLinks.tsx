@@ -1,11 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import LinkedInIcon from './icons/LinkedInIcon';
-import GitHubIcon from './icons/GitHubIcon';
-import InstagramIcon from './icons/InstagramIcon';
-import UnsplashIcon from './icons/UnsplashIcon';
-import DribbbleIcon from './icons/DribbbleIcon';
-import TwitterIcon from './icons/TwitterIcon';
+import {
+  DribbbleIcon,
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  TwitterIcon,
+  UnsplashIcon,
+} from './icons';
 import withScreenReaderText from './hoc/withScreenReaderText';
 
 const ListWrapper = styled.ul`
