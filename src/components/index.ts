@@ -12,6 +12,7 @@ import { default as Flex } from './Flex';
 import { default as FlexCol } from './FlexCol';
 import { default as Project } from './Project';
 import { default as ExperienceTimeline } from './ExperienceTimeline';
+import { default as SocialLinks } from './SocialLinks';
 
 export {
   Grid,
@@ -28,4 +29,5 @@ export {
   FlexCol,
   Project,
   ExperienceTimeline,
+  SocialLinks
 };
