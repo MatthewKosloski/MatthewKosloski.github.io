@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { WindowLocation } from '@reach/router';
+import { Link } from 'gatsby';
 import '../scss/global.scss';
 import '@reach/menu-button/styles.css';
 import {
@@ -114,7 +115,7 @@ const StyledNav = styled.nav`
   justify-content: space-between;
 `;
 
-const Logo = styled.a`
+const Logo = styled(Link)`
   text-decoration: none;
   h1 {
     margin-bottom: ${(p) => p.theme.vr.zero.em};
@@ -195,7 +196,7 @@ function Layout({ children, location, pageTitle, pageSubtitle }: LayoutProps) {
         <Wrapper isNewspaper>
           <HeaderWrapper>
             <StyledNav>
-              <Logo href="/">
+              <Logo to="/">
                 <h1 className="h4">Matthew Kosloski</h1>
               </Logo>
               <div className="u-display-none:sm">
