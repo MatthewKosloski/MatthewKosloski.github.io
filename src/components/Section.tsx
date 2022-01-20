@@ -1,18 +1,7 @@
-import React, { createElement, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-const SectionWrapper = styled.section.attrs(
-  ({
-    forwardedAs,
-    borderBottom,
-  }: {
-    forwardedAs: string;
-    borderBottom: boolean;
-  }) => ({
-    as: forwardedAs,
-    borderBottom,
-  })
-)`
+const SectionWrapper = styled.section<{borderBottom: boolean;}>`
   border-bottom: ${({ borderBottom, theme }) =>
     borderBottom
       ? `${(p) => p.theme.utils.pxToEm(1)} solid ${theme.color.gray50}`
@@ -24,6 +13,16 @@ const SectionWrapper = styled.section.attrs(
   }`}
 `;
 
+const TitleWrapper = styled.div`
+  margin-bottom: ${(p) => p.theme.vr.three.rem};
+`;
+
+const StyledTitle = styled.div`
+  margin-bottom: 0;
+  font-size: 1rem;
+  text-align: center;
+`;
+
 interface SectionProps {
   children: React.ReactNode;
   title?: string;
@@ -31,10 +30,6 @@ interface SectionProps {
   as?: string | React.ComponentType<any>;
   borderBottom?: boolean;
 }
-
-const TitleWrapper = styled.div`
-  margin-bottom: ${(p) => p.theme.vr.three.rem};
-`;
 
 function Section({
   title,
@@ -45,16 +40,12 @@ function Section({
   ...props
 }: SectionProps & HTMLAttributes<any>) {
   return (
-    <SectionWrapper forwardedAs={as} borderBottom {...props}>
+    <SectionWrapper as={as} borderBottom {...props}>
       {title && (
         <TitleWrapper>
-          {createElement(
-            titleAs,
-            {
-              style: { marginBottom: 0, fontSize: '1rem', textAlign: 'center' },
-            },
-            title
-          )}
+          <StyledTitle as={titleAs}>
+            {title}
+          </StyledTitle>
         </TitleWrapper>
       )}
       {children}
