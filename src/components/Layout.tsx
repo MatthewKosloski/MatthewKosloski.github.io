@@ -15,7 +15,15 @@ import '@reach/menu-button/styles.css';
 import theme from '../theme';
 import withScreenReaderText from './hoc/withScreenReaderText';
 import { HamburgerIcon, CloseIcon } from './icons';
-import { DesktopMenu, GlobalStyle, Grid, GridCol, Head, SocialLinks, Section } from '.';
+import {
+  DesktopMenu,
+  GlobalStyle,
+  Grid,
+  GridCol,
+  Head,
+  SocialLinks,
+  Section,
+} from '.';
 
 interface LayoutProps {
   children: React.ReactNode;

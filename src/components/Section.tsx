@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-const SectionWrapper = styled.section<{borderBottom: boolean;}>`
+const SectionWrapper = styled.section<{ borderBottom: boolean }>`
   border-bottom: ${({ borderBottom, theme }) =>
     borderBottom
       ? `${(p) => p.theme.utils.pxToEm(1)} solid ${theme.color.gray50}`
@@ -43,9 +43,7 @@ function Section({
     <SectionWrapper as={as} borderBottom {...props}>
       {title && (
         <TitleWrapper>
-          <StyledTitle as={titleAs}>
-            {title}
-          </StyledTitle>
+          <StyledTitle as={titleAs}>{title}</StyledTitle>
         </TitleWrapper>
       )}
       {children}

@@ -29,5 +29,5 @@ export {
   FlexCol,
   Project,
   ExperienceTimeline,
-  SocialLinks
+  SocialLinks,
 };

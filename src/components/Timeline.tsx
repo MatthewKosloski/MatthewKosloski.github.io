@@ -105,9 +105,7 @@ interface TimelineProps {
 
 function Timeline({ dataSource: { data }, limit = 0 }: TimelineProps) {
   const isValidLimit = limit > 0 && limit < data.length;
-  const limitedDataSource = isValidLimit
-    ? data.slice(0, limit)
-    : data;
+  const limitedDataSource = isValidLimit ? data.slice(0, limit) : data;
   return (
     <Wrapper>
       <ul>
