@@ -33,7 +33,7 @@ const HeaderWrapper = styled.div`
   }`}
 `;
 
-const StyledNav = styled.nav`
+const Nav = styled.nav`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -57,13 +57,13 @@ interface HeaderProps {
 function Header({ pageTitle, pageSubtitle }: HeaderProps) {
   return (
     <HeaderWrapper>
-      <StyledNav>
+      <Nav>
         <Logo to="/">
           <h1 className="h4">Matthew Kosloski</h1>
         </Logo>
         <MobileMenu />
         <DesktopMenu />
-      </StyledNav>
+      </Nav>
       {pageTitle || pageSubtitle ? (
         <Grid>
           <GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
