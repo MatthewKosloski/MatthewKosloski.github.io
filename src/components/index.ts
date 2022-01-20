@@ -14,6 +14,7 @@ import { default as Project } from './Project';
 import { default as ExperienceTimeline } from './ExperienceTimeline';
 import { default as SocialLinks } from './SocialLinks';
 import { default as Wrapper } from './Wrapper';
+import { default as Footer } from './Footer';
 
 export {
   Grid,
@@ -31,5 +32,6 @@ export {
   Project,
   ExperienceTimeline,
   SocialLinks,
-  Wrapper
+  Wrapper,
+  Footer,
 };
