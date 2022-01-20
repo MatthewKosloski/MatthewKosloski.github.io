@@ -57,46 +57,49 @@ const MobileMenuWrapper = styled.div`
 
 function MenuIcon({ isExpanded }: { isExpanded: boolean }) {
   const ContractIcon = withScreenReaderText(CloseIcon, 'Contract Mobile Menu');
-  const ExpandIcon = withScreenReaderText(HamburgerIcon, 'Contract Mobile Menu');
+  const ExpandIcon = withScreenReaderText(
+    HamburgerIcon,
+    'Contract Mobile Menu'
+  );
   return isExpanded ? <ContractIcon /> : <ExpandIcon />;
-};
+}
 
 function MobileMenuInner() {
-    const { isExpanded } = useMenuButtonContext();
+  const { isExpanded } = useMenuButtonContext();
 
-    useEffect(() => {
-        if (isExpanded) {
-        document.body.classList.add('has-expanded-mobile-menu');
-        } else {
-        document.body.classList.remove('has-expanded-mobile-menu');
-        }
-    }, [isExpanded]);
+  useEffect(() => {
+    if (isExpanded) {
+      document.body.classList.add('has-expanded-mobile-menu');
+    } else {
+      document.body.classList.remove('has-expanded-mobile-menu');
+    }
+  }, [isExpanded]);
 
-    return (
-        <>
-        <StyledMenuButton>
-            <MenuIcon isExpanded={isExpanded} />
-        </StyledMenuButton>
-        <StyledMenuPopover>
-            <StyledMenuItems>
-            <StyledMenuLink href="#">Overview</StyledMenuLink>
-            <StyledMenuLink href="#">Experience</StyledMenuLink>
-            <StyledMenuLink href="#">Projects</StyledMenuLink>
-            <StyledMenuLink href="#">Photos</StyledMenuLink>
-            <StyledMenuLink href="#">Blog</StyledMenuLink>
-            </StyledMenuItems>
-        </StyledMenuPopover>
-        </>
-    );
+  return (
+    <>
+      <StyledMenuButton>
+        <MenuIcon isExpanded={isExpanded} />
+      </StyledMenuButton>
+      <StyledMenuPopover>
+        <StyledMenuItems>
+          <StyledMenuLink href="#">Overview</StyledMenuLink>
+          <StyledMenuLink href="#">Experience</StyledMenuLink>
+          <StyledMenuLink href="#">Projects</StyledMenuLink>
+          <StyledMenuLink href="#">Photos</StyledMenuLink>
+          <StyledMenuLink href="#">Blog</StyledMenuLink>
+        </StyledMenuItems>
+      </StyledMenuPopover>
+    </>
+  );
 }
 
 function MobileMenu() {
   return (
-      <MobileMenuWrapper>
-        <Menu>
-          <MobileMenuInner />
-        </Menu>
-      </MobileMenuWrapper>
+    <MobileMenuWrapper>
+      <Menu>
+        <MobileMenuInner />
+      </Menu>
+    </MobileMenuWrapper>
   );
 }
 
