@@ -17,7 +17,6 @@ import { default as SocialLinks } from './SocialLinks';
 import { default as Wrapper } from './Wrapper';
 import { default as Footer } from './Footer';
 import { default as MobileMenu } from './MobileMenu';
-import { default as NavLinks } from './NavLinks';
 
 export {
 	Grid,
@@ -39,5 +38,4 @@ export {
 	Wrapper,
 	Footer,
 	MobileMenu,
-	NavLinks,
 };
