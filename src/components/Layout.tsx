@@ -17,13 +17,12 @@ import withScreenReaderText from './hoc/withScreenReaderText';
 import { HamburgerIcon, CloseIcon } from './icons';
 import {
   DesktopMenu,
+  Footer,
   GlobalStyle,
   Grid,
   GridCol,
   Head,
-  SocialLinks,
-  Section,
-  Wrapper
+  Wrapper,
 } from '.';
 
 interface LayoutProps {
@@ -164,21 +163,6 @@ function MobileMenuInner() {
   );
 }
 
-function Footer({
-  children,
-  title,
-  ...props
-}: {
-  children: React.ReactNode;
-  title?: string;
-} & JSX.IntrinsicElements['footer']) {
-  return (
-    <Section as="footer" title={title} {...props}>
-      {children}
-    </Section>
-  );
-}
-
 function Layout({ children, location, pageTitle, pageSubtitle }: LayoutProps) {
   return (
     <ThemeProvider theme={theme}>
@@ -210,24 +194,8 @@ function Layout({ children, location, pageTitle, pageSubtitle }: LayoutProps) {
             ) : null}
           </HeaderWrapper>
           <main>{children}</main>
-          <Footer>
-            <Grid>
-              <GridCol xs={12} sm={8} smOffset={3}>
-                <SocialLinks />
-              </GridCol>
-            </Grid>
-          </Footer>
         </Wrapper>
-        <Wrapper isNewspaper={false}>
-          <div className="u-text-center:xs u-my--two:xs u-mx--half:xs">
-            <p>
-              <small>
-                This website is <a href="#">open source</a> on GitHub. Feel free
-                to fork it!
-              </small>
-            </p>
-          </div>
-        </Wrapper>
+        <Footer />
       </>
     </ThemeProvider>
   );
