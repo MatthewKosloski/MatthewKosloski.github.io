@@ -195,7 +195,7 @@ function Layout({ children, location, pageTitle, pageSubtitle }: LayoutProps) {
         <Wrapper isNewspaper>
           <HeaderWrapper>
             <StyledNav>
-              <Logo href="">
+              <Logo href="/">
                 <h1 className="h4">Matthew Kosloski</h1>
               </Logo>
               <div className="u-display-none:sm">
