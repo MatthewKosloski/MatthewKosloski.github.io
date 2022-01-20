@@ -6,26 +6,26 @@ import theme from '../theme';
 import { Footer, GlobalStyle, Head, Header, Wrapper } from '.';
 
 interface LayoutProps {
-  children: React.ReactNode;
-  location: WindowLocation;
-  pageTitle?: string;
-  pageSubtitle?: string;
+	children: React.ReactNode;
+	location: WindowLocation;
+	pageTitle?: string;
+	pageSubtitle?: string;
 }
 
 function Layout({ children, location, pageTitle, pageSubtitle }: LayoutProps) {
-  return (
-    <ThemeProvider theme={theme}>
-      <>
-        <Head location={location} />
-        <GlobalStyle />
-        <Wrapper>
-          <Header pageTitle={pageTitle} pageSubtitle={pageSubtitle} />
-          <main>{children}</main>
-        </Wrapper>
-        <Footer />
-      </>
-    </ThemeProvider>
-  );
+	return (
+		<ThemeProvider theme={theme}>
+			<>
+				<Head location={location} />
+				<GlobalStyle />
+				<Wrapper>
+					<Header pageTitle={pageTitle} pageSubtitle={pageSubtitle} />
+					<main>{children}</main>
+				</Wrapper>
+				<Footer />
+			</>
+		</ThemeProvider>
+	);
 }
 
 export default Layout;

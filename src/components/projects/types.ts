@@ -1,3 +1,3 @@
 export interface BaseProjectProps {
-  featureOnLeft?: boolean;
+	featureOnLeft?: boolean;
 }

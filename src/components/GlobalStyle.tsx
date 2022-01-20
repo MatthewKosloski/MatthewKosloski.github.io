@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font: ${({ theme: { typography } }) =>
-      `${typography.rootFontSizeSmPercent} / ${typography.lineHeight} ${typography.body}`};
+			`${typography.rootFontSizeSmPercent} / ${typography.lineHeight} ${typography.body}`};
     
     ${({ theme }) => `${theme.media.md} {
       font-size: ${theme.typography.rootFontSizeMdPercent};
@@ -113,7 +113,7 @@ const GlobalStyle = createGlobalStyle`
   blockquote {
     font-style: italic;
     border-left: ${(p) =>
-      `${(p) => p.theme.utils.pxToEm(2)} solid ${p.theme.color.gray200}`};
+			`${(p) => p.theme.utils.pxToEm(2)} solid ${p.theme.color.gray200}`};
     padding-left: ${(p) => p.theme.vr.half.rem};
   }
   
@@ -149,7 +149,7 @@ const GlobalStyle = createGlobalStyle`
   hr {
     border: 0;
     border-top: ${(p) => p.theme.utils.pxToRem(2)} solid ${(p) =>
-  p.theme.color.gray200};
+	p.theme.color.gray200};
     margin: ${(p) => p.theme.vr.three.rem} auto;
     width: 33%;
   }

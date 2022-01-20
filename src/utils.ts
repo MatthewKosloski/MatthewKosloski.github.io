@@ -1,18 +1,18 @@
 export enum RelativeUnit {
-  EM,
-  REM,
+	EM,
+	REM,
 }
 
 export enum Steps {
-  ZERO = 0,
-  QUARTER = 0.25,
-  HALF = 0.5,
-  THREEFOURTHS = 0.75,
-  ONE = 1,
-  TWO = 2,
-  THREE = 3,
-  FOUR = 4,
-  FIVE = 5,
+	ZERO = 0,
+	QUARTER = 0.25,
+	HALF = 0.5,
+	THREEFOURTHS = 0.75,
+	ONE = 1,
+	TWO = 2,
+	THREE = 3,
+	FOUR = 4,
+	FIVE = 5,
 }
 
 /**
@@ -26,8 +26,8 @@ export enum Steps {
  * @returns A vertical rhythm value in relative units.
  */
 function verticalRhythm(step: Steps, ratio: number, unit: RelativeUnit) {
-  const vrUnitless = ratio * step;
-  return unit === RelativeUnit.EM ? `${vrUnitless}em` : `${vrUnitless}rem`;
+	const vrUnitless = ratio * step;
+	return unit === RelativeUnit.EM ? `${vrUnitless}em` : `${vrUnitless}rem`;
 }
 
 /**
@@ -41,7 +41,7 @@ function verticalRhythm(step: Steps, ratio: number, unit: RelativeUnit) {
  * @returns A value at the given step on the modular scale, in rem units.
  */
 function modularScaleRem(step: Steps, ratio: number) {
-  return `${Math.pow(ratio, step)}rem`;
+	return `${Math.pow(ratio, step)}rem`;
 }
 
 /**
@@ -53,10 +53,10 @@ function modularScaleRem(step: Steps, ratio: number) {
  * @returns The given pixel value in relative units.
  */
 function pxToRelativeUnit(px: number, ratio: number, unit: RelativeUnit) {
-  const pxToRelUnitless = px / (ratio * 0.16);
-  return unit === RelativeUnit.EM
-    ? `${pxToRelUnitless}em`
-    : `${pxToRelUnitless}rem`;
+	const pxToRelUnitless = px / (ratio * 0.16);
+	return unit === RelativeUnit.EM
+		? `${pxToRelUnitless}em`
+		: `${pxToRelUnitless}rem`;
 }
 
 export { verticalRhythm, modularScaleRem, pxToRelativeUnit };

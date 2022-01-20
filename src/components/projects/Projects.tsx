@@ -4,23 +4,23 @@ import { TorreyProject, PolysentProject } from '.';
 import { BaseProjectProps } from './types';
 
 interface ProjectsProps {
-  limit?: number;
+	limit?: number;
 }
 
 function Projects({ limit = 0 }: ProjectsProps) {
-  const projects: React.FunctionComponent<BaseProjectProps>[] = [
-    TorreyProject,
-    PolysentProject,
-  ];
-  const isValidLimit = limit > 0 && limit < projects.length;
-  const limitedProjects = isValidLimit ? projects.slice(0, limit) : projects;
-  return (
-    <>
-      {limitedProjects.map((Project, i) => (
-        <Project key={uuidv4()} featureOnLeft={i % 2 !== 0} />
-      ))}
-    </>
-  );
+	const projects: React.FunctionComponent<BaseProjectProps>[] = [
+		TorreyProject,
+		PolysentProject,
+	];
+	const isValidLimit = limit > 0 && limit < projects.length;
+	const limitedProjects = isValidLimit ? projects.slice(0, limit) : projects;
+	return (
+		<>
+			{limitedProjects.map((Project, i) => (
+				<Project key={uuidv4()} featureOnLeft={i % 2 !== 0} />
+			))}
+		</>
+	);
 }
 
 export default Projects;

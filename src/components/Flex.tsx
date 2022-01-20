@@ -1,86 +1,86 @@
 import styled, { css } from 'styled-components';
 
 const flexRowCss = css`
-  flex-direction: row;
+	flex-direction: row;
 `;
 
 const flexColCss = css`
-  flex-direction: column;
+	flex-direction: column;
 `;
 
 interface FlexProps {
-  flexRowXs?: boolean;
-  flexRowSm?: boolean;
-  flexRowMd?: boolean;
-  flexRowLg?: boolean;
-  flexRowXl?: boolean;
-  flexColXs?: boolean;
-  flexColSm?: boolean;
-  flexColMd?: boolean;
-  flexColLg?: boolean;
-  flexColXl?: boolean;
+	flexRowXs?: boolean;
+	flexRowSm?: boolean;
+	flexRowMd?: boolean;
+	flexRowLg?: boolean;
+	flexRowXl?: boolean;
+	flexColXs?: boolean;
+	flexColSm?: boolean;
+	flexColMd?: boolean;
+	flexColLg?: boolean;
+	flexColXl?: boolean;
 }
 
 const Flex = styled.div<FlexProps>`
-  display: flex;
+	display: flex;
 
-  ${({ flexColXs, theme }) =>
-    flexColXs &&
-    `${theme.media.xs} {
+	${({ flexColXs, theme }) =>
+		flexColXs &&
+		`${theme.media.xs} {
     ${flexColCss}
   }`}
 
-  ${({ flexColSm, theme }) =>
-    flexColSm &&
-    `${theme.media.sm} {
+	${({ flexColSm, theme }) =>
+		flexColSm &&
+		`${theme.media.sm} {
     ${flexColCss}
   }`}
 
   ${({ flexColMd, theme }) =>
-    flexColMd &&
-    `${theme.media.md} {
+		flexColMd &&
+		`${theme.media.md} {
     ${flexColCss}
   }`}
 
   ${({ flexColLg, theme }) =>
-    flexColLg &&
-    `${theme.media.lg} {
+		flexColLg &&
+		`${theme.media.lg} {
     ${flexColCss}
   }`}
 
   ${({ flexColXl, theme }) =>
-    flexColXl &&
-    `${theme.media.xl} {
+		flexColXl &&
+		`${theme.media.xl} {
     ${flexColCss}
   }`}
   
   ${({ flexRowXs, theme }) =>
-    flexRowXs &&
-    `${theme.media.xs} {
+		flexRowXs &&
+		`${theme.media.xs} {
     ${flexRowCss}
   }`}
 
   ${({ flexRowSm, theme }) =>
-    flexRowSm &&
-    `${theme.media.sm} {
+		flexRowSm &&
+		`${theme.media.sm} {
     ${flexRowCss}
   }`}
 
   ${({ flexRowMd, theme }) =>
-    flexRowMd &&
-    `${theme.media.md} {
+		flexRowMd &&
+		`${theme.media.md} {
     ${flexRowCss}
   }`}
 
   ${({ flexRowLg, theme }) =>
-    flexRowLg &&
-    `${theme.media.lg} {
+		flexRowLg &&
+		`${theme.media.lg} {
     ${flexRowCss}
   }`}
 
   ${({ flexRowXl, theme }) =>
-    flexRowXl &&
-    `${theme.media.xl} {
+		flexRowXl &&
+		`${theme.media.xl} {
     ${flexRowCss}
   }`}
 `;

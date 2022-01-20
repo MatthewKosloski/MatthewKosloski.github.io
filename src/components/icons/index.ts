@@ -8,12 +8,12 @@ import { default as TwitterIcon } from './TwitterIcon';
 import { default as UnsplashIcon } from './UnsplashIcon';
 
 export {
-  CloseIcon,
-  DribbbleIcon,
-  GitHubIcon,
-  HamburgerIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  TwitterIcon,
-  UnsplashIcon,
+	CloseIcon,
+	DribbbleIcon,
+	GitHubIcon,
+	HamburgerIcon,
+	InstagramIcon,
+	LinkedInIcon,
+	TwitterIcon,
+	UnsplashIcon,
 };
