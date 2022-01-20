@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { WindowLocation } from '@reach/router';
 import { Link } from 'gatsby';
-import '../scss/global.scss';
-import '@reach/menu-button/styles.css';
 import {
   Menu,
   MenuButton,
@@ -12,17 +10,12 @@ import {
   MenuLink,
   useMenuButtonContext,
 } from '@reach/menu-button';
+import '../scss/global.scss';
+import '@reach/menu-button/styles.css';
 import theme from '../theme';
-import GlobalStyle from './GlobalStyle';
-import HamburgerIcon from './icons/HamburgerIcon';
 import withScreenReaderText from './hoc/withScreenReaderText';
-import DesktopMenu from './DesktopMenu';
-import SocialLinks from './SocialLinks';
-import Grid from './Grid';
-import GridCol from './GridCol';
-import Head from './Head';
-import CloseIcon from './icons/CloseIcon';
-import Section from './Section';
+import { HamburgerIcon, CloseIcon } from './icons';
+import { DesktopMenu, GlobalStyle, Grid, GridCol, Head, SocialLinks, Section } from '.';
 
 interface LayoutProps {
   children: React.ReactNode;
