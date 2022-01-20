@@ -40,7 +40,7 @@ function Section({
   ...props
 }: SectionProps & HTMLAttributes<any>) {
   return (
-    <SectionWrapper as={as} borderBottom {...props}>
+    <SectionWrapper as={as} borderBottom={borderBottom} {...props}>
       {title && (
         <TitleWrapper>
           <StyledTitle as={titleAs}>{title}</StyledTitle>
