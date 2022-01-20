@@ -1,17 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const borderThickness = 4;
+
 const Wrapper = styled.ul`
   list-style: none;
-  display: flex;
+  display: none;
   margin-bottom: 0;
+  ${({ theme }) => `${theme.media.sm} {
+    display: flex;
+  }`}
 `;
 
 const MenuItem = styled.li`
   position: relative;
 `;
-
-const borderThickness = 4;
 
 const MenuItemLink = styled.a`
   display: inline-block;

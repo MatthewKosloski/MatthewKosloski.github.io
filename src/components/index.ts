@@ -15,6 +15,7 @@ import { default as ExperienceTimeline } from './ExperienceTimeline';
 import { default as SocialLinks } from './SocialLinks';
 import { default as Wrapper } from './Wrapper';
 import { default as Footer } from './Footer';
+import { default as MobileMenu } from './MobileMenu';
 
 export {
   Grid,
@@ -34,4 +35,5 @@ export {
   SocialLinks,
   Wrapper,
   Footer,
+  MobileMenu
 };
