@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { TorreyProject, PolysentProject } from '.';
 import { BaseProjectProps } from './types';
 
@@ -16,7 +17,7 @@ function Projects({ limit = 0 }: ProjectsProps) {
   return (
     <>
       {limitedProjects.map((Project, i) => (
-        <Project featureOnLeft={i % 2 !== 0} />
+        <Project key={uuidv4()} featureOnLeft={i % 2 !== 0} />
       ))}
     </>
   );
