@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { breakpoint, Breakpoints } from '../utils';
 
 interface GridColProps {
   xs?: number;
@@ -29,110 +28,86 @@ interface GridColProps {
   orderInitialXl?: boolean;
 }
 
-const alignCenterCss = css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const orderLastCss = css`
-  order: 999;
-`;
-
-const orderInitialCss = css`
-  order: initial;
-`;
+const gridColCss = (
+  mediaQuery: string,
+  width?: number,
+  offset?: number,
+  alignCenter?: boolean,
+  orderInitial?: boolean,
+  orderLast?: boolean
+) => {
+  if (width || offset || alignCenter || orderInitial || orderLast) {
+    return `
+        ${mediaQuery} {
+          ${width ? `grid-column-end: span ${width};` : ''}
+          ${offset ? `grid-column-start: ${offset};` : ''}
+          ${
+            alignCenter
+              ? css`
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                `
+              : ''
+          } 
+          ${orderInitial ? 'order: initial;' : ''} 
+          ${orderLast ? 'order: 999;' : ''}
+        }
+      `;
+  }
+  return '';
+};
 
 const GridCol = styled.div<GridColProps>`
-  ${({ xs, xsOffset }) =>
-    xs || xsOffset
-      ? breakpoint(Breakpoints.XS)(css<GridColProps>`
-          ${({ xsOffset }) =>
-            xsOffset ? `grid-column-start: ${xsOffset}` : ''};
-          ${({ xs }) => (xs ? `grid-column-end: span ${xs}` : '')};
-        `)
-      : ''}
+  ${({ theme, xs, xsOffset, alignCenterXs, orderInitialXs, orderLastXs }) =>
+    gridColCss(
+      theme.media.xs,
+      xs,
+      xsOffset,
+      alignCenterXs,
+      orderInitialXs,
+      orderLastXs
+    )}
 
-  ${({ sm, smOffset }) =>
-    sm || smOffset
-      ? breakpoint(Breakpoints.SM)(css<GridColProps>`
-          ${({ smOffset }) =>
-            smOffset ? `grid-column-start: ${smOffset}` : ''};
-          ${({ sm }) => (sm ? `grid-column-end: span ${sm}` : '')};
-        `)
-      : ''}
+  ${({ theme, sm, smOffset, alignCenterSm, orderInitialSm, orderLastSm }) =>
+    gridColCss(
+      theme.media.sm,
+      sm,
+      smOffset,
+      alignCenterSm,
+      orderInitialSm,
+      orderLastSm
+    )}
 
-  ${({ md, mdOffset }) =>
-    md || mdOffset
-      ? breakpoint(Breakpoints.MD)(css<GridColProps>`
-          ${({ mdOffset }) =>
-            mdOffset ? `grid-column-start: ${mdOffset}` : ''};
-          ${({ md }) => (md ? `grid-column-end: span ${md}` : '')};
-        `)
-      : ''}
+    ${({ theme, md, mdOffset, alignCenterMd, orderInitialMd, orderLastMd }) =>
+    gridColCss(
+      theme.media.md,
+      md,
+      mdOffset,
+      alignCenterMd,
+      orderInitialMd,
+      orderLastMd
+    )}
 
-  ${({ lg, lgOffset }) =>
-    lg || lgOffset
-      ? breakpoint(Breakpoints.LG)(css<GridColProps>`
-          ${({ lgOffset }) =>
-            lgOffset ? `grid-column-start: ${lgOffset}` : ''};
-          ${({ lg }) => (lg ? `grid-column-end: span ${lg}` : '')};
-        `)
-      : ''}
+    ${({ theme, lg, lgOffset, alignCenterLg, orderInitialLg, orderLastLg }) =>
+    gridColCss(
+      theme.media.lg,
+      lg,
+      lgOffset,
+      alignCenterLg,
+      orderInitialLg,
+      orderLastLg
+    )}
 
-  ${({ xl, xlOffset }) =>
-    xl || xlOffset
-      ? breakpoint(Breakpoints.XL)(css<GridColProps>`
-          ${({ xlOffset }) =>
-            xlOffset ? `grid-column-start: ${xlOffset}` : ''};
-          ${({ xl }) => (xl ? `grid-column-end: span ${xl}` : '')};
-        `)
-      : ''}
-
-  ${({ alignCenterXs }) =>
-    alignCenterXs && breakpoint(Breakpoints.XS)(alignCenterCss)};
-
-  ${({ alignCenterSm }) =>
-    alignCenterSm && breakpoint(Breakpoints.SM)(alignCenterCss)};
-
-  ${({ alignCenterMd }) =>
-    alignCenterMd && breakpoint(Breakpoints.MD)(alignCenterCss)};
-
-  ${({ alignCenterLg }) =>
-    alignCenterLg && breakpoint(Breakpoints.LG)(alignCenterCss)};
-
-  ${({ alignCenterXl }) =>
-    alignCenterXl && breakpoint(Breakpoints.XL)(alignCenterCss)};
-
-  ${({ orderLastXs }) =>
-    orderLastXs && breakpoint(Breakpoints.XS)(orderLastCss)};
-
-  ${({ orderLastSm }) =>
-    orderLastSm && breakpoint(Breakpoints.SM)(orderLastCss)};
-
-  ${({ orderLastMd }) =>
-    orderLastMd && breakpoint(Breakpoints.MD)(orderLastCss)};
-
-  ${({ orderLastLg }) =>
-    orderLastLg && breakpoint(Breakpoints.LG)(orderLastCss)};
-
-  ${({ orderLastXl }) =>
-    orderLastXl && breakpoint(Breakpoints.XL)(orderLastCss)};
-
-  ${({ orderInitialXs }) =>
-    orderInitialXs && breakpoint(Breakpoints.XS)(orderInitialCss)};
-
-  ${({ orderInitialSm }) =>
-    orderInitialSm && breakpoint(Breakpoints.SM)(orderInitialCss)};
-
-  ${({ orderInitialMd }) =>
-    orderInitialMd && breakpoint(Breakpoints.MD)(orderInitialCss)};
-
-  ${({ orderInitialLg }) =>
-    orderInitialLg && breakpoint(Breakpoints.LG)(orderInitialCss)};
-
-  ${({ orderInitialXl }) =>
-    orderInitialXl && breakpoint(Breakpoints.XL)(orderInitialCss)};
+    ${({ theme, xl, xlOffset, alignCenterXl, orderInitialXl, orderLastXl }) =>
+    gridColCss(
+      theme.media.xl,
+      xl,
+      xlOffset,
+      alignCenterXl,
+      orderInitialXl,
+      orderLastXl
+    )}
 `;
 
 export default GridCol;

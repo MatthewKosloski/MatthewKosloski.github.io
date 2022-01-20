@@ -1,17 +1,11 @@
-import {
-  DefaultTheme,
-  FlattenInterpolation,
-  ThemeProps,
-} from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 
 import {
   verticalRhythm,
   modularScaleRem,
   pxToRelativeUnit,
   RelativeUnit,
-  Steps,
-  Breakpoints,
-  breakpoint,
+  Steps
 } from './utils';
 
 const rootFontSizeMd = 112.5;
@@ -24,19 +18,17 @@ export const pxToEm = (px: number) =>
 export const pxToRem = (px: number) =>
   pxToRelativeUnit(px, rootFontSizeMd, RelativeUnit.REM);
 
-// Convenient wrappers around breakpoint that add a type to the input.
-export const xs = (css: FlattenInterpolation<ThemeProps<DefaultTheme>>) =>
-  breakpoint(Breakpoints.XS)(css);
-export const sm = (css: FlattenInterpolation<ThemeProps<DefaultTheme>>) =>
-  breakpoint(Breakpoints.SM)(css);
-export const md = (css: FlattenInterpolation<ThemeProps<DefaultTheme>>) =>
-  breakpoint(Breakpoints.MD)(css);
-export const lg = (css: FlattenInterpolation<ThemeProps<DefaultTheme>>) =>
-  breakpoint(Breakpoints.LG)(css);
-export const xl = (css: FlattenInterpolation<ThemeProps<DefaultTheme>>) =>
-  breakpoint(Breakpoints.XL)(css);
+const breakpoints = {
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+};
 
-export const color = {
+const mediaQuery = (bp: number) => `@media (min-width: ${bp}px)`;
+
+const color = {
   white: '#fff',
   grapePurple: '#301446',
   ghostlyPurple: '#7a5d92',
@@ -61,7 +53,7 @@ export const color = {
   kournikovaYellow: '#ffe17f',
 };
 
-export const typography = {
+const typography = {
   heading: "'Roboto Condensed', sans-serif",
   body: "'Source Sans Pro', sans-serif",
   lineHeight: lineHeight,
@@ -73,19 +65,19 @@ export const typography = {
   letterSpacingEm: pxToEm(0.5),
 };
 
-export const grid = {
+const grid = {
   numberColumns: 12,
 };
 
-export const bps = {
-  xs: 0,
-  sm: 576,
-  md: 768,
-  lg: 992,
-  xl: 1200,
+const media = {
+  xs: mediaQuery(breakpoints.xs),
+  sm: mediaQuery(breakpoints.sm),
+  md: mediaQuery(breakpoints.md),
+  lg: mediaQuery(breakpoints.lg),
+  xl: mediaQuery(breakpoints.xl),
 };
 
-export const vr: { [key: string]: { em: string; rem: string } } = {
+const vr: { [key: string]: { em: string; rem: string } } = {
   zero: {
     em: verticalRhythm(Steps.ZERO, lineHeight, RelativeUnit.EM),
     rem: verticalRhythm(Steps.ZERO, lineHeight, RelativeUnit.REM),
@@ -124,7 +116,7 @@ export const vr: { [key: string]: { em: string; rem: string } } = {
   },
 };
 
-export const ms = {
+const ms = {
   zero: modularScaleRem(Steps.ZERO, lineHeight),
   quarter: modularScaleRem(Steps.QUARTER, lineHeight),
   half: modularScaleRem(Steps.HALF, lineHeight),
@@ -140,9 +132,9 @@ const theme: DefaultTheme = {
   color,
   typography,
   grid,
-  breakpoint: bps,
   vr,
   ms,
+  media,
 };
 
 export default theme;

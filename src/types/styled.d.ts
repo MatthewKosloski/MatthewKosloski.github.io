@@ -19,9 +19,6 @@ declare module 'styled-components' {
     grid: {
       numberColumns: number;
     };
-    breakpoint: {
-      [key: string]: number;
-    };
     vr: {
       [key: string]: {
         em: string;
@@ -29,6 +26,9 @@ declare module 'styled-components' {
       };
     };
     ms: {
+      [key: string]: string;
+    };
+    media: {
       [key: string]: string;
     };
   }

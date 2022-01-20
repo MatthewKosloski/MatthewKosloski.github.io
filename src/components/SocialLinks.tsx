@@ -1,19 +1,18 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import LinkedInIcon from './icons/LinkedInIcon';
 import GitHubIcon from './icons/GitHubIcon';
 import InstagramIcon from './icons/InstagramIcon';
 import UnsplashIcon from './icons/UnsplashIcon';
 import DribbbleIcon from './icons/DribbbleIcon';
 import TwitterIcon from './icons/TwitterIcon';
-import { pxToEm, sm } from '../theme';
+import { pxToEm } from '../theme';
 import withScreenReaderText from './hoc/withScreenReaderText';
-import { breakpoint, Breakpoints } from '../utils';
 
 const ListWrapper = styled.ul`
-  ${sm(css`
+  ${({ theme }) => `${theme.media.sm} {
     flex-wrap: nowrap;
-  `)};
+  }`}
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -22,13 +21,13 @@ const ListWrapper = styled.ul`
 `;
 
 const SocialItem = styled.li`
-  ${sm(css`
+  ${({ theme }) => `${theme.media.sm} {
     &:not(:last-child) {
-      margin-right: ${(p) => p.theme.vr.one.em};
+      margin-right: ${theme.vr.one.em};
     }
     flex: 0 0 auto;
     padding: 0;
-  `)};
+  }`}
   flex-basis: 33%;
   max-width: 33%;
   padding: ${(p) => p.theme.vr.half.em};

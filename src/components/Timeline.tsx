@@ -19,9 +19,9 @@ const Item = styled.li`
   display: flex;
   align-items: center;
   flex-direction: column;
-  ${sm(css`
+  ${({ theme }) => `${theme.media.sm} {
     flex-direction: row;
-  `)}
+  }`}
   &:last-child > :last-child {
     padding-bottom: ${(p) => p.theme.vr.one.rem};
   }
@@ -34,19 +34,19 @@ const FromTo = styled.small`
   position: absolute;
   left: 0;
   top: -${(p) => p.theme.vr.one.rem};
-  ${sm(css`
+  ${({ theme }) => `${theme.media.sm} {
     width: 15%;
     padding-left: 0;
     position: static;
-  `)}
+  }`}
   span {
     margin: 0 ${(p) => p.theme.vr.quarter.rem};
     &:after {
       content: '';
       display: inline-block;
-      ${sm(css`
+      ${({ theme }) => `${theme.media.sm} {
         display: block;
-      `)}
+      }`}
     }
   }
 `;
@@ -56,10 +56,10 @@ const Summary = styled.div<{ isFirst: boolean }>`
   width: 100%;
   padding: 0 0 ${(p) => p.theme.vr.three.rem}
     calc(${pointSize}px + ${(p) => p.theme.vr.one.rem});
-  ${sm(css`
-    padding-left: calc(${pointSize}px + ${(p) => p.theme.vr.two.rem});
+  ${({ theme }) => `${theme.media.sm} {
+    padding-left: calc(${pointSize}px + ${theme.vr.two.rem});
     width: 85%;
-  `)}
+  }`}
   &:before {
     content: '';
     position: absolute;
@@ -71,9 +71,9 @@ const Summary = styled.div<{ isFirst: boolean }>`
     height: ${pointSize}px;
     left: 0;
     top: ${pointSize / 2}px;
-    ${sm(css`
-      left: ${(p) => p.theme.vr.one.rem};
-    `)}
+    ${({ theme }) => `${theme.media.sm} {
+      left: ${theme.vr.one.rem};
+    }`}
     z-index: 1;
   }
   &:after {
@@ -84,9 +84,9 @@ const Summary = styled.div<{ isFirst: boolean }>`
     height: 100%;
     left: calc(${pointSize / 2}px);
     top: ${pointSize / 2}px;
-    ${sm(css`
-      left: calc(${(p) => p.theme.vr.one.rem} + ${pointSize / 2}px);
-    `)}
+    ${({ theme }) => `${theme.media.sm} {
+      left: calc(${theme.vr.one.rem} + ${pointSize / 2}px);
+    }`}
   }
 `;
 

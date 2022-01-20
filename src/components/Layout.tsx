@@ -42,10 +42,12 @@ const MenuButtonIcon = function ({ isExpanded }: { isExpanded: boolean }) {
 
 const StyledHeader = styled.header`
   padding-top: ${(p) => p.theme.vr.two.rem};
-  ${sm(css`
-    padding-top: ${(p) => p.theme.vr.five.rem};
+
+  ${({ theme }) => `${theme.media.sm} {
+    padding-top: ${theme.vr.five.rem};
     max-width: 75%;
-  `)};
+  }`}
+
   h2 {
     color: ${(p) => p.theme.color.white};
     margin-bottom: ${(p) => p.theme.vr.quarter.rem};
@@ -62,10 +64,10 @@ const HeaderWrapper = styled.div`
   background-color: ${(p) => p.theme.color.haitiPurple};
   padding: ${(p) => p.theme.vr.one.em} ${(p) => p.theme.vr.one.em}
     ${(p) => p.theme.vr.two.em} ${(p) => p.theme.vr.one.em};
-  ${sm(css`
-    padding: 0 ${(p) => p.theme.vr.two.rem} ${(p) => p.theme.vr.four.rem}
-      ${(p) => p.theme.vr.two.rem};
-  `)};
+
+  ${({ theme }) => `${theme.media.sm} {
+    padding: 0 ${theme.vr.two.rem} ${theme.vr.four.rem} ${theme.vr.two.rem};
+  }`}
 `;
 
 const StyledMenuPopover = styled(MenuPopover)`

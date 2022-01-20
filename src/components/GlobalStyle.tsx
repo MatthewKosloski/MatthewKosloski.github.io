@@ -1,5 +1,5 @@
-import { createGlobalStyle, css } from 'styled-components';
-import { pxToEm, pxToRem, sm, md } from '../theme';
+import { createGlobalStyle } from 'styled-components';
+import { pxToEm, pxToRem } from '../theme';
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -21,10 +21,10 @@ const GlobalStyle = createGlobalStyle`
   html {
     font: ${({ theme: { typography } }) =>
       `${typography.rootFontSizeSmPercent} / ${typography.lineHeight} ${typography.body}`};
-    ${md(css`
-      font-size: ${({ theme: { typography } }) =>
-        typography.rootFontSizeMdPercent};
-    `)}
+    
+    ${({ theme }) => `${theme.media.md} {
+      font-size: ${theme.typography.rootFontSizeMdPercent};
+    }`}
   }
   
   body {
@@ -79,9 +79,10 @@ const GlobalStyle = createGlobalStyle`
   .h1 {
     font-size: ${(p) => p.theme.ms.two};
     font-weight: 900;
-    ${sm(css`
-      font-size: ${(p) => p.theme.ms.three};
-    `)}
+
+    ${({ theme }) => `${theme.media.sm} {
+      font-size: ${theme.ms.three};
+    }`}
   }
   
   h2,

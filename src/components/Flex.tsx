@@ -25,25 +25,65 @@ interface FlexProps {
 const Flex = styled.div<FlexProps>`
   display: flex;
 
-  ${({ flexColXs }) => flexColXs && breakpoint(Breakpoints.XS)(flexColCss)};
+  ${({ flexColXs, theme }) =>
+    flexColXs &&
+    `${theme.media.xs} {
+    ${flexColCss}
+  }`}
 
-  ${({ flexColSm }) => flexColSm && breakpoint(Breakpoints.SM)(flexColCss)};
+  ${({ flexColSm, theme }) =>
+    flexColSm &&
+    `${theme.media.sm} {
+    ${flexColCss}
+  }`}
 
-  ${({ flexColMd }) => flexColMd && breakpoint(Breakpoints.MD)(flexColCss)};
+  ${({ flexColMd, theme }) =>
+    flexColMd &&
+    `${theme.media.md} {
+    ${flexColCss}
+  }`}
 
-  ${({ flexColLg }) => flexColLg && breakpoint(Breakpoints.LG)(flexColCss)};
+  ${({ flexColLg, theme }) =>
+    flexColLg &&
+    `${theme.media.lg} {
+    ${flexColCss}
+  }`}
 
-  ${({ flexColXl }) => flexColXl && breakpoint(Breakpoints.XL)(flexColCss)};
+  ${({ flexColXl, theme }) =>
+    flexColXl &&
+    `${theme.media.xl} {
+    ${flexColCss}
+  }`}
+  
+  ${({ flexRowXs, theme }) =>
+    flexRowXs &&
+    `${theme.media.xs} {
+    ${flexRowCss}
+  }`}
 
-  ${({ flexRowXs }) => flexRowXs && breakpoint(Breakpoints.XS)(flexRowCss)};
+  ${({ flexRowSm, theme }) =>
+    flexRowSm &&
+    `${theme.media.sm} {
+    ${flexRowCss}
+  }`}
 
-  ${({ flexRowSm }) => flexRowSm && breakpoint(Breakpoints.SM)(flexRowCss)};
+  ${({ flexRowMd, theme }) =>
+    flexRowMd &&
+    `${theme.media.md} {
+    ${flexRowCss}
+  }`}
 
-  ${({ flexRowMd }) => flexRowMd && breakpoint(Breakpoints.MD)(flexRowCss)};
+  ${({ flexRowLg, theme }) =>
+    flexRowLg &&
+    `${theme.media.lg} {
+    ${flexRowCss}
+  }`}
 
-  ${({ flexRowLg }) => flexRowLg && breakpoint(Breakpoints.LG)(flexRowCss)};
-
-  ${({ flexRowXl }) => flexRowXl && breakpoint(Breakpoints.XL)(flexRowCss)};
+  ${({ flexRowXl, theme }) =>
+    flexRowXl &&
+    `${theme.media.xl} {
+    ${flexRowCss}
+  }`}
 `;
 
 export default Flex;

@@ -1,12 +1,4 @@
 import styled, { css } from 'styled-components';
-import { breakpoint, Breakpoints } from '../utils';
-
-const flexBasisCss = (width: string) =>
-  css`
-    flex-basis: ${width};
-  `;
-
-const flexBasisAutoCss = () => flexBasisCss('auto');
 
 interface FlexColProps {
   xs?: number;
@@ -23,40 +15,94 @@ interface FlexColProps {
 
 const FlexCol = styled.div<FlexColProps>`
   ${({ xs, theme }) =>
-    xs &&
-    breakpoint(Breakpoints.XS)(
-      flexBasisCss(`${(xs / theme.grid.numberColumns) * 100}%`)
-    )};
+    xs
+      ? css`
+          ${theme.media.xs} {
+            flex-basis: ${(xs / theme.grid.numberColumns) * 100}%;
+          }
+        `
+      : ''}
+
   ${({ sm, theme }) =>
-    sm &&
-    breakpoint(Breakpoints.SM)(
-      flexBasisCss(`${(sm / theme.grid.numberColumns) * 100}%`)
-    )};
+    sm
+      ? css`
+          ${theme.media.sm} {
+            flex-basis: ${(sm / theme.grid.numberColumns) * 100}%;
+          }
+        `
+      : ''}
+
   ${({ md, theme }) =>
-    md &&
-    breakpoint(Breakpoints.MD)(
-      flexBasisCss(`${(md / theme.grid.numberColumns) * 100}%`)
-    )};
+    md
+      ? css`
+          ${theme.media.md} {
+            flex-basis: ${(md / theme.grid.numberColumns) * 100}%;
+          }
+        `
+      : ''}
+
   ${({ lg, theme }) =>
-    lg &&
-    breakpoint(Breakpoints.LG)(
-      flexBasisCss(`${(lg / theme.grid.numberColumns) * 100}%`)
-    )};
+    lg
+      ? css`
+          ${theme.media.lg} {
+            flex-basis: ${(lg / theme.grid.numberColumns) * 100}%;
+          }
+        `
+      : ''}
+
   ${({ xl, theme }) =>
-    xl &&
-    breakpoint(Breakpoints.XL)(
-      flexBasisCss(`${(xl / theme.grid.numberColumns) * 100}%`)
-    )};
-  ${({ widthAutoXs }) =>
-    widthAutoXs && breakpoint(Breakpoints.XS)(flexBasisAutoCss())};
-  ${({ widthAutoSm }) =>
-    widthAutoSm && breakpoint(Breakpoints.SM)(flexBasisAutoCss())};
-  ${({ widthAutoMd }) =>
-    widthAutoMd && breakpoint(Breakpoints.MD)(flexBasisAutoCss())};
-  ${({ widthAutoLg }) =>
-    widthAutoLg && breakpoint(Breakpoints.LG)(flexBasisAutoCss())};
-  ${({ widthAutoXl }) =>
-    widthAutoXl && breakpoint(Breakpoints.XL)(flexBasisAutoCss())};
+    xl
+      ? css`
+          ${theme.media.xl} {
+            flex-basis: ${(xl / theme.grid.numberColumns) * 100}%;
+          }
+        `
+      : ''}
+
+  ${({ widthAutoXs, theme }) =>
+    widthAutoXs
+      ? css`
+          ${theme.media.xs} {
+            flex-basis: auto;
+          }
+        `
+      : ''}
+
+  ${({ widthAutoSm, theme }) =>
+    widthAutoSm
+      ? css`
+          ${theme.media.sm} {
+            flex-basis: auto;
+          }
+        `
+      : ''}
+
+  ${({ widthAutoMd, theme }) =>
+    widthAutoMd
+      ? css`
+          ${theme.media.md} {
+            flex-basis: auto;
+          }
+        `
+      : ''}
+
+  ${({ widthAutoLg, theme }) =>
+    widthAutoLg
+      ? css`
+          ${theme.media.lg} {
+            flex-basis: auto;
+          }
+        `
+      : ''}
+
+  ${({ widthAutoXl, theme }) =>
+    widthAutoXl
+      ? css`
+          ${theme.media.xl} {
+            flex-basis: auto;
+          }
+        `
+      : ''}
 `;
 
 export default FlexCol;

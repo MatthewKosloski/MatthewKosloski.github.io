@@ -1,6 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { lg } from '../theme';
+import styled from 'styled-components';
 import { Flex, FlexCol, Grid, GridCol, SubSectionHeader } from '.';
 
 interface ProjectProps {
@@ -29,9 +28,9 @@ const ContentGridCol = styled(GridCol)`
 `;
 
 const FeaturedComponentGridCol = styled(GridCol)`
-  ${lg(css`
-    margin-top: ${(p) => `-${p.theme.vr.two.rem}`};
-  `)}
+  ${({ theme }) => `${theme.media.lg} {
+    margin-top: -${theme.vr.two.rem};
+  }`}
 `;
 
 function Project({
