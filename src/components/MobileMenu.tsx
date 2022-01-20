@@ -49,7 +49,7 @@ const StyledMenuLink = styled(MenuLink)`
   }
 `;
 
-const MobileMenuWrapper = styled.div`
+const Wrapper = styled.div`
   ${({ theme }) => `${theme.media.sm} {
     display: none;
   }`}
@@ -95,11 +95,11 @@ function MobileMenuInner() {
 
 function MobileMenu() {
   return (
-    <MobileMenuWrapper>
+    <Wrapper>
       <Menu>
         <MobileMenuInner />
       </Menu>
-    </MobileMenuWrapper>
+    </Wrapper>
   );
 }
 
