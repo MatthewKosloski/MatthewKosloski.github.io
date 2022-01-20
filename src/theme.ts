@@ -133,6 +133,10 @@ const utils = {
   pxToRem,
 };
 
+const wrapper = {
+  width: '1200px'
+}
+
 const theme: DefaultTheme = {
   color,
   typography,
@@ -141,6 +145,7 @@ const theme: DefaultTheme = {
   ms,
   media,
   utils,
+  wrapper
 };
 
 export default theme;

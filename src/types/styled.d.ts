@@ -35,5 +35,8 @@ declare module 'styled-components' {
       pxToEm: (px: number) => string;
       pxToRem: (px: number) => string;
     };
+    wrapper: {
+      width: string;
+    }
   }
 }
