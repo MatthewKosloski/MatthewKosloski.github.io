@@ -1,6 +1,7 @@
 import { default as Grid } from './Grid';
 import { default as GridCol } from './GridCol';
 import { default as Head } from './Head';
+import { default as Header } from './Header';
 import { default as Layout } from './Layout';
 import { default as GlobalStyle } from './GlobalStyle';
 import { default as DesktopMenu } from './DesktopMenu';
@@ -21,6 +22,7 @@ export {
   Grid,
   GridCol,
   Head,
+  Header,
   Layout,
   GlobalStyle,
   DesktopMenu,
@@ -35,5 +37,5 @@ export {
   SocialLinks,
   Wrapper,
   Footer,
-  MobileMenu
+  MobileMenu,
 };
