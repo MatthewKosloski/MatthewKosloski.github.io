@@ -10,7 +10,6 @@ import {
   MenuLink,
   useMenuButtonContext,
 } from '@reach/menu-button';
-import '../scss/global.scss';
 import '@reach/menu-button/styles.css';
 import theme from '../theme';
 import withScreenReaderText from './hoc/withScreenReaderText';
@@ -163,6 +162,19 @@ function MobileMenuInner() {
   );
 }
 
+const MobileMenuWrapper = styled.div`
+  ${({ theme }) => `${theme.media.sm} {
+    display: none;
+  }`}
+`;
+
+const DesktopMenuWrapper = styled.div`
+  display: none;
+  ${({ theme }) => `${theme.media.sm} {
+    display: block;
+  }`}
+`;
+
 function Layout({ children, location, pageTitle, pageSubtitle }: LayoutProps) {
   return (
     <ThemeProvider theme={theme}>
@@ -175,12 +187,12 @@ function Layout({ children, location, pageTitle, pageSubtitle }: LayoutProps) {
               <Logo to="/">
                 <h1 className="h4">Matthew Kosloski</h1>
               </Logo>
-              <div className="u-display-none:sm">
+              <MobileMenuWrapper>
                 <MobileMenu />
-              </div>
-              <div className="u-display-none:xs u-display-block:sm">
+              </MobileMenuWrapper>
+              <DesktopMenuWrapper>
                 <DesktopMenu />
-              </div>
+              </DesktopMenuWrapper>
             </StyledNav>
             {pageTitle || pageSubtitle ? (
               <Grid>

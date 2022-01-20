@@ -58,7 +58,7 @@ function IndexPage({ location }: BasePageProps) {
         </GridCol>
       </Section>
       <Section title="Selected Blog Posts">
-        <p className="u-text-center:xs">
+        <p>
           <em>
             This should be visible if there is at least one blog post that has a
             feature flag.
