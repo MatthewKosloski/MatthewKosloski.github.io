@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { breakpoint, Breakpoints } from '../utils';
 
 const flexRowCss = css`
   flex-direction: row;
