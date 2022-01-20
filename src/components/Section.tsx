@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const SectionWrapper = styled.section<{ borderBottom: boolean }>`
   border-bottom: ${({ borderBottom, theme }) =>
     borderBottom
-      ? `${(p) => p.theme.utils.pxToEm(1)} solid ${theme.color.gray50}`
+      ? `${theme.utils.pxToEm(1)} solid ${theme.color.gray50}`
       : `none`};
   padding: ${(p) => p.theme.vr.two.rem} ${(p) => p.theme.vr.one.em};
 
