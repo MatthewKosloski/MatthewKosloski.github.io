@@ -23,6 +23,7 @@ import {
   Head,
   SocialLinks,
   Section,
+  Wrapper
 } from '.';
 
 interface LayoutProps {
@@ -163,16 +164,6 @@ function MobileMenuInner() {
   );
 }
 
-const Wrapper = styled.div<{ isNewspaper: boolean }>`
-  width: 1200px;
-  max-width: 100%;
-  margin: 0 auto;
-  box-shadow: ${(p) =>
-    p.isNewspaper ? '0px 0px 4px 0px rgb(0 0 0 / 10%)' : 'none'};
-  background-color: ${(p) =>
-    p.isNewspaper ? p.theme.color.white : 'transparent'};
-`;
-
 function Footer({
   children,
   title,
@@ -194,7 +185,7 @@ function Layout({ children, location, pageTitle, pageSubtitle }: LayoutProps) {
       <>
         <Head location={location} />
         <GlobalStyle />
-        <Wrapper isNewspaper>
+        <Wrapper>
           <HeaderWrapper>
             <StyledNav>
               <Logo to="/">
