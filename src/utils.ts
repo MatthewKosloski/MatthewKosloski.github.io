@@ -1,16 +1,6 @@
-import { css } from 'styled-components';
-
 export enum RelativeUnit {
   EM,
   REM,
-}
-
-export enum Breakpoints {
-  XS = 0,
-  SM = 576,
-  MD = 768,
-  LG = 992,
-  XL = 1200,
 }
 
 export enum Steps {
@@ -69,18 +59,4 @@ function pxToRelativeUnit(px: number, ratio: number, unit: RelativeUnit) {
     : `${pxToRelUnitless}rem`;
 }
 
-/**
- * @example
- *   breakpoint(Breakpoint.SM)`
- *     color: red;
- *   `;
- * @param bp A breakpoint.
- */
-const breakpoint = (bp: Breakpoints) => (content: any) =>
-  css`
-    @media (min-width: ${bp}px) {
-      ${content}
-    }
-  `;
-
-export { verticalRhythm, modularScaleRem, pxToRelativeUnit, breakpoint };
+export { verticalRhythm, modularScaleRem, pxToRelativeUnit };
