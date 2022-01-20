@@ -57,10 +57,7 @@ const Wrapper = styled.div`
 
 function MenuIcon({ isExpanded }: { isExpanded: boolean }) {
   const ContractIcon = withScreenReaderText(CloseIcon, 'Contract Mobile Menu');
-  const ExpandIcon = withScreenReaderText(
-    HamburgerIcon,
-    'Contract Mobile Menu'
-  );
+  const ExpandIcon = withScreenReaderText(HamburgerIcon, 'Expand Mobile Menu');
   return isExpanded ? <ContractIcon /> : <ExpandIcon />;
 }
 
