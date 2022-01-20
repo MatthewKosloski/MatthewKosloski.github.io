@@ -134,8 +134,8 @@ const utils = {
 };
 
 const wrapper = {
-  width: '1200px'
-}
+  width: '1200px',
+};
 
 const theme: DefaultTheme = {
   color,
@@ -145,7 +145,7 @@ const theme: DefaultTheme = {
   ms,
   media,
   utils,
-  wrapper
+  wrapper,
 };
 
 export default theme;

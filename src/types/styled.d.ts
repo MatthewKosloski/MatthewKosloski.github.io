@@ -37,6 +37,6 @@ declare module 'styled-components' {
     };
     wrapper: {
       width: string;
-    }
+    };
   }
 }

@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface WrapperProps {
-    isNewspaper?: boolean;
+  isNewspaper?: boolean;
 }
 
 const Wrapper = styled.div<WrapperProps>`
-  width: ${p => p.theme.wrapper.width};
+  width: ${(p) => p.theme.wrapper.width};
   max-width: 100%;
   margin: 0 auto;
   box-shadow: ${(p) =>
@@ -15,7 +15,7 @@ const Wrapper = styled.div<WrapperProps>`
 `;
 
 Wrapper.defaultProps = {
-    isNewspaper: true
-}
+  isNewspaper: true,
+};
 
 export default Wrapper;
