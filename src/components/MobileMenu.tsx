@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
+import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby';
 import {
 	Menu,
 	MenuButton,
@@ -73,6 +75,23 @@ function MobileMenuInner() {
 		}
 	}, [isExpanded]);
 
+	const {
+		site: {
+			siteMetadata: { menuLinks },
+		},
+	} = useStaticQuery(graphql`
+		query {
+			site {
+				siteMetadata {
+					menuLinks {
+						text
+						path
+					}
+				}
+			}
+		}
+	`);
+
 	return (
 		<>
 			<StyledMenuButton>
@@ -80,11 +99,11 @@ function MobileMenuInner() {
 			</StyledMenuButton>
 			<StyledMenuPopover>
 				<StyledMenuItems>
-					<StyledMenuLink href="#">Overview</StyledMenuLink>
-					<StyledMenuLink href="#">Experience</StyledMenuLink>
-					<StyledMenuLink href="#">Projects</StyledMenuLink>
-					<StyledMenuLink href="#">Photos</StyledMenuLink>
-					<StyledMenuLink href="#">Blog</StyledMenuLink>
+					{menuLinks.map(({ text, path }: { text: string; path: string }) => (
+						<StyledMenuLink as={GatsbyLink} to={path} key={uuidv4()}>
+							{text}
+						</StyledMenuLink>
+					))}
 				</StyledMenuItems>
 			</StyledMenuPopover>
 		</>

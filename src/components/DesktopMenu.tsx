@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 
 const borderThickness = 4;
 
@@ -16,7 +18,7 @@ const MenuItem = styled.li`
 	position: relative;
 `;
 
-const MenuItemLink = styled.a`
+const MenuItemLink = styled(Link)`
 	display: inline-block;
 	font-size: ${(p) => p.theme.utils.pxToRem(13)};
 	line-height: 1;
@@ -47,26 +49,33 @@ const MenuItemLink = styled.a`
 	}
 `;
 
+function renderMenuItems() {
+	const {
+		site: {
+			siteMetadata: { menuLinks },
+		},
+	} = useStaticQuery(graphql`
+		query {
+			site {
+				siteMetadata {
+					menuLinks {
+						text
+						path
+					}
+				}
+			}
+		}
+	`);
+
+	return menuLinks.map(({ text, path }: { text: string; path: string }) => (
+		<MenuItem key={uuidv4()}>
+			<MenuItemLink to={path}>{text}</MenuItemLink>
+		</MenuItem>
+	));
+}
+
 function DesktopMenu() {
-	return (
-		<Wrapper>
-			<MenuItem>
-				<MenuItemLink href="">Overview</MenuItemLink>
-			</MenuItem>
-			<MenuItem>
-				<MenuItemLink href="">Experience</MenuItemLink>
-			</MenuItem>
-			<MenuItem>
-				<MenuItemLink href="">Projects</MenuItemLink>
-			</MenuItem>
-			<MenuItem>
-				<MenuItemLink href="">Photos</MenuItemLink>
-			</MenuItem>
-			<MenuItem>
-				<MenuItemLink href="">Blog</MenuItemLink>
-			</MenuItem>
-		</Wrapper>
-	);
+	return <Wrapper>{renderMenuItems()}</Wrapper>;
 }
 
 export default DesktopMenu;

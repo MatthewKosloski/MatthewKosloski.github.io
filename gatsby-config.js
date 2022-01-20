@@ -8,6 +8,28 @@ module.exports = {
 			twitter: '@_mkos',
 			cardUrl: '/public/static/matthew-kosloski-social-card.jpg',
 		},
+		menuLinks: [
+			{
+				text: 'Overview',
+				path: '/',
+			},
+			{
+				text: 'Experience',
+				path: '/experience',
+			},
+			{
+				text: 'Projects',
+				path: '/projects',
+			},
+			{
+				text: 'Photos',
+				path: '/photos',
+			},
+			{
+				text: 'Blog',
+				path: '/blog',
+			},
+		],
 	},
 	plugins: [
 		'gatsby-plugin-react-helmet',
