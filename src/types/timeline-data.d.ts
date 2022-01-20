@@ -1,6 +1,6 @@
-type Experiences = Experience[]
+type TimelineData = TimelineDatum[]
 
-interface Experience {
+interface TimelineDatum {
     title: string;
     subtitle: string;
     description: string;

@@ -99,15 +99,15 @@ function truncateYear(year: number) {
 }
 
 interface TimelineProps {
-  dataSource: { experiences: Experiences };
+  dataSource: { data: TimelineData };
   limit?: number;
 }
 
-function Timeline({ dataSource: { experiences }, limit = 0 }: TimelineProps) {
-  const isValidLimit = limit > 0 && limit < experiences.length;
+function Timeline({ dataSource: { data }, limit = 0 }: TimelineProps) {
+  const isValidLimit = limit > 0 && limit < data.length;
   const limitedDataSource = isValidLimit
-    ? experiences.slice(0, limit)
-    : experiences;
+    ? data.slice(0, limit)
+    : data;
   return (
     <Wrapper>
       <ul>
