@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby';
+import { useLocation } from '@reach/router';
 
 const borderThickness = 4;
 
@@ -18,14 +19,15 @@ const MenuItem = styled.li`
 	position: relative;
 `;
 
-const MenuItemLink = styled(Link)`
+const MenuItemLink = styled(GatsbyLink)<{ $isActive: boolean }>`
 	display: inline-block;
 	font-size: ${(p) => p.theme.utils.pxToRem(13)};
 	line-height: 1;
 	text-decoration: none;
 	font-weight: 700;
 	text-transform: uppercase;
-	color: ${(p) => p.theme.color.white500};
+	color: ${(p) =>
+		p.$isActive ? p.theme.color.eastSidePurple : p.theme.color.white500};
 	letter-spacing: ${(p) => p.theme.utils.pxToEm(1)};
 	transition: color 0.15s ease-in-out;
 	padding: calc(
@@ -39,7 +41,8 @@ const MenuItemLink = styled(Link)`
 		display: block;
 		width: calc(100% - (${(p) => p.theme.vr.quarter.rem} * 2));
 		height: ${(p) => p.theme.utils.pxToEm(borderThickness)};
-		background-color: transparent;
+		background-color: ${(p) =>
+			p.$isActive ? p.theme.color.eastSidePurple : 'transparent'};
 		top: 0;
 		left: ${(p) => p.theme.vr.quarter.rem};
 		position: absolute;
@@ -67,9 +70,13 @@ function renderMenuItems() {
 		}
 	`);
 
+	const { pathname } = useLocation();
+
 	return menuLinks.map(({ text, path }: { text: string; path: string }) => (
 		<MenuItem key={uuidv4()}>
-			<MenuItemLink to={path}>{text}</MenuItemLink>
+			<MenuItemLink to={path} $isActive={path === pathname}>
+				{text}
+			</MenuItemLink>
 		</MenuItem>
 	));
 }
