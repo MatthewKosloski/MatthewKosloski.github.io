@@ -19,7 +19,9 @@ const Wrapper = styled.article`
 `;
 
 const PrimaryBtnFlexCol = styled(FlexCol)`
-	margin-right: ${(p) => p.theme.vr.one.rem};
+	${({ theme }) => `${theme.media.sm} {
+		margin-right: ${(p) => p.theme.vr.one.rem};
+	}`}
 `;
 
 const ContentGridCol = styled(GridCol)`
@@ -62,7 +64,7 @@ function Project({
 				>
 					{children}
 					{buttonPrimary && buttonSecondary ? (
-						<Flex>
+						<Flex flexColXs flexRowSm>
 							{buttonPrimary && (
 								<PrimaryBtnFlexCol xs={12} sm={6} widthAutoMd>
 									{buttonPrimary}
