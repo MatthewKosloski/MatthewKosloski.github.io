@@ -1,5 +1,5 @@
 import React from 'react';
-import { Project, ButtonLinkExternal } from '../';
+import { Project, SubtleLinkExternal } from '../';
 import { ButtonLinkVariant } from '../ButtonLink';
 import polysentImgSrc from '../../images/polysent.jpg';
 import { BaseProjectProps } from './types';
@@ -15,12 +15,12 @@ function PolysentProject({ featureOnLeft = false }: BaseProjectProps) {
 			subtitle="A Single Page Web Application"
 			featuredComponent={<FeaturedComponent />}
 			buttonPrimary={
-				<ButtonLinkExternal href="#">Live Demo</ButtonLinkExternal>
+				<SubtleLinkExternal href="#">View live website</SubtleLinkExternal>
 			}
 			buttonSecondary={
-				<ButtonLinkExternal variant={ButtonLinkVariant.SECONDARY} href="#">
-					Source Code
-				</ButtonLinkExternal>
+				<SubtleLinkExternal href="#">
+					View source code
+				</SubtleLinkExternal>
 			}
 			featureOnLeft={featureOnLeft}
 		>
