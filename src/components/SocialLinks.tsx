@@ -63,32 +63,32 @@ function SocialLinks() {
 		<nav>
 			<ListWrapper>
 				<SocialItem>
-					<SocialLink href="">
+					<SocialLink href="https://twitter.com/_mkos">
 						<Twitter />
 					</SocialLink>
 				</SocialItem>
 				<SocialItem>
-					<SocialLink href="">
+					<SocialLink href="https://www.linkedin.com/in/matthewkosloski/">
 						<LinkedIn />
 					</SocialLink>
 				</SocialItem>
 				<SocialItem>
-					<SocialLink href="">
+					<SocialLink href="https://github.com/matthewKosloski">
 						<GitHub />
 					</SocialLink>
 				</SocialItem>
 				<SocialItem>
-					<SocialLink href="">
+					<SocialLink href="https://www.instagram.com/matthewkosloski/">
 						<Instagram />
 					</SocialLink>
 				</SocialItem>
 				<SocialItem>
-					<SocialLink href="">
+					<SocialLink href="https://dribbble.com/matthewkosloski">
 						<Dribbble />
 					</SocialLink>
 				</SocialItem>
 				<SocialItem>
-					<SocialLink href="">
+					<SocialLink href="https://unsplash.com/@matthew">
 						<Unsplash />
 					</SocialLink>
 				</SocialItem>
