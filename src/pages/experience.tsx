@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {
+	Flex,
+	FlexCol,
 	Grid,
 	GridCol,
 	Layout,
@@ -7,6 +9,7 @@ import {
 	SubSectionHeader,
 	ButtonLinkExternal,
 	ExperienceTimeline,
+	SubtleLinkExternal,
 } from '../components';
 import { ButtonLinkVariant } from '../components/ButtonLink';
 import { BasePageProps } from './types';
@@ -50,9 +53,13 @@ function ExperiencePage({ location }: BasePageProps) {
 							from scratch. The compiler translates the high-level program to
 							x86-64 assembly code (AT&amp;T syntax).
 						</p>
-						<ButtonLinkExternal href="" variant={ButtonLinkVariant.SECONDARY}>
-							Senior Project Paper
-						</ButtonLinkExternal>
+						<Flex>
+							<FlexCol>
+									<SubtleLinkExternal href="#">
+									Read my senior paper
+								</SubtleLinkExternal>
+							</FlexCol>
+						</Flex>
 					</GridCol>
 				</Grid>
 			</Section>
