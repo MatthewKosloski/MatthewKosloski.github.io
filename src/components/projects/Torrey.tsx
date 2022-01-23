@@ -1,5 +1,5 @@
 import React from 'react';
-import { Project, ButtonLink } from '../';
+import { Project, ButtonLinkExternal } from '../';
 import { ButtonLinkVariant } from '../ButtonLink';
 import torreyImgSrc from '../../images/torrey.jpg';
 import { BaseProjectProps } from './types';
@@ -15,14 +15,14 @@ function TorreyProject({ featureOnLeft = false }: BaseProjectProps) {
 			subtitle="A Compiler to x86-64 Assembly"
 			featuredComponent={<FeaturedComponent />}
 			buttonPrimary={
-				<ButtonLink variant={ButtonLinkVariant.SECONDARY} href="#">
+				<ButtonLinkExternal variant={ButtonLinkVariant.SECONDARY} href="#">
 					Source Code
-				</ButtonLink>
+				</ButtonLinkExternal>
 			}
 			buttonSecondary={
-				<ButtonLink variant={ButtonLinkVariant.SECONDARY} href="#">
+				<ButtonLinkExternal variant={ButtonLinkVariant.SECONDARY} href="https://google.com/">
 					Latest Release
-				</ButtonLink>
+				</ButtonLinkExternal>
 			}
 			featureOnLeft={featureOnLeft}
 		>

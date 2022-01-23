@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-	ButtonLink,
+	ButtonLinkInternal,
 	ExperienceTimeline,
 	Grid,
 	GridCol,
@@ -47,14 +47,18 @@ function IndexPage({ location }: BasePageProps) {
 						<ExperienceTimeline limit={2} />
 					</GridCol>
 					<GridCol xs={12} alignCenterXs>
-						<ButtonLink href="#">View All Experience</ButtonLink>
+						<ButtonLinkInternal to="/experience">
+							View All Experience
+						</ButtonLinkInternal>
 					</GridCol>
 				</Grid>
 			</Section>
 			<Section title="Most Recent Project">
 				<Projects limit={1} />
 				<GridCol xs={12} alignCenterXs>
-					<ButtonLink href="#">View All Projects</ButtonLink>
+					<ButtonLinkInternal to="/projects">
+						View All Projects
+					</ButtonLinkInternal>
 				</GridCol>
 			</Section>
 			<Section title="Selected Blog Posts">

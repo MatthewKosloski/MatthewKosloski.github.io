@@ -5,7 +5,7 @@ import {
 	Layout,
 	Section,
 	SubSectionHeader,
-	ButtonLink,
+	ButtonLinkExternal,
 	ExperienceTimeline,
 } from '../components';
 import { ButtonLinkVariant } from '../components/ButtonLink';
@@ -24,10 +24,10 @@ function ExperiencePage({ location }: BasePageProps) {
 						<ExperienceTimeline />
 					</GridCol>
 					<GridCol xs={12} alignCenterXs>
-						<ButtonLink href="">View Resume</ButtonLink>
-						<ButtonLink href="" variant={ButtonLinkVariant.SECONDARY}>
+						<ButtonLinkExternal href="">View Resume</ButtonLinkExternal>
+						<ButtonLinkExternal href="" variant={ButtonLinkVariant.SECONDARY}>
 							View LinkedIn
-						</ButtonLink>
+						</ButtonLinkExternal>
 					</GridCol>
 				</Grid>
 			</Section>
@@ -50,9 +50,9 @@ function ExperiencePage({ location }: BasePageProps) {
 							from scratch. The compiler translates the high-level program to
 							x86-64 assembly code (AT&amp;T syntax).
 						</p>
-						<ButtonLink href="" variant={ButtonLinkVariant.SECONDARY}>
+						<ButtonLinkExternal href="" variant={ButtonLinkVariant.SECONDARY}>
 							Senior Project Paper
-						</ButtonLink>
+						</ButtonLinkExternal>
 					</GridCol>
 				</Grid>
 			</Section>
