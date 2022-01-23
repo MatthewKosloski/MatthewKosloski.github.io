@@ -1,8 +1,8 @@
 import React from 'react';
-import { Project, ButtonLinkExternal } from '../';
-import { ButtonLinkVariant } from '../ButtonLink';
+import { Project } from '../';
 import torreyImgSrc from '../../images/torrey.jpg';
 import { BaseProjectProps } from './types';
+import { SubtleLinkExternal } from '../SubtleLink';
 
 function FeaturedComponent() {
 	return <img src={torreyImgSrc} alt="Torrey" />;
@@ -15,14 +15,14 @@ function TorreyProject({ featureOnLeft = false }: BaseProjectProps) {
 			subtitle="A Compiler to x86-64 Assembly"
 			featuredComponent={<FeaturedComponent />}
 			buttonPrimary={
-				<ButtonLinkExternal variant={ButtonLinkVariant.SECONDARY} href="#">
-					Source Code
-				</ButtonLinkExternal>
+				<SubtleLinkExternal href="https://github.com/MatthewKosloski/torrey">
+					View source code
+				</SubtleLinkExternal>
 			}
 			buttonSecondary={
-				<ButtonLinkExternal variant={ButtonLinkVariant.SECONDARY} href="https://google.com/">
-					Latest Release
-				</ButtonLinkExternal>
+				<SubtleLinkExternal href="https://github.com/MatthewKosloski/torrey/releases/latest">
+					Download latest release
+				</SubtleLinkExternal>
 			}
 			featureOnLeft={featureOnLeft}
 		>
