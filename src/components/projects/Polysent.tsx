@@ -18,9 +18,7 @@ function PolysentProject({ featureOnLeft = false }: BaseProjectProps) {
 				<SubtleLinkExternal href="#">View live website</SubtleLinkExternal>
 			}
 			buttonSecondary={
-				<SubtleLinkExternal href="#">
-					View source code
-				</SubtleLinkExternal>
+				<SubtleLinkExternal href="#">View source code</SubtleLinkExternal>
 			}
 			featureOnLeft={featureOnLeft}
 		>

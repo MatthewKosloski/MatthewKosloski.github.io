@@ -55,7 +55,7 @@ function ExperiencePage({ location }: BasePageProps) {
 						</p>
 						<Flex>
 							<FlexCol>
-									<SubtleLinkExternal href="#">
+								<SubtleLinkExternal href="#">
 									Read my senior paper
 								</SubtleLinkExternal>
 							</FlexCol>
