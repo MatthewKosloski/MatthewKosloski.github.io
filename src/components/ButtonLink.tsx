@@ -29,37 +29,41 @@ interface WrapperProps {
 }
 
 const buttonStyles = css<WrapperProps>`
-	border: ${(p) => p.theme.utils.pxToEm(2)} solid
-		${(p) => (p.$isSecondary ? p.theme.color.eastSidePurple : 'transparent')};
-	background-color: ${(p) =>
-		p.$isPrimary ? p.theme.color.eastSidePurple : 'transparent'};
-	color: ${(p) =>
-		p.$isPrimary ? p.theme.color.grapePurple : p.theme.color.eastSidePurple};
-	border-radius: ${(p) => p.$isFullyRounded && '100px'};
-	border-radius: ${(p) => p.$isRounded && p.theme.utils.pxToEm(5)};
-	padding: ${(p) => p.theme.vr.half.rem} ${(p) => p.theme.vr.one.rem};
-	padding-bottom: calc(
-		${(p) => p.theme.vr.half.rem} - ${(p) => p.theme.utils.pxToEm(2)}
-	);
-	text-decoration: none;
-	transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
-	text-align: center;
+	${({
+		$isPrimary,
+		$isSecondary,
+		$isSmall,
+		$isRounded,
+		$isFullyRounded,
+		theme: { utils, color, vr, typography: type },
+	}) => `
 	display: inline-block;
+	border: ${utils.pxToEm(2)} solid ${
+		$isSecondary ? color.eastSidePurple : 'transparent'
+	};
+	background-color: ${$isPrimary ? color.eastSidePurple : 'transparent'};
+	border-radius: ${$isFullyRounded && '100px'};
+	border-radius: ${$isRounded && utils.pxToEm(5)};
+	padding: ${vr.half.rem} ${vr.one.rem};
+	padding-bottom: calc(${vr.half.rem} - ${utils.pxToEm(2)});
+	transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+	text-decoration: none;
 	text-transform: uppercase;
-	letter-spacing: ${(p) => p.theme.typography.letterSpacingEm};
+	text-align: center;
 	font-weight: 700;
-	font-family: ${(p) => p.theme.typography.heading};
-	font-size: ${({ $isSmall, theme: { typography } }) =>
-		$isSmall ? typography.smallFontSizeRem : typography.largeFontSizeRem};
+	font-family: ${type.body};
+	font-size: ${$isSmall ? type.smallFontSizeRem : type.largeFontSizeRem};
+	letter-spacing: ${type.letterSpacingEm};
+	color: ${$isPrimary ? color.grapePurple : color.eastSidePurple};
 	line-height: 1;
 	&:hover {
-		background-color: ${(p) =>
-			p.$isPrimary ? '#d1b5e7' : p.theme.color.eastSidePurple};
-		color: ${(p) => p.$isSecondary && p.theme.color.grapePurple};
+		background-color: ${$isPrimary ? '#d1b5e7' : color.eastSidePurple};
+		color: ${$isSecondary && color.grapePurple};
 	}
 	&:not(:last-child) {
-		margin-right: ${(p) => p.theme.vr.one.rem};
+		margin-right: ${vr.one.rem};
 	}
+	`}
 `;
 
 const StyledButtonLinkExternal = styled.a`
