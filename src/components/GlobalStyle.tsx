@@ -160,7 +160,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
 	img.rounded {
-		border-radius: ${p => p.theme.utils.pxToEm(6)};
+		border-radius: ${(p) => p.theme.utils.pxToEm(6)};
 	}
 `;
 

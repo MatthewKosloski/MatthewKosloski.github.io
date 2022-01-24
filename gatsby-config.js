@@ -39,11 +39,11 @@ module.exports = {
 		'gatsby-transformer-sharp',
 		'gatsby-plugin-mdx',
 		{
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'blog',
-        path: `${__dirname}/content/blog`,
-      }
-    },
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				name: 'blog',
+				path: `${__dirname}/content/blog`,
+			},
+		},
 	],
 };

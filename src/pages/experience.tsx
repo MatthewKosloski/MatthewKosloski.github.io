@@ -47,8 +47,7 @@ function ExperiencePage({ location }: BasePageProps) {
 					</GridCol>
 					<GridCol xs={12} md={6} orderLastXs orderInitialMd>
 						<p>
-							B.S. in Computer Science; Graduated with distinction
-							(top 10%).
+							B.S. in Computer Science; Graduated with distinction (top 10%).
 						</p>
 						<p>
 							For my senior project, I designed a high-level, Lisp-like
