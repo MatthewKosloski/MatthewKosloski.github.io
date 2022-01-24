@@ -17,6 +17,7 @@ import { default as SocialLinks } from './SocialLinks';
 import { default as Wrapper } from './Wrapper';
 import { default as Footer } from './Footer';
 import { default as MobileMenu } from './MobileMenu';
+import { default as Masonry } from './Masonry';
 import { SubtleLinkInternal, SubtleLinkExternal } from './SubtleLink';
 
 export {
@@ -42,4 +43,5 @@ export {
 	ButtonLinkExternal,
 	SubtleLinkInternal,
 	SubtleLinkExternal,
+	Masonry,
 };
