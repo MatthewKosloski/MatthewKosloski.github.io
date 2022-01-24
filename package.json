@@ -31,7 +31,6 @@
     "gatsby-plugin-image": "^2.5.1",
     "gatsby-plugin-mdx": "^3.5.2",
     "gatsby-plugin-react-helmet": "^5.4.0",
-    "gatsby-plugin-sass": "^5.4.0",
     "gatsby-plugin-sharp": "^4.5.1",
     "gatsby-plugin-styled-components": "^5.4.0",
     "gatsby-source-filesystem": "^4.5.1",
@@ -39,7 +38,6 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "sass": "^1.45.2",
     "styled-components": "^5.3.3",
     "uuid": "^8.3.2"
   },
