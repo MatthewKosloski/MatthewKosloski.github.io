@@ -46,7 +46,8 @@ const GlobalStyle = createGlobalStyle`
   h3,
   .h3,
   h4,
-  .h4 {
+  .h4,
+	.lead {
     font-family: ${(p) => p.theme.typography.heading};
     color: ${(p) => p.theme.color.ghostlyPurple};
     font-weight: 700;
@@ -154,9 +155,13 @@ const GlobalStyle = createGlobalStyle`
     width: 33%;
   }
 
-  .color-gray600 {
+  .color-gray600, .lead {
     color: ${(p) => p.theme.color.gray600};
   }
+
+	img.rounded {
+		border-radius: ${p => p.theme.utils.pxToEm(6)};
+	}
 `;
 
 export default GlobalStyle;
