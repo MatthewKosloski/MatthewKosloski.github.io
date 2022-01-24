@@ -4,10 +4,15 @@ import styled, { css } from 'styled-components';
 interface WrapperProps {
 	isSmall: boolean;
 	isLarge: boolean;
+	hasBottomMargin: boolean;
 }
 
 const Wrapper = styled.header<WrapperProps>`
-	margin-bottom: ${(p) => p.theme.vr.one.rem};
+	${(p) =>
+		p.hasBottomMargin &&
+		css`
+			margin-bottom: ${p.theme.vr.one.rem};
+		`};
 	& > :first-child {
 		margin: 0;
 		color: ${(p) => p.theme.color.gray600};
@@ -37,17 +42,20 @@ export enum SubSectionHeaderVariant {
 interface SubSectionHeaderProps {
 	children: React.ReactNode;
 	variant?: SubSectionHeaderVariant;
+	noBottomMargin?: boolean;
 }
 
 function SubSectionHeader({
 	children,
 	variant = SubSectionHeaderVariant.LARGE,
+	noBottomMargin = false,
 	...rest
 }: SubSectionHeaderProps & JSX.IntrinsicElements['header']) {
 	return (
 		<Wrapper
 			isSmall={variant === SubSectionHeaderVariant.SMALL}
 			isLarge={variant === SubSectionHeaderVariant.LARGE}
+			hasBottomMargin={!noBottomMargin}
 			{...rest}
 		>
 			{children}
