@@ -8,6 +8,14 @@ const flexColCss = css`
 	flex-direction: column;
 `;
 
+const justifyCenterCss = css`
+	justify-content: center;
+`;
+
+const justifyEndCss = css`
+	justify-content: flex-end;
+`;
+
 interface FlexProps {
 	flexRowXs?: boolean;
 	flexRowSm?: boolean;
@@ -19,6 +27,16 @@ interface FlexProps {
 	flexColMd?: boolean;
 	flexColLg?: boolean;
 	flexColXl?: boolean;
+	justifyCenterXs?: boolean;
+	justifyCenterSm?: boolean;
+	justifyCenterMd?: boolean;
+	justifyCenterLg?: boolean;
+	justifyCenterXl?: boolean;
+	justifyEndXs?: boolean;
+	justifyEndSm?: boolean;
+	justifyEndMd?: boolean;
+	justifyEndLg?: boolean;
+	justifyEndXl?: boolean;
 }
 
 const Flex = styled.div<FlexProps>`
@@ -78,11 +96,71 @@ const Flex = styled.div<FlexProps>`
     ${flexRowCss}
   }`}
 
-  ${({ flexRowXl, theme }) =>
-		flexRowXl &&
+  ${({ justifyCenterXl, theme }) =>
+		justifyCenterXl &&
 		`${theme.media.xl} {
-    ${flexRowCss}
+    ${justifyCenterCss}
   }`}
+
+	${({ justifyCenterXs, theme }) =>
+		justifyCenterXs &&
+		`${theme.media.xs} {
+	${justifyCenterCss}
+}`}
+
+${({ justifyCenterSm, theme }) =>
+		justifyCenterSm &&
+		`${theme.media.sm} {
+	${justifyCenterCss}
+}`}
+
+${({ justifyCenterMd, theme }) =>
+		justifyCenterMd &&
+		`${theme.media.md} {
+	${justifyCenterCss}
+}`}
+
+${({ justifyCenterLg, theme }) =>
+		justifyCenterLg &&
+		`${theme.media.lg} {
+	${justifyCenterCss}
+}`}
+
+${({ justifyCenterXl, theme }) =>
+		justifyCenterXl &&
+		`${theme.media.xl} {
+	${justifyCenterCss}
+}`}
+
+${({ justifyEndXs, theme }) =>
+		justifyEndXs &&
+		`${theme.media.xs} {
+${justifyEndCss}
+}`}
+
+${({ justifyEndSm, theme }) =>
+		justifyEndSm &&
+		`${theme.media.sm} {
+${justifyEndCss}
+}`}
+
+${({ justifyEndMd, theme }) =>
+		justifyEndMd &&
+		`${theme.media.md} {
+${justifyEndCss}
+}`}
+
+${({ justifyEndLg, theme }) =>
+		justifyEndLg &&
+		`${theme.media.lg} {
+${justifyEndCss}
+}`}
+
+${({ justifyEndXl, theme }) =>
+		justifyEndXl &&
+		`${theme.media.xl} {
+${justifyEndCss}
+}`}
 `;
 
 export default Flex;
