@@ -65,7 +65,7 @@ function ExperiencePage({ location }: BasePageProps) {
 						</Flex>
 					</GridCol>
 					<GridCol xs={12} md={6}>
-						<Flex justifyCenterXs justifyNormalMd>
+						<Flex justifyCenterXs justifyEndMd>
 							<FlexCol>
 								<StaticImage
 									src="../images/photos/matthew-kosloski-graduation.jpg"
