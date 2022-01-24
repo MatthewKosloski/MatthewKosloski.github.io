@@ -8,7 +8,7 @@ function ProjectsPage({ location }: BasePageProps) {
 		<Layout
 			location={location}
 			pageTitle="Projects"
-			pageSubtitle="In my free time, I like to design and develop applications. This gives me an opportunity to become acquainted new tools and technologies"
+			pageSubtitle="In my free time, I like to design and develop applications. This gives me an opportunity to become acquainted with new tools and technologies"
 		>
 			<Section>
 				<Projects />
