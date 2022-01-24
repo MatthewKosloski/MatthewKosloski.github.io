@@ -9,7 +9,7 @@ function BlogPost({ location, data }: BasePageProps & BlogPostQuery) {
 		<Layout
 			location={location}
 			pageTitle={data.mdx.frontmatter.title}
-			pageSubtitle={data.mdx.frontmatter.date}
+			pageSubtitle={`Published on ${data.mdx.frontmatter.date}`}
 		>
 			<Section>
 				<Grid>
