@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { BasePageProps } from '../types';
 import { Layout, Section } from '../components';
 import { Projects } from '../components/projects';
-import { BasePageProps } from './types';
 
 function ProjectsPage({ location }: BasePageProps) {
 	return (

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BasePageProps } from '../types';
 import {
 	Flex,
 	FlexCol,
@@ -13,7 +14,6 @@ import {
 } from '../components';
 import { ButtonLinkVariant } from '../components/ButtonLink';
 import { StaticImage } from 'gatsby-plugin-image';
-import { BasePageProps } from './types';
 
 function ExperiencePage({ location }: BasePageProps) {
 	return (

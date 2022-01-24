@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"paths": {
-			"*": ["./src/types/*"]
+			"*": ["src/declarations/*"]
 		},
 		"jsx": "react",
 		"esModuleInterop": true,

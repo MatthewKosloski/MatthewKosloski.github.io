@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { BasePageProps } from '../../types';
 import { Grid, GridCol, Layout, Section } from '../../components';
-import { BasePageProps } from '../types';
 
 function BlogPost({ location, data }: BasePageProps & BlogPostQuery) {
 	return (

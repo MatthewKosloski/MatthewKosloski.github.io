@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
+import { BasePageProps } from '../types';
 import { Grid, GridCol, Layout, Section } from '../components';
-import { BasePageProps } from './types';
 
 function NotFoundPage({ location }: BasePageProps) {
 	return (

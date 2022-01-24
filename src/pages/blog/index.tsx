@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import { Grid, GridCol, Layout, Section } from '../../components';
-import { BasePageProps } from '../types';
+import { BasePageProps } from '../../types';
 
 function BlogPage({ location, data }: BasePageProps & BlogQuery) {
 	return (

@@ -98,6 +98,18 @@ function truncateYear(year: number) {
 	return `'${String(year).substring(2)}`;
 }
 
+type TimelineData = TimelineDatum[];
+
+interface TimelineDatum {
+	title: string;
+	subtitle: string;
+	description: string;
+	date: {
+		from: string;
+		to?: string;
+	};
+}
+
 interface TimelineProps {
 	dataSource: { data: TimelineData };
 	limit?: number;

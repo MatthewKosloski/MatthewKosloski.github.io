@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BasePageProps } from '../types';
 import {
 	ButtonLinkInternal,
 	ExperienceTimeline,
@@ -8,7 +9,6 @@ import {
 	Section,
 } from '../components';
 import { Projects } from '../components/projects';
-import { BasePageProps } from './types';
 
 function IndexPage({ location }: BasePageProps) {
 	return (

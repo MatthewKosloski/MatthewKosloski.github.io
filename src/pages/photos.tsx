@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { BasePageProps } from '../types';
 import { Grid, GridCol, Layout, Masonry, Section } from '../components';
-import { BasePageProps } from './types';
 
 function PhotosPage({ location }: BasePageProps) {
 	return (
