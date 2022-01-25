@@ -1,7 +1,7 @@
 module.exports = {
 	siteMetadata: {
 		siteUrl: 'https://matthewkosloski.me',
-		title: 'Matthew Kosloski &mdash; Software Developer',
+		title: 'Matthew Kosloski, Software Developer',
 		description:
 			'Matthew Kosloski is a Software Developer based in Chicago, Illinois.',
 		social: {

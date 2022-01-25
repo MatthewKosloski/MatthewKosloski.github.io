@@ -16,7 +16,7 @@ function Layout({ children, location, pageTitle, pageSubtitle }: LayoutProps) {
 	return (
 		<ThemeProvider theme={theme}>
 			<>
-				<Head location={location} />
+				<Head title={pageTitle} location={location} />
 				<GlobalStyle />
 				<Wrapper>
 					<Header pageTitle={pageTitle} pageSubtitle={pageSubtitle} />

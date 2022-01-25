@@ -45,8 +45,8 @@ function Head({
 			htmlAttributes={{
 				lang: 'en-US',
 			}}
-			title={title}
-			titleTemplate={defaultTitle ? `%s &mdash; ${defaultTitle}` : undefined}
+			title={title ? `${title} | ` : ` `}
+			titleTemplate={defaultTitle ? `%s ${defaultTitle}` : undefined}
 			meta={[
 				{
 					name: `description`,
