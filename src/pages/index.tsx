@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { graphql } from 'gatsby';
 import { BasePageProps } from '../types';
 import {
 	ButtonLinkInternal,
@@ -6,11 +7,12 @@ import {
 	Grid,
 	GridCol,
 	Layout,
+	Posts,
 	Section,
 } from '../components';
 import { Projects } from '../components/projects';
 
-function IndexPage({ location }: BasePageProps) {
+function IndexPage({ location, data }: BasePageProps & FeaturedBlogPostsQuery) {
 	return (
 		<Layout location={location}>
 			<Section>
@@ -61,16 +63,50 @@ function IndexPage({ location }: BasePageProps) {
 					</ButtonLinkInternal>
 				</GridCol>
 			</Section>
-			<Section title="Selected Blog Posts">
-				<p>
-					<em>
-						This should be visible if there is at least one blog post that has a
-						feature flag.
-					</em>
-				</p>
-			</Section>
+			{data.allMdx.nodes.length > 0 ? (
+				<Section title="Selected Blog Posts">
+					<Grid>
+						<GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
+							<Posts slugPrefix="blog/" data={data.allMdx.nodes} />
+						</GridCol>
+					</Grid>
+				</Section>
+			) : null}
 		</Layout>
 	);
 }
+
+interface FeaturedBlogPostsQuery {
+	data: {
+		allMdx: {
+			nodes: {
+				frontmatter: {
+					title: string;
+					date: string;
+				};
+				id: string;
+				slug: string;
+			}[];
+		};
+	};
+}
+
+export const featuredBlogPostsQuery = graphql`
+	{
+		allMdx(
+			sort: { fields: frontmatter___date, order: DESC }
+			filter: { frontmatter: { featured: { eq: true } } }
+		) {
+			nodes {
+				frontmatter {
+					title
+					date(formatString: "MMMM DD, YYYY")
+				}
+				id
+				slug
+			}
+		}
+	}
+`;
 
 export default IndexPage;
