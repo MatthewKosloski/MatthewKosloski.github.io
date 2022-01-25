@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import { Grid, GridCol, Layout, Section } from '../../components';
+import { Grid, GridCol, Layout, Posts, Section } from '../../components';
 import { BasePageProps } from '../../types';
 
 function BlogPage({ location, data }: BasePageProps & BlogQuery) {
@@ -9,16 +9,7 @@ function BlogPage({ location, data }: BasePageProps & BlogQuery) {
 			<Section>
 				<Grid>
 					<GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
-						<ul>
-							{data.allMdx.nodes.map(({ id, slug, frontmatter }) => (
-								<li key={id}>
-									<a href={slug}>
-										<h3>{frontmatter.title}</h3>
-										<p>{frontmatter.date}</p>
-									</a>
-								</li>
-							))}
-						</ul>
+						<Posts data={data.allMdx.nodes} />
 					</GridCol>
 				</Grid>
 			</Section>
