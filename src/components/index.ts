@@ -19,6 +19,7 @@ import { default as Footer } from './Footer';
 import { default as MobileMenu } from './MobileMenu';
 import { default as Masonry } from './Masonry';
 import { SubtleLinkInternal, SubtleLinkExternal } from './SubtleLink';
+import { default as Posts } from './Posts';
 
 export {
 	Grid,
@@ -44,4 +45,5 @@ export {
 	SubtleLinkInternal,
 	SubtleLinkExternal,
 	Masonry,
+	Posts,
 };
