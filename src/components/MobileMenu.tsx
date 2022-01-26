@@ -24,8 +24,8 @@ const StyledMenuItems = styled(MenuItems)`
 `;
 
 const StyledMenuButton = styled(MenuButton)`
-	${({ theme: { color, media }}) => css`
-	  ${media.sm} {
+	${({ theme: { color, media } }) => css`
+		${media.sm} {
 			display: none;
 		}
 		background-color: transparent;
@@ -86,9 +86,9 @@ function MobileMenuInner() {
 					>
 						<motion.div
 							style={{ height: '100%' }}
-							initial={{opacity: 0}}
-							animate={{opacity: 1}}
-							exit={{opacity: 0}}
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
 							transition={{
 								duration: 0.15,
 								ease: 'linear',
@@ -96,26 +96,37 @@ function MobileMenuInner() {
 						>
 							<StyledMenuItems>
 								{menuLinks.map(
-									({
-										text,
-										path,
-										id,
-									}: {
-										text: string;
-										path: string;
-										id: string;
-									}) => {
+									(
+										{
+											text,
+											path,
+											id,
+										}: {
+											text: string;
+											path: string;
+											id: string;
+										},
+										i: number
+									) => {
 										return (
 											// Must use a class here because a styled component
 											// will break the accessible navigation controls
-											<MenuLink
+											<motion.div
+												initial={{ translateX: -999 }}
+												animate={{ translateX: 0 }}
+												exit={{ translateX: 0 }}
+												transition={{
+													delay: i === 0 ? 0.15 : 0.15 * i,
+													duration: 0.3,
+													ease: 'linear',
+												}}
 												key={id}
-												className="mobile-menu-link"
-												as={GatsbyLink}
-												to={path}
+												className="mobile-menu-link-wrapper"
 											>
-												{text}
-											</MenuLink>
+												<MenuLink as={GatsbyLink} to={path}>
+													{text}
+												</MenuLink>
+											</motion.div>
 										);
 									}
 								)}

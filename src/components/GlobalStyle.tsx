@@ -163,24 +163,27 @@ const GlobalStyle = createGlobalStyle`
 		border-radius: ${(p) => p.theme.utils.pxToEm(6)};
 	}
 
-	.mobile-menu-link {
-		padding: ${(p) => p.theme.vr.one.em};
-		display: block;
-		text-transform: uppercase;
-		text-decoration: none;
-		letter-spacing: ${(p) => p.theme.utils.pxToEm(1)};
-		font-weight: 700;
-		color: ${(p) => p.theme.color.white500};
-		border-top: ${(p) => p.theme.utils.pxToEm(2)} solid
+	.mobile-menu-link-wrapper {
+		&:first-child {
+			border-top: ${(p) => p.theme.utils.pxToEm(2)} solid
 			${(p) => p.theme.color.white100};
-		&:last-child {
-			border-bottom: ${(p) => p.theme.utils.pxToEm(2)} solid
-				${(p) => p.theme.color.white100};
 		}
-		&:hover,
-		&[data-selected] {
-			background-color: ${(p) => p.theme.color.eastSidePurple};
-			color: ${(p) => p.theme.color.grapePurple};
+		border-bottom: ${(p) => p.theme.utils.pxToEm(2)} solid
+		${(p) => p.theme.color.white100};
+
+		a {
+			padding: ${(p) => p.theme.vr.one.em};
+			display: block;
+			text-transform: uppercase;
+			text-decoration: none;
+			letter-spacing: ${(p) => p.theme.utils.pxToEm(1)};
+			font-weight: 700;
+			color: ${(p) => p.theme.color.white500};
+			&:hover,
+			&[data-selected] {
+				background-color: ${(p) => p.theme.color.eastSidePurple};
+				color: ${(p) => p.theme.color.grapePurple};
+			}
 		}
 	}
 `;
