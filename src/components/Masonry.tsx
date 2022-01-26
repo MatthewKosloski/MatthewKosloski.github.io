@@ -18,7 +18,10 @@ const Wrapper = styled.div`
 			border-radius: ${utils.pxToEm(6)};
 		}
 		.gatsby-image-wrapper--small {
-			grid-row: span 5;
+			grid-row: span 10;
+			${media.md} {
+				grid-row: span 5;
+			}
 		}
 	
 		.gatsby-image-wrapper--large {
