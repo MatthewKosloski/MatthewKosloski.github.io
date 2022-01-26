@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 import { DesktopMenu, Grid, GridCol, MobileMenu } from '.';
 
@@ -40,13 +40,17 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled(Link)`
-	text-decoration: none;
-	h1 {
-		margin-bottom: ${(p) => p.theme.vr.zero.em};
-		padding: ${(p) => p.theme.vr.half.rem} ${(p) => p.theme.vr.quarter.rem}
-			${(p) => p.theme.vr.quarter.rem};
-		color: ${(p) => p.theme.color.white};
-	}
+	${({ theme: { color, media, vr } }) => css`
+		text-decoration: none;
+		h1 {
+			margin-bottom: ${vr.zero.em};
+			padding: 0;
+			${media.md} {
+				padding: ${vr.half.rem} ${vr.quarter.rem} ${vr.quarter.rem};
+			}
+			color: ${color.white};
+		}
+	`}
 `;
 
 interface HeaderProps {
