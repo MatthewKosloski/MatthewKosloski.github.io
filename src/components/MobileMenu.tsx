@@ -35,7 +35,9 @@ const StyledMenuButton = styled(MenuButton)`
 
 const StyledMenuLink = styled(MenuLink)`
 	padding: ${(p) => p.theme.vr.one.em};
+	display: block;
 	text-transform: uppercase;
+	text-decoration: none;
 	letter-spacing: ${(p) => p.theme.utils.pxToEm(1)};
 	font-weight: 700;
 	color: ${(p) => p.theme.color.white500};
@@ -45,7 +47,7 @@ const StyledMenuLink = styled(MenuLink)`
 		border-bottom: ${(p) => p.theme.utils.pxToEm(2)} solid
 			${(p) => p.theme.color.white100};
 	}
-	&:hover {
+	&:hover, &:focus {
 		background-color: ${(p) => p.theme.color.eastSidePurple};
 		color: ${(p) => p.theme.color.grapePurple};
 	}
