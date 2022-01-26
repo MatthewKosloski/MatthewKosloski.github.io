@@ -35,7 +35,7 @@ const StyledLink = styled(GatsbyLink)`
 
 function Posts({ data, slugPrefix = '' }: PostsProps) {
 	return (
-		<div>
+		<>
 			{data.map(({ frontmatter, id, slug }) => (
 				<article key={id}>
 					<StyledLink to={`${slugPrefix}${slug}`}>
@@ -44,7 +44,7 @@ function Posts({ data, slugPrefix = '' }: PostsProps) {
 					</StyledLink>
 				</article>
 			))}
-		</div>
+		</>
 	);
 }
 
