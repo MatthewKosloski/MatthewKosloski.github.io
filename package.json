@@ -27,6 +27,7 @@
     "@types/styled-components": "^5.1.19",
     "@types/uuid": "^8.3.4",
     "babel-plugin-styled-components": "^2.0.2",
+    "framer-motion": "^6.2.3",
     "gatsby": "^4.4.0",
     "gatsby-plugin-image": "^2.5.1",
     "gatsby-plugin-mdx": "^3.5.2",
