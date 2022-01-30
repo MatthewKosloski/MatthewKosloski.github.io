@@ -102,7 +102,7 @@ function renderTrailingNewLines(trailingNewLines: number) {
 function AnimatedVimEditor({
 	program,
 	staggerChildren,
-	trailingNewLines = 1
+	trailingNewLines = 1,
 }: AnimatedVimEditorProps) {
 	const [LineNumDelays, setLineNumDelays] = React.useState<number[]>([]);
 
