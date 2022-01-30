@@ -20,6 +20,7 @@ import { default as MobileMenu } from './MobileMenu';
 import { default as Masonry } from './Masonry';
 import { SubtleLinkInternal, SubtleLinkExternal } from './SubtleLink';
 import { default as Posts } from './Posts';
+import { default as AnimatedVimEditor } from './AnimatedVimEditor';
 
 export {
 	Grid,
@@ -46,4 +47,5 @@ export {
 	SubtleLinkExternal,
 	Masonry,
 	Posts,
+	AnimatedVimEditor,
 };
