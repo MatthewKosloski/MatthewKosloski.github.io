@@ -17,25 +17,14 @@ export interface Token {
 	type: TokenType;
 }
 
-// An array of Token arrays. Each
-// line of text can be accessed from
-// the first dimension. Each token
-// within a line of text can be accessed
-// from the second dimension.
-export type Program = Token[][];
+export type Program = {
+	id: string;
+	tokens: Token[];
+}[];
 
-/**
- * Calculates the number of columns in each line of text
- * in the provided program.
- * @param program A program, which is an array of Token arrays.
- * @returns An array of size n, where n is the number of
- * first dimensions (lines) in the provided program. Each
- * element in the array is the cumulative lexeme sum of
- * the line.
- */
 const getLineCols = (program: Program): number[] => {
 	return program.map((line) =>
-		line.reduce((prev, curr) => prev + curr.lexeme.length, 0)
+		line.tokens.reduce((prev, curr) => prev + curr.lexeme.length, 0)
 	);
 };
 
@@ -159,10 +148,10 @@ function AnimatedVimEditor({
 			<Code variants={codeblock} initial="hidden" animate="visible">
 				<LineNumbers>
 					{LineNumDelays.length &&
-						program.map((_, lineIndex) => {
+						program.map((line, lineIndex) => {
 							let delay = LineNumDelays[lineIndex];
 							return (
-								<>
+								<span key={`${line.id}-linenumbers`}>
 									<motion.span
 										key={`~${lineIndex + 1}`}
 										initial={{ display: 'block' }}
@@ -179,7 +168,7 @@ function AnimatedVimEditor({
 									>
 										{lineIndex + 1}
 									</motion.span>
-								</>
+								</span>
 							);
 						})}
 					{renderTrailingNewLines(trailingNewLines)}
@@ -188,14 +177,14 @@ function AnimatedVimEditor({
 					{program.map((line, lineIndex) => {
 						const isLastLine = lineIndex + 1 === program.length;
 						return (
-							<>
-								{line.map(({ id, lexeme, type }) => {
+							<span key={`${line.id}-tokens`}>
+								{line.tokens.map(({ id, lexeme, type }) => {
 									return lexeme.split('').map((char, charIndex) => {
-										return <Char key={id + charIndex} char={char} />;
+										return <Char key={id + char + charIndex} char={char} />;
 									});
 								})}
 								{!isLastLine && <Char key={`nl${lineIndex}`} isNewLine />}
-							</>
+							</span>
 						);
 					})}
 					<Cursor></Cursor>
