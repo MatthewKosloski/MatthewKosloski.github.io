@@ -23,6 +23,7 @@ export type Program = Token[];
 
 interface AnimatedVimEditorProps {
 	program: Program;
+	filename: string;
 	delay?: number;
 	speed?: number;
 }
@@ -65,7 +66,7 @@ const StatusBar = styled.div`
 	justify-content: space-between;
 `;
 
-function AnimatedVimEditor({ program, delay = 1000, speed = 75 }: AnimatedVimEditorProps) {
+function AnimatedVimEditor({ program, filename, delay = 1000, speed = 75 }: AnimatedVimEditorProps) {
 	const [charIndex, setCharIndex] = React.useState<number>(0);
 	const [cols, setCols] = React.useState<number>(1);
 	const [rows, setRows] = React.useState<number>(1);
@@ -76,6 +77,8 @@ function AnimatedVimEditor({ program, delay = 1000, speed = 75 }: AnimatedVimEdi
 	const [numLines, setNumLines] = React.useState<number>(0);
 	const [status, setStatus] = React.useState<string>('');
 	const [displayCodeCursor, setDisplayCodeCursor] = React.useState<boolean>(true);
+	const [displayRowsAndCols, setDisplayRowsAndCols] = React.useState<boolean>(true);
+	const [displayAll, setDisplayAll] = React.useState<boolean>(true);
 
 	React.useEffect(() => {
 		let str = '';
@@ -113,10 +116,12 @@ function AnimatedVimEditor({ program, delay = 1000, speed = 75 }: AnimatedVimEdi
 		} else if (codeElements.length) {
 			setStatus(':wq');
 			setDisplayCodeCursor(false);
+			setDisplayAll(false);
+			setDisplayRowsAndCols(false);
 		} else {
-			setStatus('"program.torrey" [New File]');
+			setStatus(`"${filename}" [New File]`);
 		}
-	}, [isTyping, setStatus, setDisplayCodeCursor]);
+	}, [isTyping, setStatus, setDisplayCodeCursor, filename, setDisplayAll, setDisplayRowsAndCols]);
 
 	React.useEffect(() => {
 		let interval: NodeJS.Timer;
@@ -162,9 +167,11 @@ function AnimatedVimEditor({ program, delay = 1000, speed = 75 }: AnimatedVimEdi
 	]);
 
 	function handlePlay() {
-		setStatus('"program.torrey" [New File]');
+		setStatus(`"${filename}" [New File]`);
 		setCodeElements([]);
 		setDisplayCodeCursor(true);
+		setDisplayAll(true);
+		setDisplayRowsAndCols(true);
 		setCharIndex(0);
 		setRows(1);
 		setCols(1);
@@ -199,10 +206,14 @@ function AnimatedVimEditor({ program, delay = 1000, speed = 75 }: AnimatedVimEdi
 				</Code>
 				<StatusBar>
 					<span style={{ flex: '2' }}>{status}</span>
-					<span style={{ flex: '0.5' }}>
-						{rows}, {cols}
-					</span>
-					<span style={{flex: '0.5', textAlign: 'right'}}>All</span>
+					{displayRowsAndCols && (
+						<span style={{ flex: '0.5' }}>
+							{rows}, {cols}
+						</span>
+					)}
+					{displayAll && (
+						<span style={{flex: '0.5', textAlign: 'right'}}>All</span>
+					)}
 				</StatusBar>
 			</Pre>
 		</>
