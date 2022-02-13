@@ -1,11 +1,140 @@
 import React from 'react';
-import { Project } from '../';
-import torreyImgSrc from '../../images/torrey.jpg';
-import { BaseProjectProps } from './types';
+import { v4 as uuidv4 } from 'uuid';
+import { AnimatedVimEditor, Project } from '../';
+import { TokenType, Program } from '../AnimatedVimEditor';
 import { SubtleLinkExternal } from '../SubtleLink';
+import { BaseProjectProps } from './types';
+
+const program: Program = [
+	{
+		lexeme: '(',
+		type: TokenType.Punctuation,
+		id: uuidv4(),
+	},
+	{
+		lexeme: 'println',
+		type: TokenType.Keyword,
+		id: uuidv4(),
+	},
+	{
+		lexeme: '\n',
+		type: TokenType.NewLine,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ' ',
+		type: TokenType.Whitespace,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ' ',
+		type: TokenType.Whitespace,
+		id: uuidv4(),
+	},
+	{
+		lexeme: '(',
+		type: TokenType.Punctuation,
+		id: uuidv4(),
+	},
+	{
+		lexeme: 'let',
+		type: TokenType.Keyword,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ' ',
+		type: TokenType.Whitespace,
+		id: uuidv4(),
+	},
+	{
+		lexeme: '[',
+		type: TokenType.Punctuation,
+		id: uuidv4(),
+	},
+	{
+		lexeme: 'a',
+		type: TokenType.Identifier,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ' ',
+		type: TokenType.Whitespace,
+		id: uuidv4(),
+	},
+	{
+		lexeme: '42',
+		type: TokenType.Integer,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ']',
+		type: TokenType.Punctuation,
+		id: uuidv4(),
+	},
+	{
+		lexeme: '\n',
+		type: TokenType.NewLine,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ' ',
+		type: TokenType.Whitespace,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ' ',
+		type: TokenType.Whitespace,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ' ',
+		type: TokenType.Whitespace,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ' ',
+		type: TokenType.Whitespace,
+		id: uuidv4(),
+	},
+	{
+		lexeme: '(',
+		type: TokenType.Punctuation,
+		id: uuidv4(),
+	},
+	{
+		lexeme: '-',
+		type: TokenType.Operator,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ' ',
+		type: TokenType.Whitespace,
+		id: uuidv4(),
+	},
+	{
+		lexeme: 'a',
+		type: TokenType.Identifier,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ')',
+		type: TokenType.Punctuation,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ')',
+		type: TokenType.Punctuation,
+		id: uuidv4(),
+	},
+	{
+		lexeme: ')',
+		type: TokenType.Punctuation,
+		id: uuidv4(),
+	},
+];
 
 function FeaturedComponent() {
-	return <img src={torreyImgSrc} alt="Torrey" />;
+	return <AnimatedVimEditor program={program} />;
 }
 
 function TorreyProject({ featureOnLeft = false }: BaseProjectProps) {
