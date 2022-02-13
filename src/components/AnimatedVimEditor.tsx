@@ -66,7 +66,12 @@ const TextEditorStatusBar = styled.div`
 	justify-content: space-between;
 `;
 
-function AnimatedVimEditor({ program, filename, delay = 1000, speed = 75 }: AnimatedVimEditorProps) {
+function AnimatedVimEditor({
+	program,
+	filename,
+	delay = 1000,
+	speed = 75,
+}: AnimatedVimEditorProps) {
 	const [charIndex, setCharIndex] = React.useState<number>(0);
 	const [cols, setCols] = React.useState<number>(1);
 	const [rows, setRows] = React.useState<number>(1);
@@ -76,8 +81,10 @@ function AnimatedVimEditor({ program, filename, delay = 1000, speed = 75 }: Anim
 	const [lineNumbers, setLineNumbers] = React.useState<string[]>([]);
 	const [numLines, setNumLines] = React.useState<number>(0);
 	const [status, setStatus] = React.useState<string>('');
-	const [displayCodeCursor, setDisplayCodeCursor] = React.useState<boolean>(true);
-	const [displayRowsAndCols, setDisplayRowsAndCols] = React.useState<boolean>(true);
+	const [displayCodeCursor, setDisplayCodeCursor] =
+		React.useState<boolean>(true);
+	const [displayRowsAndCols, setDisplayRowsAndCols] =
+		React.useState<boolean>(true);
 	const [displayAll, setDisplayAll] = React.useState<boolean>(true);
 
 	React.useEffect(() => {
@@ -121,7 +128,14 @@ function AnimatedVimEditor({ program, filename, delay = 1000, speed = 75 }: Anim
 		} else {
 			setStatus(`"${filename}" [New File]`);
 		}
-	}, [isTyping, setStatus, setDisplayCodeCursor, filename, setDisplayAll, setDisplayRowsAndCols]);
+	}, [
+		isTyping,
+		setStatus,
+		setDisplayCodeCursor,
+		filename,
+		setDisplayAll,
+		setDisplayRowsAndCols,
+	]);
 
 	React.useEffect(() => {
 		let interval: NodeJS.Timer;
@@ -181,7 +195,7 @@ function AnimatedVimEditor({ program, filename, delay = 1000, speed = 75 }: Anim
 		}
 		setLineNumbers(arr);
 
-		const timeout = setTimeout(function() {
+		const timeout = setTimeout(function () {
 			setIsTyping(true);
 			clearTimeout(timeout);
 		}, delay);
@@ -212,7 +226,7 @@ function AnimatedVimEditor({ program, filename, delay = 1000, speed = 75 }: Anim
 						</span>
 					)}
 					{displayAll && (
-						<span style={{flex: '0.5', textAlign: 'right'}}>All</span>
+						<span style={{ flex: '0.5', textAlign: 'right' }}>All</span>
 					)}
 				</TextEditorStatusBar>
 			</TextEditorPre>
