@@ -35,7 +35,7 @@ const TextEditorPre = styled.pre`
 	height: 325px;
 `;
 
-const TextEditorCode = styled.div`
+const TextEditorCode = styled.code`
 	display: flex;
 `;
 
