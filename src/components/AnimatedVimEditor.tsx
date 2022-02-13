@@ -28,30 +28,30 @@ interface AnimatedVimEditorProps {
 	speed?: number;
 }
 
-const Pre = styled.pre`
+const TextEditorPre = styled.pre`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	height: 325px;
 `;
 
-const Code = styled.div`
+const TextEditorCode = styled.div`
 	display: flex;
 `;
 
-const LineNumbers = styled.div`
+const TextEditorLineNumbers = styled.div`
 	display: flex;
 	flex-direction: column;
 	flex-basis: 5%;
 	color: #c0c5ce;
 `;
 
-const TextArea = styled.div`
+const TextEditorTextArea = styled.div`
 	flex-basis: 95%;
 	color: #fff;
 `;
 
-const Cursor = styled.span`
+const TextEditorCursor = styled.span`
 	width: 9px;
 	height: 16px;
 	display: inline-block;
@@ -60,7 +60,7 @@ const Cursor = styled.span`
 	background: white;
 `;
 
-const StatusBar = styled.div`
+const TextEditorStatusBar = styled.div`
 	display: flex;
 	color: white;
 	justify-content: space-between;
@@ -192,19 +192,19 @@ function AnimatedVimEditor({ program, filename, delay = 1000, speed = 75 }: Anim
 			<button onClick={handlePlay} disabled={isTyping}>
 				Play Animation
 			</button>
-			<Pre>
-				<Code>
-					<LineNumbers>
+			<TextEditorPre>
+				<TextEditorCode>
+					<TextEditorLineNumbers>
 						{lineNumbers.map((lineNumber) => (
 							<span>{lineNumber}</span>
 						))}
-					</LineNumbers>
-					<TextArea>
+					</TextEditorLineNumbers>
+					<TextEditorTextArea>
 						{codeElements}
-						{displayCodeCursor && <Cursor />}
-					</TextArea>
-				</Code>
-				<StatusBar>
+						{displayCodeCursor && <TextEditorCursor />}
+					</TextEditorTextArea>
+				</TextEditorCode>
+				<TextEditorStatusBar>
 					<span style={{ flex: '2' }}>{status}</span>
 					{displayRowsAndCols && (
 						<span style={{ flex: '0.5' }}>
@@ -214,8 +214,8 @@ function AnimatedVimEditor({ program, filename, delay = 1000, speed = 75 }: Anim
 					{displayAll && (
 						<span style={{flex: '0.5', textAlign: 'right'}}>All</span>
 					)}
-				</StatusBar>
-			</Pre>
+				</TextEditorStatusBar>
+			</TextEditorPre>
 		</>
 	);
 }
