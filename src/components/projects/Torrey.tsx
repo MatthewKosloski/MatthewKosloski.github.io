@@ -1,140 +1,42 @@
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { AnimatedVimEditor, Project } from '../';
-import { TokenType, Program } from '../AnimatedVimEditor';
+import { Project } from '../';
+import AnimatedVimEditor, { TokenType } from '../AnimatedVimEditor';
 import { SubtleLinkExternal } from '../SubtleLink';
 import { BaseProjectProps } from './types';
 
-const program: Program = [
-	{
-		lexeme: '(',
-		type: TokenType.Punctuation,
-		id: uuidv4(),
-	},
-	{
-		lexeme: 'println',
-		type: TokenType.Keyword,
-		id: uuidv4(),
-	},
-	{
-		lexeme: '\n',
-		type: TokenType.NewLine,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ' ',
-		type: TokenType.Whitespace,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ' ',
-		type: TokenType.Whitespace,
-		id: uuidv4(),
-	},
-	{
-		lexeme: '(',
-		type: TokenType.Punctuation,
-		id: uuidv4(),
-	},
-	{
-		lexeme: 'let',
-		type: TokenType.Keyword,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ' ',
-		type: TokenType.Whitespace,
-		id: uuidv4(),
-	},
-	{
-		lexeme: '[',
-		type: TokenType.Punctuation,
-		id: uuidv4(),
-	},
-	{
-		lexeme: 'a',
-		type: TokenType.Identifier,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ' ',
-		type: TokenType.Whitespace,
-		id: uuidv4(),
-	},
-	{
-		lexeme: '42',
-		type: TokenType.Integer,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ']',
-		type: TokenType.Punctuation,
-		id: uuidv4(),
-	},
-	{
-		lexeme: '\n',
-		type: TokenType.NewLine,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ' ',
-		type: TokenType.Whitespace,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ' ',
-		type: TokenType.Whitespace,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ' ',
-		type: TokenType.Whitespace,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ' ',
-		type: TokenType.Whitespace,
-		id: uuidv4(),
-	},
-	{
-		lexeme: '(',
-		type: TokenType.Punctuation,
-		id: uuidv4(),
-	},
-	{
-		lexeme: '-',
-		type: TokenType.Operator,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ' ',
-		type: TokenType.Whitespace,
-		id: uuidv4(),
-	},
-	{
-		lexeme: 'a',
-		type: TokenType.Identifier,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ')',
-		type: TokenType.Punctuation,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ')',
-		type: TokenType.Punctuation,
-		id: uuidv4(),
-	},
-	{
-		lexeme: ')',
-		type: TokenType.Punctuation,
-		id: uuidv4(),
-	},
-];
-
 function FeaturedComponent() {
-	return <AnimatedVimEditor program={program} />;
+	return (
+		<AnimatedVimEditor
+			filename="torrey.program"
+			tokens={[
+				{ lexeme: '(', type: TokenType.Punctuation },
+				{ lexeme: 'println', type: TokenType.Keyword },
+				{ lexeme: '\n', type: TokenType.NewLine },
+				{ lexeme: ' ', type: TokenType.Whitespace },
+				{ lexeme: ' ', type: TokenType.Whitespace },
+				{ lexeme: '(', type: TokenType.Punctuation },
+				{ lexeme: 'let', type: TokenType.Keyword },
+				{ lexeme: ' ', type: TokenType.Whitespace },
+				{ lexeme: '[', type: TokenType.Punctuation },
+				{ lexeme: 'a', type: TokenType.Identifier },
+				{ lexeme: ' ', type: TokenType.Whitespace },
+				{ lexeme: '42', type: TokenType.Integer },
+				{ lexeme: ']', type: TokenType.Punctuation },
+				{ lexeme: '\n', type: TokenType.NewLine },
+				{ lexeme: ' ', type: TokenType.Whitespace },
+				{ lexeme: ' ', type: TokenType.Whitespace },
+				{ lexeme: ' ', type: TokenType.Whitespace },
+				{ lexeme: ' ', type: TokenType.Whitespace },
+				{ lexeme: '(', type: TokenType.Punctuation },
+				{ lexeme: '-', type: TokenType.Operator },
+				{ lexeme: ' ', type: TokenType.Whitespace },
+				{ lexeme: 'a', type: TokenType.Identifier },
+				{ lexeme: ')', type: TokenType.Punctuation },
+				{ lexeme: ')', type: TokenType.Punctuation },
+				{ lexeme: ')', type: TokenType.Punctuation },
+			]}
+		/>
+	);
 }
 
 function TorreyProject({ featureOnLeft = false }: BaseProjectProps) {
