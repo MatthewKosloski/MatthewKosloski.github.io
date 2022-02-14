@@ -78,7 +78,7 @@ function Project({
 						</Flex>
 					) : null}
 				</ContentGridCol>
-				<FeaturedComponentGridCol xs={12} lg={6} alignCenterXs>
+				<FeaturedComponentGridCol xs={12} lg={6}>
 					{featuredComponent}
 				</FeaturedComponentGridCol>
 			</Grid>
