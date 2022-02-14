@@ -7,7 +7,7 @@ import { BaseProjectProps } from './types';
 function FeaturedComponent() {
 	return (
 		<AnimatedVimEditor
-			filename="torrey.program"
+			filename="program.torrey"
 			tokens={[
 				{ lexeme: '(', type: TokenType.Punctuation },
 				{ lexeme: 'println', type: TokenType.Keyword },
