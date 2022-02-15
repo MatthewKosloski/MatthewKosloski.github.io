@@ -139,7 +139,7 @@ function Renderer({
 				if (done) {
 					clearInterval(interval);
 					setEditorCommand('');
-					setEditorStatusText(`"${filename}" [New] ${rows}L, ${numChars} written`);
+					setEditorStatusText(`"${filename}" [New] ${rows}L, ${numChars}C written`);
 				} else if (value) {
 					setEditorCommand(editorCommand + value);
 				}
