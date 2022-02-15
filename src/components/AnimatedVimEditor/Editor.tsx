@@ -5,11 +5,11 @@ import { EditorDatum, TokenType } from './types';
 interface EditorProps {
 	isPlaying: boolean;
 	data: EditorDatum[];
-	filename: string;
-	lineNumbers: string[];
+	lineNumbers: { lineNumber: string; id: string; }[];
 	rows: number;
 	cols: number;
 	statusText: string;
+	command: string;
 	highlights?: Map<TokenType, string>;
 	fallbackHighlight?: string;
 }
@@ -17,9 +17,9 @@ interface EditorProps {
 const Editor: React.FunctionComponent<EditorProps> = ({
 	isPlaying,
 	data,
-	filename,
 	lineNumbers,
 	rows,
+	command,
 	cols,
 	statusText,
 	highlights,
@@ -29,8 +29,8 @@ const Editor: React.FunctionComponent<EditorProps> = ({
 		<Pre>
 			<Code>
 				<LineNumbers>
-					{lineNumbers.map((lineNumber) => (
-						<span>{lineNumber}</span>
+					{lineNumbers.map(({ lineNumber, id}) => (
+						<span key={id}>{lineNumber}</span>
 					))}
 				</LineNumbers>
 				<TextArea>
@@ -46,7 +46,14 @@ const Editor: React.FunctionComponent<EditorProps> = ({
 				</TextArea>
 			</Code>
 			<StatusBar>
-				<StatusText>{statusText}</StatusText>
+				{command ? (
+					<StatusText>
+						{command}
+						<Cursor />
+					</StatusText>
+				) : (
+					<StatusText>{statusText}</StatusText>
+				)}
 				<StatusPosition>
 					{rows}, {cols}
 				</StatusPosition>
@@ -111,7 +118,7 @@ const StatusBar = styled.div`
 `;
 
 const StatusText = styled.span`
-	flex: 2;
+	flex: 3;
 `;
 
 const StatusPosition = styled.span`

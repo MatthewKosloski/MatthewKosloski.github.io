@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import contentGenerator from './editorContentGenerator';
 import Editor from './Editor';
 import { EditorDatum, Token } from './types';
@@ -7,6 +8,7 @@ interface RendererProps {
 	filename: string;
 	tokens: Token[];
 	speed?: number;
+	commandSpeed?: number;
 	delay?: number;
 }
 
@@ -18,21 +20,34 @@ function getNumberOfLinesFromTokens(tokens: Token[]) {
 	return numberOfLines;
 }
 
+function* writeCommandTextGenerator(): Generator<string, undefined> {
+	const str = ':w';
+	let currentIndex = 0;
+	while (true) {
+		if (currentIndex >= str.length) return;
+		yield str[currentIndex++];
+	}
+}
+
 function Renderer({
 	filename,
 	tokens,
 	speed = 75,
+	commandSpeed = 350,
 	delay = 1000,
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const contentGeneratorRef = React.useRef<Generator<EditorDatum, undefined>>();
-
 	// prettier-ignore
-	const [editorLineNumbers, setEditorLineNumbers] = React.useState<string[]>([]);
+	const writeCommandTextGeneratorRef = React.useRef<Generator<string, undefined>>();
+	// prettier-ignore
+	const [editorLineNumbers, setEditorLineNumbers] = React.useState<{ lineNumber: string; id: string; }[]>([]);
 	const [editorData, setEditorData] = React.useState<EditorDatum[]>([]);
 	const [editorStatusText, setEditorStatusText] = React.useState<string>('');
+	const [editorCommand, setEditorCommand] = React.useState<string>('');
 	const [cols, setCols] = React.useState<number>(1);
 	const [rows, setRows] = React.useState<number>(1);
+	const [numChars, setNumChars] = React.useState<number>(0);
 	const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
 
 	React.useEffect(() => {
@@ -41,7 +56,10 @@ function Renderer({
 
 		const initialEditorLineNumbers = [];
 		for (let i = 0; i < lineNumberCapacity; i++) {
-			initialEditorLineNumbers.push(i === 0 ? '1' : '~');
+			initialEditorLineNumbers.push({
+				lineNumber: i === 0 ? '1' : '~',
+				id: uuidv4()
+			});
 		}
 		setEditorLineNumbers(initialEditorLineNumbers);
 	}, [tokens, setEditorLineNumbers]);
@@ -70,11 +88,15 @@ function Renderer({
 						setRows(rows + 1);
 						setEditorLineNumbers([
 							...editorLineNumbers.slice(0, rows),
-							String(rows + 1),
+							{
+								lineNumber: String(rows + 1),
+								id: uuidv4()
+							},
 							...editorLineNumbers.slice(rows + 1),
 						]);
 					} else {
 						setCols(cols + 1);
+						setNumChars(numChars + 1);
 					}
 
 					setEditorData([...editorData, value]);
@@ -96,17 +118,48 @@ function Renderer({
 		setCols,
 		editorLineNumbers,
 		setEditorLineNumbers,
+		numChars,
+		setNumChars
 	]);
 
 	React.useEffect(() => {
+		if (editorData.length) {
+			writeCommandTextGeneratorRef.current = writeCommandTextGenerator();
+		}
+	}, [editorData]);
+
+	React.useEffect(() => {
+		let interval: NodeJS.Timer;
+
 		if (isPlaying) {
 			setEditorStatusText('-- INSERT --');
 		} else if (editorData.length) {
-			setEditorStatusText(':wq');
+			interval = setInterval(function () {
+				const { value, done } = writeCommandTextGeneratorRef.current!.next();
+				if (done) {
+					clearInterval(interval);
+					setEditorCommand('');
+					setEditorStatusText(`"${filename}" [New] ${rows}L, ${numChars} written`);
+				} else if (value) {
+					setEditorCommand(editorCommand + value);
+				}
+			}, commandSpeed);
 		} else {
 			setEditorStatusText(`"${filename}" [New File]`);
 		}
-	}, [isPlaying, setEditorStatusText, editorData, filename]);
+
+		return () => clearInterval(interval);
+	}, [
+		isPlaying,
+		setEditorStatusText,
+		editorData,
+		filename,
+		editorCommand,
+		setEditorCommand,
+		commandSpeed,
+		rows,
+		numChars
+	]);
 
 	function cleanup() {
 		clearInterval(intervalRef.current);
@@ -116,12 +169,12 @@ function Renderer({
 	return (
 		<Editor
 			isPlaying={isPlaying}
-			filename={filename}
 			lineNumbers={editorLineNumbers}
 			rows={rows}
 			cols={cols}
 			statusText={editorStatusText}
 			data={editorData}
+			command={editorCommand}
 		/>
 	);
 }
