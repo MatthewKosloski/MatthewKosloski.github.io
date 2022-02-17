@@ -37,12 +37,14 @@ const Editor: React.FunctionComponent<EditorProps> = ({
 				</LineNumbers>
 				<TextArea>
 					{data.map(({ id, char, tokenType }) => (
-						<span
+						<HighlightedCharacter
 							key={id}
-							style={{ color: highlights?.get(tokenType) ?? fallbackHighlight }}
+							highlights={highlights!}
+							fallbackHighlight={fallbackHighlight!}
+							tokenType={tokenType}
 						>
 							{char}
-						</span>
+						</HighlightedCharacter>
 					))}
 					{isPlaying && <Cursor />}
 				</TextArea>
@@ -134,6 +136,16 @@ const StatusPosition = styled.span`
 const StatusAll = styled.span`
 	flex: 0.5;
 	text-align: right;
+`;
+
+const HighlightedCharacter = styled.span<{
+	highlights: Map<TokenType, string>;
+	fallbackHighlight: string;
+	tokenType: TokenType;
+}>`
+	${({ highlights, fallbackHighlight, tokenType }) => css`
+		color: ${highlights?.get(tokenType) ?? fallbackHighlight};
+	`}
 `;
 
 export default Editor;
