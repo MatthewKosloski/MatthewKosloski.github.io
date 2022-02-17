@@ -77,7 +77,6 @@ defaultHighlights.set(TokenType.Integer, '#d08770');
 defaultHighlights.set(TokenType.Keyword, '#b48ead');
 defaultHighlights.set(TokenType.Operator, '#c0c5ce');
 defaultHighlights.set(TokenType.Comment, '#65737e');
-defaultHighlights.set(TokenType.String, '#a3be8c');
 
 Editor.defaultProps = {
 	highlights: defaultHighlights,
