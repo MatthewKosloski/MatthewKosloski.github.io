@@ -36,7 +36,7 @@ function Renderer({
 	speed = 75,
 	commandSpeed = 350,
 	delay = 1000,
-	height = '400px'
+	height = '400px',
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const contentGeneratorRef = React.useRef<Generator<EditorDatum, undefined>>();
@@ -60,7 +60,7 @@ function Renderer({
 		for (let i = 0; i < lineNumberCapacity; i++) {
 			initialEditorLineNumbers.push({
 				lineNumber: i === 0 ? '1' : '~',
-				id: uuidv4()
+				id: uuidv4(),
 			});
 		}
 		setEditorLineNumbers(initialEditorLineNumbers);
@@ -92,7 +92,7 @@ function Renderer({
 							...editorLineNumbers.slice(0, rows),
 							{
 								lineNumber: String(rows + 1),
-								id: uuidv4()
+								id: uuidv4(),
 							},
 							...editorLineNumbers.slice(rows + 1),
 						]);
@@ -121,7 +121,7 @@ function Renderer({
 		editorLineNumbers,
 		setEditorLineNumbers,
 		numChars,
-		setNumChars
+		setNumChars,
 	]);
 
 	React.useEffect(() => {
@@ -141,7 +141,9 @@ function Renderer({
 				if (done) {
 					clearInterval(interval);
 					setEditorCommand('');
-					setEditorStatusText(`"${filename}" [New] ${rows}L, ${numChars}C written`);
+					setEditorStatusText(
+						`"${filename}" [New] ${rows}L, ${numChars}C written`
+					);
 				} else if (value) {
 					setEditorCommand(editorCommand + value);
 				}
@@ -160,7 +162,7 @@ function Renderer({
 		setEditorCommand,
 		commandSpeed,
 		rows,
-		numChars
+		numChars,
 	]);
 
 	function cleanup() {

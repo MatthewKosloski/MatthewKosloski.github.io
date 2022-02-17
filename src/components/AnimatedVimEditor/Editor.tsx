@@ -5,7 +5,7 @@ import { EditorDatum, TokenType } from './types';
 interface EditorProps {
 	isPlaying: boolean;
 	data: EditorDatum[];
-	lineNumbers: { lineNumber: string; id: string; }[];
+	lineNumbers: { lineNumber: string; id: string }[];
 	rows: number;
 	cols: number;
 	statusText: string;
@@ -31,7 +31,7 @@ const Editor: React.FunctionComponent<EditorProps> = ({
 		<Pre height={height}>
 			<Code>
 				<LineNumbers>
-					{lineNumbers.map(({ lineNumber, id}) => (
+					{lineNumbers.map(({ lineNumber, id }) => (
 						<span key={id}>{lineNumber}</span>
 					))}
 				</LineNumbers>
@@ -82,7 +82,7 @@ Editor.defaultProps = {
 	fallbackHighlight: '#fff',
 };
 
-const Pre = styled.pre<{ height: string; }>`
+const Pre = styled.pre<{ height: string }>`
 	${({ height }) => css`
 		display: flex;
 		flex-direction: column;
