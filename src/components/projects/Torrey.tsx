@@ -1,41 +1,45 @@
 import React from 'react';
 import { Project } from '../';
+import AnimatedTerminal from '../AnimatedTerminal';
 import AnimatedVimEditor, { TokenType } from '../AnimatedVimEditor';
 import { SubtleLinkExternal } from '../SubtleLink';
 import { BaseProjectProps } from './types';
 
 function FeaturedComponent() {
 	return (
-		<AnimatedVimEditor
-			filename="program.torrey"
-			tokens={[
-				{ lexeme: '(', type: TokenType.Punctuation },
-				{ lexeme: 'println', type: TokenType.Keyword },
-				{ lexeme: '\n', type: TokenType.NewLine },
-				{ lexeme: ' ', type: TokenType.Whitespace },
-				{ lexeme: ' ', type: TokenType.Whitespace },
-				{ lexeme: '(', type: TokenType.Punctuation },
-				{ lexeme: 'let', type: TokenType.Keyword },
-				{ lexeme: ' ', type: TokenType.Whitespace },
-				{ lexeme: '[', type: TokenType.Punctuation },
-				{ lexeme: 'a', type: TokenType.Identifier },
-				{ lexeme: ' ', type: TokenType.Whitespace },
-				{ lexeme: '42', type: TokenType.Integer },
-				{ lexeme: ']', type: TokenType.Punctuation },
-				{ lexeme: '\n', type: TokenType.NewLine },
-				{ lexeme: ' ', type: TokenType.Whitespace },
-				{ lexeme: ' ', type: TokenType.Whitespace },
-				{ lexeme: ' ', type: TokenType.Whitespace },
-				{ lexeme: ' ', type: TokenType.Whitespace },
-				{ lexeme: '(', type: TokenType.Punctuation },
-				{ lexeme: '-', type: TokenType.Operator },
-				{ lexeme: ' ', type: TokenType.Whitespace },
-				{ lexeme: 'a', type: TokenType.Identifier },
-				{ lexeme: ')', type: TokenType.Punctuation },
-				{ lexeme: ')', type: TokenType.Punctuation },
-				{ lexeme: ')', type: TokenType.Punctuation },
-			]}
-		/>
+		<>
+			<AnimatedVimEditor
+				filename="program.torrey"
+				tokens={[
+					{ lexeme: '(', type: TokenType.Punctuation },
+					{ lexeme: 'println', type: TokenType.Keyword },
+					{ lexeme: '\n', type: TokenType.NewLine },
+					{ lexeme: ' ', type: TokenType.Whitespace },
+					{ lexeme: ' ', type: TokenType.Whitespace },
+					{ lexeme: '(', type: TokenType.Punctuation },
+					{ lexeme: 'let', type: TokenType.Keyword },
+					{ lexeme: ' ', type: TokenType.Whitespace },
+					{ lexeme: '[', type: TokenType.Punctuation },
+					{ lexeme: 'a', type: TokenType.Identifier },
+					{ lexeme: ' ', type: TokenType.Whitespace },
+					{ lexeme: '42', type: TokenType.Integer },
+					{ lexeme: ']', type: TokenType.Punctuation },
+					{ lexeme: '\n', type: TokenType.NewLine },
+					{ lexeme: ' ', type: TokenType.Whitespace },
+					{ lexeme: ' ', type: TokenType.Whitespace },
+					{ lexeme: ' ', type: TokenType.Whitespace },
+					{ lexeme: ' ', type: TokenType.Whitespace },
+					{ lexeme: '(', type: TokenType.Punctuation },
+					{ lexeme: '-', type: TokenType.Operator },
+					{ lexeme: ' ', type: TokenType.Whitespace },
+					{ lexeme: 'a', type: TokenType.Identifier },
+					{ lexeme: ')', type: TokenType.Punctuation },
+					{ lexeme: ')', type: TokenType.Punctuation },
+					{ lexeme: ')', type: TokenType.Punctuation },
+				]}
+			/>
+			<AnimatedTerminal />
+		</>
 	);
 }
 

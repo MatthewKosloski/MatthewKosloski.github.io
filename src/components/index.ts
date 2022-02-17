@@ -21,6 +21,7 @@ import { default as Masonry } from './Masonry';
 import { SubtleLinkInternal, SubtleLinkExternal } from './SubtleLink';
 import { default as Posts } from './Posts';
 import { default as AnimatedVimEditor } from './AnimatedVimEditor';
+import { default as AnimatedTerminal } from './AnimatedTerminal';
 
 export {
 	Grid,
@@ -48,4 +49,5 @@ export {
 	Masonry,
 	Posts,
 	AnimatedVimEditor,
+	AnimatedTerminal
 };
