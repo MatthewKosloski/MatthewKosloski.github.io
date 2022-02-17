@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { EditorDatum, TokenType } from './types';
 
 interface EditorProps {
@@ -10,6 +10,7 @@ interface EditorProps {
 	cols: number;
 	statusText: string;
 	command: string;
+	height: string;
 	highlights?: Map<TokenType, string>;
 	fallbackHighlight?: string;
 }
@@ -22,11 +23,12 @@ const Editor: React.FunctionComponent<EditorProps> = ({
 	command,
 	cols,
 	statusText,
+	height,
 	highlights,
 	fallbackHighlight,
 }: EditorProps) => {
 	return (
-		<Pre>
+		<Pre height={height}>
 			<Code>
 				<LineNumbers>
 					{lineNumbers.map(({ lineNumber, id}) => (
@@ -73,21 +75,25 @@ defaultHighlights.set(TokenType.Integer, '#d08770');
 defaultHighlights.set(TokenType.Keyword, '#b48ead');
 defaultHighlights.set(TokenType.Operator, '#c0c5ce');
 defaultHighlights.set(TokenType.Comment, '#65737e');
+defaultHighlights.set(TokenType.String, '#a3be8c');
 
 Editor.defaultProps = {
 	highlights: defaultHighlights,
 	fallbackHighlight: '#fff',
 };
 
-const Pre = styled.pre`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	height: 325px;
+const Pre = styled.pre<{ height: string; }>`
+	${({ height }) => css`
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: ${height};
+	`}
 `;
 
 const Code = styled.code`
 	display: flex;
+	overflow-y: auto;
 `;
 
 const LineNumbers = styled.div`
