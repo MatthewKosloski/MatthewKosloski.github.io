@@ -86,6 +86,7 @@ const Pre = styled.pre`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	background-color: #2b303b;
 	height: 400px;
 `;
 
@@ -98,7 +99,7 @@ const LineNumbers = styled.div`
 	display: flex;
 	flex-direction: column;
 	flex-basis: 5%;
-	color: #c0c5ce;
+	color: #6a7580;
 `;
 
 const TextArea = styled.div`
