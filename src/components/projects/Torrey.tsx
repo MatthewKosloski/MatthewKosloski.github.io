@@ -38,7 +38,17 @@ function FeaturedComponent() {
 					{ lexeme: ')', type: TokenType.Punctuation },
 				]}
 			/>
-			<AnimatedTerminal />
+			<AnimatedTerminal
+				commands={[
+					{
+						cmd: 'javac -jar torreyc.jar -i program.torrey',
+						delayAfterCmd: 500,
+						outputLines: [],
+					},
+					{ cmd: './a.out', delayAfterCmd: 0, outputLines: ['-42'] },
+				]}
+				delay={5500}
+			/>
 		</>
 	);
 }
