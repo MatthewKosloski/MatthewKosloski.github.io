@@ -10,6 +10,7 @@ function FeaturedComponent() {
 		<>
 			<AnimatedVimEditor
 				filename="program.torrey"
+				preStyles={{height: '250px', borderRadius: '8px 8px 0 0'}}
 				tokens={[
 					{ lexeme: '(', type: TokenType.Punctuation },
 					{ lexeme: 'println', type: TokenType.Keyword },
@@ -39,15 +40,16 @@ function FeaturedComponent() {
 				]}
 			/>
 			<AnimatedTerminal
+				delay={5500}
+				preStyles={{height: '125px', borderRadius: '0 0 8px 8px'}}
 				commands={[
 					{
-						cmd: 'javac -jar torreyc.jar -i program.torrey',
+						cmd: 'javac -jar torreyc.jar -i program.torrey -o a.out',
 						delayAfterCmd: 500,
 						outputLines: [],
 					},
 					{ cmd: './a.out', delayAfterCmd: 0, outputLines: ['-42'] },
 				]}
-				delay={5500}
 			/>
 		</>
 	);
