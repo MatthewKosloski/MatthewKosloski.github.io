@@ -61,7 +61,6 @@ const Editor: React.FunctionComponent<EditorProps> = ({
 				<StatusPosition>
 					{rows}, {cols}
 				</StatusPosition>
-				<StatusAll>All</StatusAll>
 			</StatusBar>
 		</Pre>
 	);
@@ -129,10 +128,6 @@ const StatusText = styled.span`
 `;
 
 const StatusPosition = styled.span`
-	flex: 0.5;
-`;
-
-const StatusAll = styled.span`
 	flex: 0.5;
 	text-align: right;
 `;
