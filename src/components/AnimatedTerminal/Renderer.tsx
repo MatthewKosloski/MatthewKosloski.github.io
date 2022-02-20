@@ -15,7 +15,12 @@ export interface RendererProps {
 	preStyles?: React.CSSProperties;
 }
 
-function Renderer({ commands, preStyles = {}, speed = 45, delay = 1000 }: RendererProps) {
+function Renderer({
+	commands,
+	preStyles = {},
+	speed = 45,
+	delay = 1000,
+}: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const timeoutRef = React.useRef<number>();
 	const iterator = React.useRef<Generator<TerminalContent, undefined>>();

@@ -17,10 +17,8 @@ function renderContent(content: TerminalContent[]) {
 						<span>{'\n'}</span>
 					) : null}
 					{isFirstCharOfCmd && isCommand ? (
-						<PromptSign key={promptSignKey}>
-							${' '}
-						</PromptSign>
-					): null}
+						<PromptSign key={promptSignKey}>$ </PromptSign>
+					) : null}
 					<span key={id}>
 						{text}
 						{isCurrent && isCommand ? <Cursor /> : null}
