@@ -40,8 +40,7 @@ function Renderer({
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const contentGeneratorRef = React.useRef<Generator<EditorDatum, undefined>>();
-	// prettier-ignore
-	const writeCommandTextGeneratorRef = React.useRef<Generator<string, undefined>>();
+	const iteratorRef = React.useRef<Generator<string, undefined>>();
 	// prettier-ignore
 	const [editorLineNumbers, setEditorLineNumbers] = React.useState<{ lineNumber: string; id: string; }[]>([]);
 	const [editorData, setEditorData] = React.useState<EditorDatum[]>([]);
@@ -128,7 +127,7 @@ function Renderer({
 
 	React.useEffect(() => {
 		if (editorData.length) {
-			writeCommandTextGeneratorRef.current = writeCommandTextGenerator();
+			iteratorRef.current = writeCommandTextGenerator();
 		}
 	}, [editorData]);
 
@@ -139,7 +138,7 @@ function Renderer({
 			setEditorStatusText('-- INSERT --');
 		} else if (editorData.length) {
 			interval = setInterval(function () {
-				const { value, done } = writeCommandTextGeneratorRef.current!.next();
+				const { value, done } = iteratorRef.current!.next();
 				if (done) {
 					clearInterval(interval);
 					setEditorCommand('');
