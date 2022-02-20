@@ -53,10 +53,12 @@ function* terminalContentGenerator(
 			yield {
 				isCurrent: false,
 				isCommand: false,
+				// Since this is an output line and not a substring
+				// of a command, these booleans are false
+				isFirstCharOfCmd: false,
+				isLastCharOfCmd: false,
 				text: currentOutputLine,
 				id: uuidv4(),
-				isFirstCharOfCmd,
-				isLastCharOfCmd,
 				delayAfterCmd,
 			};
 		} else {
