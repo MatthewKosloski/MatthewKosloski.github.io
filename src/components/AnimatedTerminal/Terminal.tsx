@@ -21,11 +21,20 @@ function renderContent(content: TerminalContent[]) {
 
 function Terminal({ content }: TerminalProps) {
 	return (
-		<pre style={{ height: '400px' }}>
-			<code style={{ color: 'white' }}>{renderContent(content)}</code>
-		</pre>
+		<Pre>
+			<Code>{renderContent(content)}</Code>
+		</Pre>
 	);
 }
+
+const Pre = styled.pre`
+	background-color: #000;
+	height: 150px;
+`;
+
+const Code = styled.code`
+	color: #fff;
+`;
 
 const Cursor = styled.span`
 	width: 9px;
