@@ -52,9 +52,11 @@ function Renderer({
 	const [numChars, setNumChars] = React.useState<number>(0);
 	const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
 
+	const trailingNewLines = 3;
+
 	React.useEffect(() => {
 		const numberOfLines = getNumberOfLinesFromTokens(tokens);
-		const lineNumberCapacity = numberOfLines + 3;
+		const lineNumberCapacity = numberOfLines + trailingNewLines;
 
 		const initialEditorLineNumbers = [];
 		for (let i = 0; i < lineNumberCapacity; i++) {
