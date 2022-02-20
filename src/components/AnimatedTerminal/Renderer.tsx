@@ -12,9 +12,10 @@ export interface RendererProps {
 	commands: Command[];
 	speed?: number;
 	delay?: number;
+	preStyles?: React.CSSProperties;
 }
 
-function Renderer({ commands, speed = 45, delay = 1000 }: RendererProps) {
+function Renderer({ commands, preStyles = {}, speed = 45, delay = 1000 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const timeoutRef = React.useRef<number>();
 	const iterator = React.useRef<Generator<TerminalContent, undefined>>();
@@ -90,7 +91,7 @@ function Renderer({ commands, speed = 45, delay = 1000 }: RendererProps) {
 	return (
 		<>
 			{/* <button onClick={handleReplay} disabled={isPlaying}>Replay</button> */}
-			<Terminal content={content} />
+			<Terminal content={content} preStyles={preStyles} />
 		</>
 	);
 }
