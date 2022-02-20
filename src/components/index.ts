@@ -49,5 +49,5 @@ export {
 	Masonry,
 	Posts,
 	AnimatedVimEditor,
-	AnimatedTerminal
+	AnimatedTerminal,
 };
