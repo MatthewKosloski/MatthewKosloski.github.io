@@ -10,7 +10,7 @@ interface EditorProps {
 	cols: number;
 	statusText: string;
 	command: string;
-	height: string;
+	preStyles?: React.CSSProperties;
 	highlights?: Map<TokenType, string>;
 	fallbackHighlight?: string;
 }
@@ -23,12 +23,12 @@ const Editor: React.FunctionComponent<EditorProps> = ({
 	command,
 	cols,
 	statusText,
-	height,
+	preStyles,
 	highlights,
 	fallbackHighlight,
 }: EditorProps) => {
 	return (
-		<Pre height={height}>
+		<Pre style={preStyles}>
 			<Code>
 				<LineNumbers>
 					{lineNumbers.map(({ lineNumber, id }) => (
@@ -82,13 +82,11 @@ Editor.defaultProps = {
 	fallbackHighlight: '#fff',
 };
 
-const Pre = styled.pre<{ height: string }>`
-	${({ height }) => css`
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		height: ${height};
-	`}
+const Pre = styled.pre`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 400px;
 `;
 
 const Code = styled.code`

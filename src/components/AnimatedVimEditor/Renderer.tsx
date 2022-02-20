@@ -10,7 +10,7 @@ interface RendererProps {
 	speed?: number;
 	commandSpeed?: number;
 	delay?: number;
-	height?: string;
+	preStyles?: React.CSSProperties;
 }
 
 function getNumberOfLinesFromTokens(tokens: Token[]) {
@@ -36,7 +36,7 @@ function Renderer({
 	speed = 75,
 	commandSpeed = 350,
 	delay = 1000,
-	height = '400px',
+	preStyles = {},
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const contentGeneratorRef = React.useRef<Generator<EditorDatum, undefined>>();
@@ -180,7 +180,7 @@ function Renderer({
 			statusText={editorStatusText}
 			data={editorData}
 			command={editorCommand}
-			height={height}
+			preStyles={preStyles}
 		/>
 	);
 }
