@@ -53,36 +53,46 @@ function Renderer({
 
 			if (content.length > 0 && value) {
 				clearInterval(intervalRef.current);
-				timeoutRef.current = window.setTimeout(() => {
-					setContent([
-						...content.slice(0, content.length - 1),
-						{
-							// Make the last item not current
-							...content[content.length - 1],
-							isCurrent: false,
-						},
-						{
-							...value,
-							isCurrent: true,
-						},
-					]);
+				timeoutRef.current = window.setTimeout(
+					() => {
+						setContent([
+							...content.slice(0, content.length - 1),
+							{
+								// Make the last item not current
+								...content[content.length - 1],
+								isCurrent: false,
+							},
+							{
+								...value,
+								isCurrent: true,
+							},
+						]);
 
-					clearTimeout(timeoutRef.current);
-					intervalRef.current = window.setInterval(fetchNextValue, speed);
-				}, value?.isLastCharOfCmd && value.delayAfterCmd ? value.delayAfterCmd : 0);
+						clearTimeout(timeoutRef.current);
+						intervalRef.current = window.setInterval(fetchNextValue, speed);
+					},
+					value?.isLastCharOfCmd && value.delayAfterCmd
+						? value.delayAfterCmd
+						: 0
+				);
 			} else if (value) {
 				clearInterval(intervalRef.current);
-				timeoutRef.current = window.setTimeout(() => {
-					setContent([
-						...content,
-						{
-							...value,
-							isCurrent: true,
-						},
-					]);
-					clearTimeout(timeoutRef.current);
-					intervalRef.current = window.setInterval(fetchNextValue, speed);
-				}, value?.isLastCharOfCmd && value.delayAfterCmd ? value.delayAfterCmd : 0);
+				timeoutRef.current = window.setTimeout(
+					() => {
+						setContent([
+							...content,
+							{
+								...value,
+								isCurrent: true,
+							},
+						]);
+						clearTimeout(timeoutRef.current);
+						intervalRef.current = window.setInterval(fetchNextValue, speed);
+					},
+					value?.isLastCharOfCmd && value.delayAfterCmd
+						? value.delayAfterCmd
+						: 0
+				);
 			}
 		}, speed);
 
