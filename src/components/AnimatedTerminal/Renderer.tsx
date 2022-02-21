@@ -51,11 +51,8 @@ function Renderer({
 				return;
 			}
 
-			if (content.length > 0 && value?.isLastCharOfCmd && value.delayAfterCmd) {
+			if (content.length > 0 && value) {
 				clearInterval(intervalRef.current);
-				// This is the last character of the command, so we will
-				// delay for delayAfterCmd milliseconds before recreating
-				// the interval.
 				timeoutRef.current = window.setTimeout(() => {
 					setContent([
 						...content.slice(0, content.length - 1),
@@ -72,25 +69,9 @@ function Renderer({
 
 					clearTimeout(timeoutRef.current);
 					intervalRef.current = window.setInterval(fetchNextValue, speed);
-				}, value.delayAfterCmd);
-			} else if (content.length > 0 && value) {
-				setContent([
-					...content.slice(0, content.length - 1),
-					{
-						// Make the last item not current
-						...content[content.length - 1],
-						isCurrent: false,
-					},
-					{
-						...value,
-						isCurrent: true,
-					},
-				]);
-			} else if (value?.isLastCharOfCmd && value.delayAfterCmd) {
+				}, value?.isLastCharOfCmd && value.delayAfterCmd ? value.delayAfterCmd : 0);
+			} else if (value) {
 				clearInterval(intervalRef.current);
-				// This is the last character of the command, so we will
-				// delay for delayAfterCmd milliseconds before recreating
-				// the interval.
 				timeoutRef.current = window.setTimeout(() => {
 					setContent([
 						...content,
@@ -101,15 +82,7 @@ function Renderer({
 					]);
 					clearTimeout(timeoutRef.current);
 					intervalRef.current = window.setInterval(fetchNextValue, speed);
-				}, value.delayAfterCmd);
-			} else if (value) {
-				setContent([
-					...content,
-					{
-						...value,
-						isCurrent: true,
-					},
-				]);
+				}, value?.isLastCharOfCmd && value.delayAfterCmd ? value.delayAfterCmd : 0);
 			}
 		}, speed);
 
