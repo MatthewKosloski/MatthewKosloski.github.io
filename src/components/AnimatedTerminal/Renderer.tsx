@@ -66,10 +66,10 @@ function Renderer({
 						},
 						{
 							...value,
-							isCurrent: true
+							isCurrent: true,
 						},
 					]);
-					
+
 					clearTimeout(timeoutRef.current);
 					intervalRef.current = window.setInterval(fetchNextValue, speed);
 				}, value.delayAfterCmd);
@@ -83,7 +83,7 @@ function Renderer({
 					},
 					{
 						...value,
-						isCurrent: true
+						isCurrent: true,
 					},
 				]);
 			} else if (value?.isLastCharOfCmd && value.delayAfterCmd) {
@@ -96,8 +96,8 @@ function Renderer({
 						...content,
 						{
 							...value,
-							isCurrent: true
-						}
+							isCurrent: true,
+						},
 					]);
 					clearTimeout(timeoutRef.current);
 					intervalRef.current = window.setInterval(fetchNextValue, speed);
@@ -107,8 +107,8 @@ function Renderer({
 					...content,
 					{
 						...value,
-						isCurrent: true
-					}
+						isCurrent: true,
+					},
 				]);
 			}
 		}, speed);

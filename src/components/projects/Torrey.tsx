@@ -82,17 +82,19 @@ function TorreyProject({ featureOnLeft = false }: BaseProjectProps) {
 				<a href="https://github.com/MatthewKosloski/torrey#grammar">here</a>.
 			</p>
 			<p>
-				Language features include: type inference, integer and boolean primitive expressions,
-				a unary minus expression, binary arithmetic and relational expressions,
-				standard output, lexically-scoped variables, if and if-else expressions,
-				and logical expressions.
+				Language features include: type inference, integer and boolean primitive
+				expressions, a unary minus expression, binary arithmetic and relational
+				expressions, standard output, lexically-scoped variables, if and if-else
+				expressions, and logical expressions.
 			</p>
 			<p>
-				Torrey is implemented as a compiler in Java and has a small C
-				runtime. After building an{' '}
+				Torrey is implemented as a compiler in Java and has a small C runtime.
+				After building an{' '}
 				<a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">
 					abstract syntax tree
-				</a> (AST) of the program, the compiler translates the AST to an intermediate representation, or IR.
+				</a>{' '}
+				(AST) of the program, the compiler translates the AST to an intermediate
+				representation, or IR.
 			</p>
 			<p>
 				The IR can then be compiled down to one or more target languages. At the
@@ -100,8 +102,10 @@ function TorreyProject({ featureOnLeft = false }: BaseProjectProps) {
 				additional targets can be added at any time.
 			</p>
 			<p>
-				<em>This project is actively maintained and additional language features and
-				targets are anticipated.</em>
+				<em>
+					This project is actively maintained and additional language features
+					and targets are anticipated.
+				</em>
 			</p>
 		</Project>
 	);
