@@ -74,19 +74,34 @@ function TorreyProject({ featureOnLeft = false }: BaseProjectProps) {
 			featureOnLeft={featureOnLeft}
 		>
 			<p>
-				Torrey is a Lisp-like programming language that type-checks at
-				compile-time and compiles to 64-bit x86 assembly code.
+				Torrey is a novel, Lisp-like programming language. The{' '}
+				<a href="https://en.wikipedia.org/wiki/Context-free_grammar">
+					context-free grammar
+				</a>{' '}
+				of the language can be found{' '}
+				<a href="https://github.com/MatthewKosloski/torrey#grammar">here</a>.
 			</p>
 			<p>
-				Releases are versioned using Semver Semantic Versioning and are
-				automated by a continuous integration (CI) pipeline which also compiles
-				and tests the compiler and builds the compiler jar and runtime object
-				file.
+				Language features include: type inference, integer and boolean primitive expressions,
+				a unary minus expression, binary arithmetic and relational expressions,
+				standard output, lexically-scoped variables, if and if-else expressions,
+				and logical expressions.
 			</p>
 			<p>
-				Currently, I'm developing a playground environment that enables one to
-				compile, link, and execute Torrey programs directly from the web
-				browser.
+				Torrey is implemented as a compiler in Java and has a small C
+				runtime. After building an{' '}
+				<a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">
+					abstract syntax tree
+				</a> (AST) of the program, the compiler translates the AST to an intermediate representation, or IR.
+			</p>
+			<p>
+				The IR can then be compiled down to one or more target languages. At the
+				moment, the only target language is x86-64 gas assembly; however,
+				additional targets can be added at any time.
+			</p>
+			<p>
+				<em>This project is actively maintained and additional language features and
+				targets are anticipated.</em>
 			</p>
 		</Project>
 	);
