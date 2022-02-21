@@ -13,9 +13,6 @@ function renderContent(content: TerminalContent[]) {
 			const promptSignKey = `${id}-promptSign`;
 			return (
 				<React.Fragment key={fragmentKey}>
-					{isFirstCharOfCmd && isCommand && i !== 0 ? (
-						<span>{'\n'}</span>
-					) : null}
 					{isFirstCharOfCmd && isCommand ? (
 						<PromptSign key={promptSignKey}>$ </PromptSign>
 					) : null}
@@ -40,6 +37,7 @@ function Terminal({ content, preStyles }: TerminalProps) {
 const Pre = styled.pre`
 	background-color: #252932;
 	height: 150px;
+	overflow-y: auto;
 `;
 
 const Code = styled.code`

@@ -41,24 +41,22 @@ function Renderer({
 	}, [delay, setIsPlaying]);
 
 	React.useEffect(() => {
-		if (isPlaying && iterator.current) {
-			intervalRef.current = window.setInterval(function fetchNextValue() {
-				const { value, done } = iterator.current!.next();
+		if (!(isPlaying && iterator.current)) return;
 
-				if (done) {
-					cleanup();
-				} else if (value?.isLastCharOfCmd && value.delayAfterCmd) {
-					clearInterval(intervalRef.current);
-					// This is the last character of the command, so we will
-					// delay for delayAfterCmd milliseconds before recreating
-					// the interval.
-					timeoutRef.current = window.setTimeout(() => {
-						clearTimeout(timeoutRef.current);
-						intervalRef.current = window.setInterval(fetchNextValue, speed);
-					}, value.delayAfterCmd);
-				} else if (value && content.length) {
-					// This is not the first time that we're populating the content array
-					value.isCurrent = true;
+		intervalRef.current = window.setInterval(function fetchNextValue() {
+			const { value, done } = iterator.current!.next();
+
+			if (done) {
+				cleanup();
+				return;
+			}
+
+			if (content.length > 0 && value?.isLastCharOfCmd && value.delayAfterCmd) {
+				clearInterval(intervalRef.current);
+				// This is the last character of the command, so we will
+				// delay for delayAfterCmd milliseconds before recreating
+				// the interval.
+				timeoutRef.current = window.setTimeout(() => {
 					setContent([
 						...content.slice(0, content.length - 1),
 						{
@@ -66,15 +64,54 @@ function Renderer({
 							...content[content.length - 1],
 							isCurrent: false,
 						},
-						value,
+						{
+							...value,
+							isCurrent: true
+						},
 					]);
-				} else if (value) {
-					// This is the first time that we're populating the content array
-					value.isCurrent = true;
-					setContent([...content, value]);
-				}
-			}, speed);
-		}
+					
+					clearTimeout(timeoutRef.current);
+					intervalRef.current = window.setInterval(fetchNextValue, speed);
+				}, value.delayAfterCmd);
+			} else if (content.length > 0 && value) {
+				setContent([
+					...content.slice(0, content.length - 1),
+					{
+						// Make the last item not current
+						...content[content.length - 1],
+						isCurrent: false,
+					},
+					{
+						...value,
+						isCurrent: true
+					},
+				]);
+			} else if (value?.isLastCharOfCmd && value.delayAfterCmd) {
+				clearInterval(intervalRef.current);
+				// This is the last character of the command, so we will
+				// delay for delayAfterCmd milliseconds before recreating
+				// the interval.
+				timeoutRef.current = window.setTimeout(() => {
+					setContent([
+						...content,
+						{
+							...value,
+							isCurrent: true
+						}
+					]);
+					clearTimeout(timeoutRef.current);
+					intervalRef.current = window.setInterval(fetchNextValue, speed);
+				}, value.delayAfterCmd);
+			} else if (value) {
+				setContent([
+					...content,
+					{
+						...value,
+						isCurrent: true
+					}
+				]);
+			}
+		}, speed);
 
 		return () => clearInterval(intervalRef.current);
 	}, [content, setContent, speed, isPlaying]);
