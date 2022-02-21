@@ -23,13 +23,13 @@ function Renderer({
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const timeoutRef = React.useRef<number>();
-	const iterator = React.useRef<Generator<TerminalContent, undefined>>();
+	const iteratorRef = React.useRef<Generator<TerminalContent, undefined>>();
 
 	const [content, setContent] = React.useState<TerminalContent[]>([]);
 	const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
 
 	React.useEffect(() => {
-		iterator.current = contentGenerator(commands);
+		iteratorRef.current = contentGenerator(commands);
 	}, [commands]);
 
 	React.useEffect(() => {
@@ -41,10 +41,10 @@ function Renderer({
 	}, [delay, setIsPlaying]);
 
 	React.useEffect(() => {
-		if (!(isPlaying && iterator.current)) return;
+		if (!(isPlaying && iteratorRef.current)) return;
 
 		intervalRef.current = window.setInterval(function fetchNextValue() {
-			const { value, done } = iterator.current!.next();
+			const { value, done } = iteratorRef.current!.next();
 
 			if (done) {
 				cleanup();
@@ -107,7 +107,7 @@ function Renderer({
 
 	function handleReplay() {
 		setContent([]);
-		iterator.current = contentGenerator(commands);
+		iteratorRef.current = contentGenerator(commands);
 		timeoutRef.current = 0;
 		intervalRef.current = 0;
 		setIsPlaying(true);
