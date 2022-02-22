@@ -31,7 +31,7 @@ function Renderer({
 	const intervalRef = React.useRef<number>();
 	const timeoutRef = React.useRef<number>();
 	const iteratorRef = React.useRef<Generator<TerminalContent, undefined>>();
-	const currentItemIndexRef = React.useRef<number>(0);
+	const currentContentItemIndexRef = React.useRef<number>(0);
 
 	const [content, setContent] = React.useState<TerminalDatum[]>([]);
 	const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
@@ -63,12 +63,13 @@ function Renderer({
 				clearInterval(intervalRef.current);
 				timeoutRef.current = window.setTimeout(
 					() => {
-						if (currentItemIndexRef.current < content.length) {
+						if (currentContentItemIndexRef.current < content.length) {
+							const currentContentItem = content[currentContentItemIndexRef.current];
 							setContent([
-								...content.slice(0, currentItemIndexRef.current),
+								...content.slice(0, currentContentItemIndexRef.current),
 								{
-									...content[currentItemIndexRef.current],
-									text: content[currentItemIndexRef.current].text + value.text
+									...currentContentItem,
+									text: currentContentItem.text + value.text
 								}
 							])
 						} else {
@@ -91,7 +92,7 @@ function Renderer({
 				);
 			} else if (content.length > 0 && value) {
 				setContent([
-					...content.slice(0, currentItemIndexRef.current),
+					...content.slice(0, currentContentItemIndexRef.current),
 					{
 						id: value.id,
 						isCommand: value.isCommand,
@@ -122,7 +123,7 @@ function Renderer({
 			}
 
 			if (value && (!value.isCommand || value.isLastCharOfCmd)) {
-				currentItemIndexRef.current++;
+				currentContentItemIndexRef.current++;
 			}
 		}, speed);
 
