@@ -17,14 +17,7 @@ function* terminalContentGenerator(
 	let currentCommandIndex = 0;
 	let currentCmdCharIndex = 0;
 	let currentOutputLineIndex = -1;
-
-	commands.forEach((command) => {
-		command.cmd += '\n';
-		if (command.outputLines.length) {
-			command.outputLines[command.outputLines.length - 1] += '\n';
-		}
-	});
-
+	
 	while (true) {
 		const currentCommand = commands[currentCommandIndex];
 
