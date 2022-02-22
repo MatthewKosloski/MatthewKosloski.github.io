@@ -18,8 +18,13 @@ function* terminalContentGenerator(
 	let currentCmdCharIndex = 0;
 	let currentOutputLineIndex = -1;
 
+	const commandsCopy = commands.map(({ cmd, ...rest }) => ({
+		...rest,
+		cmd: `${cmd}\n`,
+	}));
+
 	while (true) {
-		const currentCommand = commands[currentCommandIndex];
+		const currentCommand = commandsCopy[currentCommandIndex];
 
 		if (currentCommand === undefined) return;
 
