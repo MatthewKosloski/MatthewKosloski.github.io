@@ -1,34 +1,35 @@
-import React, { Fragment } from 'react';
-import styled, { css } from 'styled-components';
-import { TerminalContent } from './terminalContentGenerator';
+import React from 'react';
+import styled from 'styled-components';
 interface TerminalProps {
-	content: TerminalDatum[];
+	content: TerminalContentItem[];
 	preStyles: React.CSSProperties;
 }
 
-type TerminalDatum = {
+export interface TerminalContentItem {
 	id: string;
 	isCommand: boolean;
 	isCurrent: boolean;
 	text: string;
 }
 
-function renderContent(content: TerminalDatum[]) {
-	return content.map(
-		({ isCurrent, isCommand, text, id }, i) => {
-			const fragmentKey = `${id}-fragment`;
-			const promptSignKey = `${id}-promptSign`;
-			return (
-				<React.Fragment key={fragmentKey}>
-					<span key={id} data-line-type={isCommand ? 'command' : 'output'} style={{display: 'block'}}>
-						{isCommand ? <PromptSign key={promptSignKey}>$ </PromptSign> : null}
-						{text}
-						{isCurrent && isCommand ? <Cursor /> : null}
-					</span>
-				</React.Fragment>
-			);
-		}
-	);
+function renderContent(content: TerminalContentItem[]) {
+	return content.map(({ isCurrent, isCommand, text, id }, i) => {
+		const fragmentKey = `${id}-fragment`;
+		const promptSignKey = `${id}-promptSign`;
+		return (
+			<React.Fragment key={fragmentKey}>
+				<span
+					key={id}
+					data-line-type={isCommand ? 'command' : 'output'}
+					style={{ display: 'block' }}
+				>
+					{isCommand ? <PromptSign key={promptSignKey}>$ </PromptSign> : null}
+					{text}
+					{isCurrent && isCommand ? <Cursor /> : null}
+				</span>
+			</React.Fragment>
+		);
+	});
 }
 
 function Terminal({ content, preStyles }: TerminalProps) {

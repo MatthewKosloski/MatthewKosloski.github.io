@@ -1,6 +1,6 @@
 import React from 'react';
-import Terminal from './Terminal';
-import contentGenerator, { TerminalContent } from './terminalContentGenerator';
+import Terminal, { TerminalContentItem } from './Terminal';
+import contentGenerator, { TerminalContentGeneratorItem } from './terminalContentGenerator';
 
 export interface Command {
 	cmd: string;
@@ -15,13 +15,6 @@ export interface RendererProps {
 	preStyles?: React.CSSProperties;
 }
 
-type TerminalDatum = {
-	id: string;
-	isCommand: boolean;
-	isCurrent: boolean;
-	text: string;
-};
-
 function Renderer({
 	commands,
 	preStyles = {},
@@ -30,10 +23,10 @@ function Renderer({
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const timeoutRef = React.useRef<number>();
-	const iteratorRef = React.useRef<Generator<TerminalContent, undefined>>();
+	const iteratorRef = React.useRef<Generator<TerminalContentGeneratorItem, undefined>>();
 	const currentContentItemIndexRef = React.useRef<number>(0);
 
-	const [content, setContent] = React.useState<TerminalDatum[]>([]);
+	const [content, setContent] = React.useState<TerminalContentItem[]>([]);
 	const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
 
 	React.useEffect(() => {
@@ -145,6 +138,7 @@ function Renderer({
 		iteratorRef.current = contentGenerator(commands);
 		timeoutRef.current = 0;
 		intervalRef.current = 0;
+		currentContentItemIndexRef.current = 0;
 		setIsPlaying(true);
 	}
 
