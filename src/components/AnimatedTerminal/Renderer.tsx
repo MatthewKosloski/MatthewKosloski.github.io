@@ -20,7 +20,7 @@ type TerminalDatum = {
 	isCommand: boolean;
 	isCurrent: boolean;
 	text: string;
-}
+};
 
 function Renderer({
 	commands,
@@ -64,24 +64,25 @@ function Renderer({
 				timeoutRef.current = window.setTimeout(
 					() => {
 						if (currentContentItemIndexRef.current < content.length) {
-							const currentContentItem = content[currentContentItemIndexRef.current];
+							const currentContentItem =
+								content[currentContentItemIndexRef.current];
 							setContent([
 								...content.slice(0, currentContentItemIndexRef.current),
 								{
 									...currentContentItem,
-									text: currentContentItem.text + value.text
-								}
-							])
+									text: currentContentItem.text + value.text,
+								},
+							]);
 						} else {
 							setContent([
-								...content.map((datum) => ({...datum, isCurrent: false})),
+								...content.map((datum) => ({ ...datum, isCurrent: false })),
 								{
 									id: value.id,
 									isCommand: value.isCommand,
 									text: value.text,
-									isCurrent: true
-								}
-							])
+									isCurrent: true,
+								},
+							]);
 						}
 						clearTimeout(timeoutRef.current);
 						intervalRef.current = window.setInterval(fetchNextValue, speed);
@@ -97,20 +98,20 @@ function Renderer({
 						id: value.id,
 						isCommand: value.isCommand,
 						text: value.text,
-						isCurrent: false
-					}
-				])
+						isCurrent: false,
+					},
+				]);
 			} else if (value) {
 				clearInterval(intervalRef.current);
 				timeoutRef.current = window.setTimeout(
 					() => {
 						setContent([
-							...content.map((datum) => ({...datum, isCurrent: false})),
+							...content.map((datum) => ({ ...datum, isCurrent: false })),
 							{
 								id: value.id,
 								isCommand: value.isCommand,
 								text: value.text,
-								isCurrent: true
+								isCurrent: true,
 							},
 						]);
 						clearTimeout(timeoutRef.current);
