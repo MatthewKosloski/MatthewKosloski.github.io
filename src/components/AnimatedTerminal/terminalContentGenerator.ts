@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Command } from './Renderer';
 
-export interface TerminalContent {
+export interface TerminalContentGeneratorItem {
 	isCurrent: boolean;
 	isCommand: boolean;
 	isFirstCharOfCmd: boolean;
@@ -13,11 +13,11 @@ export interface TerminalContent {
 
 function* terminalContentGenerator(
 	commands: Command[]
-): Generator<TerminalContent, undefined> {
+): Generator<TerminalContentGeneratorItem, undefined> {
 	let currentCommandIndex = 0;
 	let currentCmdCharIndex = 0;
 	let currentOutputLineIndex = -1;
-	
+
 	while (true) {
 		const currentCommand = commands[currentCommandIndex];
 
