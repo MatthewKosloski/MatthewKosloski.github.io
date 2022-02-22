@@ -24,7 +24,9 @@ function renderContent(content: TerminalContentItem[]) {
 					style={{ display: 'block' }}
 				>
 					{isCommand ? <PromptSign key={promptSignKey}>$ </PromptSign> : null}
-					{text}
+					<span style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}>
+						{text}
+					</span>
 					{isCurrent && isCommand ? <Cursor /> : null}
 				</span>
 			</React.Fragment>
