@@ -64,6 +64,7 @@ function Renderer({
 				timeoutRef.current = window.setTimeout(
 					() => {
 						if (currentContentItemIndexRef.current < content.length) {
+							// Append a character to the text of the current content item.
 							const currentContentItem =
 								content[currentContentItemIndexRef.current];
 							setContent([
@@ -74,6 +75,7 @@ function Renderer({
 								},
 							]);
 						} else {
+							// Append a new command and make it current.
 							setContent([
 								...content.map((datum) => ({ ...datum, isCurrent: false })),
 								{
@@ -92,6 +94,7 @@ function Renderer({
 						: 0
 				);
 			} else if (content.length > 0 && value) {
+				// Append an output line to the existing content list.
 				setContent([
 					...content.slice(0, currentContentItemIndexRef.current),
 					{
@@ -105,8 +108,8 @@ function Renderer({
 				clearInterval(intervalRef.current);
 				timeoutRef.current = window.setTimeout(
 					() => {
+						// Append the first command to the content list and make it current.
 						setContent([
-							...content.map((datum) => ({ ...datum, isCurrent: false })),
 							{
 								id: value.id,
 								isCommand: value.isCommand,
