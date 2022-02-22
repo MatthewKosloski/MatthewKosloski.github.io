@@ -15,6 +15,13 @@ export interface RendererProps {
 	preStyles?: React.CSSProperties;
 }
 
+type TerminalDatum = {
+	id: string;
+	isCommand: boolean;
+	isCurrent: boolean;
+	text: string;
+}
+
 function Renderer({
 	commands,
 	preStyles = {},
@@ -24,8 +31,9 @@ function Renderer({
 	const intervalRef = React.useRef<number>();
 	const timeoutRef = React.useRef<number>();
 	const iteratorRef = React.useRef<Generator<TerminalContent, undefined>>();
+	const currentItemIndexRef = React.useRef<number>(0);
 
-	const [content, setContent] = React.useState<TerminalContent[]>([]);
+	const [content, setContent] = React.useState<TerminalDatum[]>([]);
 	const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
 
 	React.useEffect(() => {
@@ -51,23 +59,29 @@ function Renderer({
 				return;
 			}
 
-			if (content.length > 0 && value) {
+			if (content.length > 0 && value?.isCommand) {
 				clearInterval(intervalRef.current);
 				timeoutRef.current = window.setTimeout(
 					() => {
-						setContent([
-							...content.slice(0, content.length - 1),
-							{
-								// Make the last item not current
-								...content[content.length - 1],
-								isCurrent: false,
-							},
-							{
-								...value,
-								isCurrent: true,
-							},
-						]);
-
+						if (currentItemIndexRef.current < content.length) {
+							setContent([
+								...content.slice(0, currentItemIndexRef.current),
+								{
+									...content[currentItemIndexRef.current],
+									text: content[currentItemIndexRef.current].text + value.text
+								}
+							])
+						} else {
+							setContent([
+								...content.map((datum) => ({...datum, isCurrent: false})),
+								{
+									id: value.id,
+									isCommand: value.isCommand,
+									text: value.text,
+									isCurrent: true
+								}
+							])
+						}
 						clearTimeout(timeoutRef.current);
 						intervalRef.current = window.setInterval(fetchNextValue, speed);
 					},
@@ -75,15 +89,27 @@ function Renderer({
 						? value.delayAfterCmd
 						: 0
 				);
+			} else if (content.length > 0 && value) {
+				setContent([
+					...content.slice(0, currentItemIndexRef.current),
+					{
+						id: value.id,
+						isCommand: value.isCommand,
+						text: value.text,
+						isCurrent: false
+					}
+				])
 			} else if (value) {
 				clearInterval(intervalRef.current);
 				timeoutRef.current = window.setTimeout(
 					() => {
 						setContent([
-							...content,
+							...content.map((datum) => ({...datum, isCurrent: false})),
 							{
-								...value,
-								isCurrent: true,
+								id: value.id,
+								isCommand: value.isCommand,
+								text: value.text,
+								isCurrent: true
 							},
 						]);
 						clearTimeout(timeoutRef.current);
@@ -94,10 +120,14 @@ function Renderer({
 						: 0
 				);
 			}
+
+			if (value && (!value.isCommand || value.isLastCharOfCmd)) {
+				currentItemIndexRef.current++;
+			}
 		}, speed);
 
 		return () => clearInterval(intervalRef.current);
-	}, [content, setContent, speed, isPlaying]);
+	}, [speed, isPlaying, content, setContent]);
 
 	function cleanup() {
 		clearInterval(intervalRef.current);
@@ -115,7 +145,6 @@ function Renderer({
 
 	return (
 		<>
-			{/* <button onClick={handleReplay} disabled={isPlaying}>Replay</button> */}
 			<Terminal content={content} preStyles={preStyles} />
 		</>
 	);

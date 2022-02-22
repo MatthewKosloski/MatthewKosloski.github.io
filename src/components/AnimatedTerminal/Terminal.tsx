@@ -2,21 +2,26 @@ import React, { Fragment } from 'react';
 import styled, { css } from 'styled-components';
 import { TerminalContent } from './terminalContentGenerator';
 interface TerminalProps {
-	content: TerminalContent[];
+	content: TerminalDatum[];
 	preStyles: React.CSSProperties;
 }
 
-function renderContent(content: TerminalContent[]) {
+type TerminalDatum = {
+	id: string;
+	isCommand: boolean;
+	isCurrent: boolean;
+	text: string;
+}
+
+function renderContent(content: TerminalDatum[]) {
 	return content.map(
-		({ isCurrent, isFirstCharOfCmd, isCommand, text, id }, i) => {
+		({ isCurrent, isCommand, text, id }, i) => {
 			const fragmentKey = `${id}-fragment`;
 			const promptSignKey = `${id}-promptSign`;
 			return (
 				<React.Fragment key={fragmentKey}>
-					{isFirstCharOfCmd && isCommand ? (
-						<PromptSign key={promptSignKey}>$ </PromptSign>
-					) : null}
-					<span key={id}>
+					<span key={id} data-line-type={isCommand ? 'command' : 'output'} style={{display: 'block'}}>
+						{isCommand ? <PromptSign key={promptSignKey}>$ </PromptSign> : null}
 						{text}
 						{isCurrent && isCommand ? <Cursor /> : null}
 					</span>
