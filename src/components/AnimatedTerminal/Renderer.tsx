@@ -1,6 +1,8 @@
 import React from 'react';
 import Terminal, { TerminalContentItem } from './Terminal';
-import contentGenerator, { TerminalContentGeneratorItem } from './terminalContentGenerator';
+import contentGenerator, {
+	TerminalContentGeneratorItem,
+} from './terminalContentGenerator';
 
 export interface Command {
 	cmd: string;
@@ -23,7 +25,8 @@ function Renderer({
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const timeoutRef = React.useRef<number>();
-	const iteratorRef = React.useRef<Generator<TerminalContentGeneratorItem, undefined>>();
+	const iteratorRef =
+		React.useRef<Generator<TerminalContentGeneratorItem, undefined>>();
 	const currentContentItemIndexRef = React.useRef<number>(0);
 
 	const [content, setContent] = React.useState<TerminalContentItem[]>([]);
