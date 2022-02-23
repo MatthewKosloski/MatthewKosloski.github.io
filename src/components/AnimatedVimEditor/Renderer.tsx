@@ -13,6 +13,7 @@ interface RendererProps {
 	preStyles?: React.CSSProperties;
 	autoScrollAfterLine?: number;
 	autoScroll?: boolean;
+	trailingNewLines?: number;
 }
 
 function getNumberOfLinesFromTokens(tokens: Token[]) {
@@ -41,6 +42,7 @@ function Renderer({
 	preStyles = {},
 	autoScrollAfterLine = 0,
 	autoScroll = true,
+	trailingNewLines = 3
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const contentGeneratorRef = React.useRef<Generator<EditorDatum, undefined>>();
@@ -55,8 +57,6 @@ function Renderer({
 	const [numChars, setNumChars] = React.useState<number>(0);
 	const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
 
-	const trailingNewLines = 3;
-
 	React.useEffect(() => {
 		const numberOfLines = getNumberOfLinesFromTokens(tokens);
 		const lineNumberCapacity = numberOfLines + trailingNewLines;
@@ -69,7 +69,7 @@ function Renderer({
 			});
 		}
 		setEditorLineNumbers(initialEditorLineNumbers);
-	}, [tokens, setEditorLineNumbers]);
+	}, [tokens, setEditorLineNumbers, trailingNewLines]);
 
 	React.useEffect(() => {
 		contentGeneratorRef.current = contentGenerator(tokens);

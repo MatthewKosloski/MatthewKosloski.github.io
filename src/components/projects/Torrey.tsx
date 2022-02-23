@@ -9,6 +9,7 @@ function FeaturedComponent() {
 	return (
 		<>
 			<AnimatedVimEditor
+				trailingNewLines={1}
 				autoScroll={false}
 				filename="program.torrey"
 				preStyles={{ height: '350px', borderRadius: '8px 8px 0 0' }}
