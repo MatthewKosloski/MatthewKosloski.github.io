@@ -35,7 +35,6 @@ function renderContent(content: TerminalContentItem[]) {
 }
 
 function Terminal({ content, preStyles }: TerminalProps) {
-
 	const preRef = React.createRef<HTMLPreElement>();
 
 	React.useEffect(() => {
