@@ -11,6 +11,7 @@ interface EditorProps {
 	statusText: string;
 	command: string;
 	autoScrollAfterLine: number;
+	autoScroll: boolean;
 	preStyles?: React.CSSProperties;
 	highlights?: Map<TokenType, string>;
 	fallbackHighlight?: string;
@@ -25,18 +26,18 @@ const Editor: React.FunctionComponent<EditorProps> = ({
 	cols,
 	statusText,
 	autoScrollAfterLine,
+	autoScroll,
 	preStyles,
 	highlights,
 	fallbackHighlight,
 }: EditorProps) => {
-
 	const codeRef = React.createRef<HTMLPreElement>();
 
 	React.useEffect(() => {
-		if (codeRef.current && rows >= autoScrollAfterLine) {
+		if (codeRef.current && rows >= autoScrollAfterLine && autoScroll) {
 			codeRef.current.scrollTop = codeRef.current.scrollHeight;
 		}
-	}, [rows, autoScrollAfterLine]);
+	}, [rows, autoScrollAfterLine, autoScroll]);
 
 	return (
 		<Pre style={preStyles}>

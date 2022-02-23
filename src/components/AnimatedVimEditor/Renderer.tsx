@@ -12,6 +12,7 @@ interface RendererProps {
 	delay?: number;
 	preStyles?: React.CSSProperties;
 	autoScrollAfterLine?: number;
+	autoScroll?: boolean;
 }
 
 function getNumberOfLinesFromTokens(tokens: Token[]) {
@@ -39,6 +40,7 @@ function Renderer({
 	delay = 1000,
 	preStyles = {},
 	autoScrollAfterLine = 0,
+	autoScroll = true,
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const contentGeneratorRef = React.useRef<Generator<EditorDatum, undefined>>();
@@ -184,6 +186,7 @@ function Renderer({
 			command={editorCommand}
 			preStyles={preStyles}
 			autoScrollAfterLine={autoScrollAfterLine}
+			autoScroll={autoScroll}
 		/>
 	);
 }

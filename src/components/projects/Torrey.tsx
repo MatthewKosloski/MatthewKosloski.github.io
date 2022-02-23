@@ -9,9 +9,9 @@ function FeaturedComponent() {
 	return (
 		<>
 			<AnimatedVimEditor
-				autoScrollAfterLine={7}
+				autoScroll={false}
 				filename="program.torrey"
-				preStyles={{ height: '250px', borderRadius: '8px 8px 0 0' }}
+				preStyles={{ height: '350px', borderRadius: '8px 8px 0 0' }}
 				tokens={[
 					{ lexeme: '; This is a Torrey program :)', type: TokenType.Comment },
 					{ lexeme: '\n', type: TokenType.NewLine },
@@ -219,7 +219,7 @@ function FeaturedComponent() {
 							'param t0',
 							'param t1',
 							'param t11',
-							'call print, 3'
+							'call print, 3',
 						],
 					},
 					{
@@ -282,7 +282,7 @@ function FeaturedComponent() {
 							'  addq $128, %rsp',
 							'  popq %rbp',
 							'  movq $0, %rax',
-							'  retq'							
+							'  retq',
 						],
 					},
 					{
