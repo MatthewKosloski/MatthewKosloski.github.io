@@ -27,7 +27,7 @@ function renderContent(content: TerminalContentItem[]) {
 					<span style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}>
 						{text.trim()}
 					</span>
-					{isCurrent && isCommand ? <Cursor /> : null}
+					{isCurrent && isCommand ? <Cursor isActive={true}/> : null}
 				</span>
 			</React.Fragment>
 		);
@@ -45,13 +45,13 @@ function Terminal({ content, preStyles }: TerminalProps) {
 
 	return (
 		<Pre style={preStyles} ref={preRef}>
-			<Code>{renderContent(content)}</Code>
+			<Code>{content.length ? renderContent(content) : <><PromptSign>$ </PromptSign> <Cursor isActive={false}/></>}</Code>
 		</Pre>
 	);
 }
 
 const Pre = styled.pre`
-	background-color: #252932;
+	background-color: #13161b;
 	height: 150px;
 	overflow-y: auto;
 `;
@@ -60,13 +60,13 @@ const Code = styled.code`
 	color: #a7adba;
 `;
 
-const Cursor = styled.span`
+const Cursor = styled.span<{isActive: boolean;}>`
 	width: 9px;
 	height: 16px;
 	display: inline-block;
 	vertical-align: middle;
 	border: 1px solid white;
-	background: white;
+	background: ${p => p.isActive ? '#fff' : 'transparent'};
 `;
 
 const PromptSign = styled.span`
