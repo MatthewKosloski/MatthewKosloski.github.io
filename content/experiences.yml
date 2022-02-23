@@ -2,7 +2,14 @@ data:
   - 
     title: Applied Systems
     subtitle: Full Stack Developer
-    description: Contributing to the Epic Transformation initiative, which is an enormous undertaking wherein Applied Epic, Applied's flagship product, is gradually transformed from a monolithic desktop app to a web app with a microservice back-end architecture.
+    description: |
+      Currently implementing a new microservice in C#/.Net Core that exposes Open API endpoints to enable our customers to easily integrate third-party applications with Epic, Applied's flagship software. 
+      Writes comprehensive unit and integration tests using xUnit and Moq and implements rigorous API security tests to prevent unauthorized access to customer data.
+      Assists new developers with configuring their local developer environments and with troubleshooting issues related to service development.
+      Worked closely with the team's SDET to create a Docker image of a SQL test database for the purpose of running end-to-end tests in CI pipeline review apps.
+      Proactively fixed defects in the enterprise design system, consequently improving the UX of screens and increasing unit test code coverage of React components.
+      Utilizing TypeScript, implements features and fixes bugs in UI screens that leverage the enterprise design system, writing tests using Jest, Cypress, and React Testing Library.
+      Increased team productivity by writing a Postman pre-request script to automate the fetching of access tokens before API requests.
     date:
       from: 2021-5-1
   - 

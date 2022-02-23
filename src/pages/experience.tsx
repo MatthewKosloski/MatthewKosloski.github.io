@@ -29,7 +29,7 @@ function ExperiencePage({ location }: BasePageProps) {
 					</GridCol>
 					<GridCol xs={12} alignCenterXs>
 						<ButtonLinkExternal href="">View Resume</ButtonLinkExternal>
-						<ButtonLinkExternal href="" variant={ButtonLinkVariant.SECONDARY}>
+						<ButtonLinkExternal href="https://www.linkedin.com/in/matthewkosloski/" variant={ButtonLinkVariant.SECONDARY}>
 							View LinkedIn
 						</ButtonLinkExternal>
 					</GridCol>
@@ -53,7 +53,7 @@ function ExperiencePage({ location }: BasePageProps) {
 							For my senior project, I designed a high-level, Lisp-like
 							programming language and implemented it by building a compiler
 							from scratch. The compiler translates the high-level program to
-							x86-64 assembly code in AT&amp;T syntax.
+							x86-64 assembly.
 						</p>
 						<Flex>
 							<FlexCol>

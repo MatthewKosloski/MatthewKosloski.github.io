@@ -9,7 +9,7 @@ function PhotosPage({ location }: BasePageProps) {
 				<Grid>
 					<GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
 						<p className="lead">
-							I'm an amateur photographer with an affinity for nature shots.
+							I'm an amateur photographer with an affinity for nature scenes.
 						</p>
 						<p>
 							All photos I take are shot on a Canon T2i digital camera in RAW
