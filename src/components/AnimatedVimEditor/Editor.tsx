@@ -10,6 +10,7 @@ interface EditorProps {
 	cols: number;
 	statusText: string;
 	command: string;
+	autoScrollAfterLine: number;
 	preStyles?: React.CSSProperties;
 	highlights?: Map<TokenType, string>;
 	fallbackHighlight?: string;
@@ -23,13 +24,23 @@ const Editor: React.FunctionComponent<EditorProps> = ({
 	command,
 	cols,
 	statusText,
+	autoScrollAfterLine,
 	preStyles,
 	highlights,
 	fallbackHighlight,
 }: EditorProps) => {
+
+	const codeRef = React.createRef<HTMLPreElement>();
+
+	React.useEffect(() => {
+		if (codeRef.current && rows >= autoScrollAfterLine) {
+			codeRef.current.scrollTop = codeRef.current.scrollHeight;
+		}
+	}, [rows, autoScrollAfterLine]);
+
 	return (
 		<Pre style={preStyles}>
-			<Code>
+			<Code ref={codeRef}>
 				<LineNumbers>
 					{lineNumbers.map(({ lineNumber, id }) => (
 						<span key={id}>{lineNumber}</span>
@@ -76,6 +87,7 @@ defaultHighlights.set(TokenType.Integer, '#d08770');
 defaultHighlights.set(TokenType.Keyword, '#b48ead');
 defaultHighlights.set(TokenType.Operator, '#c0c5ce');
 defaultHighlights.set(TokenType.Comment, '#65737e');
+defaultHighlights.set(TokenType.Boolean, '#d08770');
 
 Editor.defaultProps = {
 	highlights: defaultHighlights,
@@ -93,6 +105,7 @@ const Pre = styled.pre`
 const Code = styled.code`
 	display: flex;
 	overflow-y: auto;
+	overflow-x: hidden;
 `;
 
 const LineNumbers = styled.div`

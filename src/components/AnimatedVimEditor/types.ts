@@ -19,4 +19,5 @@ export enum TokenType {
 	Whitespace,
 	Uncategorized,
 	NewLine,
+	Boolean
 }

@@ -11,6 +11,7 @@ interface RendererProps {
 	commandSpeed?: number;
 	delay?: number;
 	preStyles?: React.CSSProperties;
+	autoScrollAfterLine?: number;
 }
 
 function getNumberOfLinesFromTokens(tokens: Token[]) {
@@ -37,6 +38,7 @@ function Renderer({
 	commandSpeed = 350,
 	delay = 1000,
 	preStyles = {},
+	autoScrollAfterLine = 0,
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const contentGeneratorRef = React.useRef<Generator<EditorDatum, undefined>>();
@@ -181,6 +183,7 @@ function Renderer({
 			data={editorData}
 			command={editorCommand}
 			preStyles={preStyles}
+			autoScrollAfterLine={autoScrollAfterLine}
 		/>
 	);
 }

@@ -25,7 +25,7 @@ function renderContent(content: TerminalContentItem[]) {
 				>
 					{isCommand ? <PromptSign key={promptSignKey}>$ </PromptSign> : null}
 					<span style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}>
-						{text}
+						{text.trim()}
 					</span>
 					{isCurrent && isCommand ? <Cursor /> : null}
 				</span>
@@ -35,8 +35,17 @@ function renderContent(content: TerminalContentItem[]) {
 }
 
 function Terminal({ content, preStyles }: TerminalProps) {
+
+	const preRef = React.createRef<HTMLPreElement>();
+
+	React.useEffect(() => {
+		if (preRef.current) {
+			preRef.current.scrollTop = preRef.current.scrollHeight;
+		}
+	}, [content]);
+
 	return (
-		<Pre style={preStyles}>
+		<Pre style={preStyles} ref={preRef}>
 			<Code>{renderContent(content)}</Code>
 		</Pre>
 	);
