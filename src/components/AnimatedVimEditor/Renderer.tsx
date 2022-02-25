@@ -42,7 +42,7 @@ function Renderer({
 	preStyles = {},
 	autoScrollAfterLine = 0,
 	autoScroll = true,
-	trailingNewLines = 3
+	trailingNewLines = 3,
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const contentGeneratorRef = React.useRef<Generator<EditorDatum, undefined>>();

@@ -23,20 +23,27 @@ function IndexPage({ location, data }: BasePageProps & FeaturedBlogPostsQuery) {
 							Illinois.
 						</p>
 						<p>
-							Currently, I work at <a href="https://www1.appliedsystems.com/en-us/">Applied Systems</a> where my team
-							and I are contributing to the transformation of{' '}
-							<a href="https://www1.appliedsystems.com/en-us/solutions/for-agents/agency-management-system/applied-epic/">Applied Epic</a>, which is Applied's flagship product.
-							Specifically, Epic is being transformed from a monolithic
-							desktop app to a modern web app with a microservice architecture.
-							The work that we're doing will greatly improve the user experience
-							and reliability of the product and also facilitate access to data via Open APIs.
+							Currently, I work at{' '}
+							<a href="https://www1.appliedsystems.com/en-us/">
+								Applied Systems
+							</a>{' '}
+							where my team and I are contributing to the transformation of{' '}
+							<a href="https://www1.appliedsystems.com/en-us/solutions/for-agents/agency-management-system/applied-epic/">
+								Applied Epic
+							</a>
+							, which is Applied's flagship product. Specifically, Epic is being
+							transformed from a monolithic desktop app to a modern web app with
+							a microservice architecture. The work that we're doing will
+							greatly improve the user experience and reliability of the product
+							and also facilitate access to data via Open APIs.
 						</p>
 						<p>
 							When I'm not working, I'm playing video games, taking{' '}
-							<a href="https://unsplash.com/@matthew">photos</a>, looking up at the night sky with my
-							telescope, implementing new features into my{' '}
-							<a href="https://github.com/MatthewKosloski/torrey">compiler</a>, listening to <a href="https://en.wikipedia.org/wiki/ASMR">ASMR</a>, or
-							eating copious amounts of Mexican food (enchiladas are my
+							<a href="https://unsplash.com/@matthew">photos</a>, looking up at
+							the night sky with my telescope, implementing new features into my{' '}
+							<a href="https://github.com/MatthewKosloski/torrey">compiler</a>,
+							listening to <a href="https://en.wikipedia.org/wiki/ASMR">ASMR</a>
+							, or eating copious amounts of Mexican food (enchiladas are my
 							favorite).
 						</p>
 					</GridCol>

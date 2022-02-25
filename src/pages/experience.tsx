@@ -29,7 +29,10 @@ function ExperiencePage({ location }: BasePageProps) {
 					</GridCol>
 					<GridCol xs={12} alignCenterXs>
 						<ButtonLinkExternal href="">View Resume</ButtonLinkExternal>
-						<ButtonLinkExternal href="https://www.linkedin.com/in/matthewkosloski/" variant={ButtonLinkVariant.SECONDARY}>
+						<ButtonLinkExternal
+							href="https://www.linkedin.com/in/matthewkosloski/"
+							variant={ButtonLinkVariant.SECONDARY}
+						>
 							View LinkedIn
 						</ButtonLinkExternal>
 					</GridCol>
