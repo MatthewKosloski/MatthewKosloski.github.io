@@ -100,8 +100,8 @@ interface FeaturedBlogPostsQuery {
 export const featuredBlogPostsQuery = graphql`
 	{
 		allMdx(
-			sort: { fields: frontmatter___date, order: DESC }
-			filter: { frontmatter: { featured: { eq: true } } }
+			sort: {fields: frontmatter___date, order: DESC}
+			filter: {frontmatter: {featured: {eq: true}, indexable: {eq: true}}}
 		) {
 			nodes {
 				frontmatter {
