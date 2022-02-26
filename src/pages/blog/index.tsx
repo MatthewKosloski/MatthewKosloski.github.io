@@ -35,8 +35,8 @@ interface BlogQuery {
 export const query = graphql`
 	{
 		allMdx(
-			sort: {fields: frontmatter___date, order: DESC}
-			filter: {frontmatter: {indexable: {eq: true}}}
+			sort: { fields: frontmatter___date, order: DESC }
+			filter: { frontmatter: { indexable: { eq: true } } }
 		) {
 			nodes {
 				frontmatter {
