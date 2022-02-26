@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { v4 as uuidv4 } from 'uuid';
-import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby';
+import { Link as GatsbyLink } from 'gatsby';
 import { useLocation } from '@reach/router';
+import { useMenuLinks } from '../hooks';
 
 const borderThickness = 4;
 
@@ -53,27 +53,11 @@ const MenuItemLink = styled(GatsbyLink)<{ $isActive: boolean }>`
 `;
 
 function renderMenuItems() {
-	const {
-		site: {
-			siteMetadata: { menuLinks },
-		},
-	} = useStaticQuery(graphql`
-		query {
-			site {
-				siteMetadata {
-					menuLinks {
-						text
-						path
-					}
-				}
-			}
-		}
-	`);
-
 	const { pathname } = useLocation();
+	const menuLinks = useMenuLinks();
 
-	return menuLinks.map(({ text, path }: { text: string; path: string }) => (
-		<MenuItem key={uuidv4()}>
+	return menuLinks.map(({ text, path, id }: { text: string; path: string; id: string; }) => (
+		<MenuItem key={id}>
 			<MenuItemLink to={path} $isActive={path === pathname}>
 				{text}
 			</MenuItemLink>

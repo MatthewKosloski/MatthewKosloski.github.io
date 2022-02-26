@@ -12,6 +12,7 @@ import {
 } from '@reach/menu-button';
 import withScreenReaderText from './hoc/withScreenReaderText';
 import { CloseIcon, HamburgerIcon } from './icons';
+import { useMenuLinks } from '../hooks';
 
 const StyledMenuItems = styled(MenuItems)`
 	${({ theme: { color } }) => css`
@@ -40,6 +41,7 @@ const ExpandIcon = withScreenReaderText(HamburgerIcon, 'Expand Mobile Menu');
 
 function MobileMenuInner() {
 	const { isExpanded } = useMenuButtonContext();
+	const menuLinks = useMenuLinks();
 	const activeBodyClass = 'has-expanded-mobile-menu';
 
 	useEffect(() => {
@@ -49,24 +51,6 @@ function MobileMenuInner() {
 			document.body.classList.remove(activeBodyClass);
 		}
 	}, [isExpanded]);
-
-	const {
-		site: {
-			siteMetadata: { menuLinks },
-		},
-	} = useStaticQuery(graphql`
-		query {
-			site {
-				siteMetadata {
-					menuLinks {
-						text
-						path
-						id
-					}
-				}
-			}
-		}
-	`);
 
 	return (
 		<>
