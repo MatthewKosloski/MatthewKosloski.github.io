@@ -5,21 +5,19 @@ function useMenuLinks() {
 		site: {
 			siteMetadata: { menuLinks },
 		},
-		allMdx: {
-			nodes: indexableBlogPosts
-		}
+		allMdx: { nodes: indexableBlogPosts },
 	} = useStaticQuery(graphql`
 		{
 			site {
 				siteMetadata {
 					menuLinks {
 						text
-						path,
+						path
 						id
 					}
 				}
 			}
-			allMdx(filter: {frontmatter: {indexable: {eq: true}}}) {
+			allMdx(filter: { frontmatter: { indexable: { eq: true } } }) {
 				nodes {
 					id
 				}
@@ -29,7 +27,9 @@ function useMenuLinks() {
 
 	let filteredMenuLinks = [...menuLinks];
 	if (indexableBlogPosts.length === 0) {
-		filteredMenuLinks = menuLinks.filter((link: {text: string; path: string}) => link.path !== '/blog');
+		filteredMenuLinks = menuLinks.filter(
+			(link: { text: string; path: string }) => link.path !== '/blog'
+		);
 	}
 
 	return filteredMenuLinks;

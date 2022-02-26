@@ -19,7 +19,8 @@ function IndexPage({ location, data }: BasePageProps & FeaturedBlogPostsQuery) {
 				<Grid>
 					<GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
 						<p className="h2 color-gray600">
-							Hi, I'm Matthew &mdash; <br></br> a Software Developer from Chicago
+							Hi, I'm Matthew &mdash; <br></br> a Software Developer from
+							Chicago
 						</p>
 						<p>
 							Currently, I work at{' '}
@@ -99,8 +100,10 @@ interface FeaturedBlogPostsQuery {
 export const featuredBlogPostsQuery = graphql`
 	{
 		allMdx(
-			sort: {fields: frontmatter___date, order: DESC}
-			filter: {frontmatter: {featured: {eq: true}, indexable: {eq: true}}}
+			sort: { fields: frontmatter___date, order: DESC }
+			filter: {
+				frontmatter: { featured: { eq: true }, indexable: { eq: true } }
+			}
 		) {
 			nodes {
 				frontmatter {

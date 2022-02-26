@@ -56,13 +56,15 @@ function renderMenuItems() {
 	const { pathname } = useLocation();
 	const menuLinks = useMenuLinks();
 
-	return menuLinks.map(({ text, path, id }: { text: string; path: string; id: string; }) => (
-		<MenuItem key={id}>
-			<MenuItemLink to={path} $isActive={path === pathname}>
-				{text}
-			</MenuItemLink>
-		</MenuItem>
-	));
+	return menuLinks.map(
+		({ text, path, id }: { text: string; path: string; id: string }) => (
+			<MenuItem key={id}>
+				<MenuItemLink to={path} $isActive={path === pathname}>
+					{text}
+				</MenuItemLink>
+			</MenuItem>
+		)
+	);
 }
 
 function DesktopMenu() {

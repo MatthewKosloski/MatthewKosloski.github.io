@@ -1,5 +1,3 @@
-import {default as useMenuLinks} from './useMenuLinks';
+import { default as useMenuLinks } from './useMenuLinks';
 
-export {
-	useMenuLinks
-}
+export { useMenuLinks };
