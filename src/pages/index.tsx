@@ -19,8 +19,7 @@ function IndexPage({ location, data }: BasePageProps & FeaturedBlogPostsQuery) {
 				<Grid>
 					<GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
 						<p className="h2 color-gray600">
-							Hi, I'm Matthew &mdash; <br></br> a Software Dev based in Chicago,
-							Illinois.
+							Hi, I'm Matthew &mdash; <br></br> a Software Developer from Chicago
 						</p>
 						<p>
 							Currently, I work at{' '}
