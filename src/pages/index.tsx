@@ -49,6 +49,14 @@ function IndexPage({ location, data }: BasePageProps & FeaturedBlogPostsQuery) {
 					</GridCol>
 				</Grid>
 			</Section>
+			<Section title="Most Recent Project">
+				<Projects limit={1} />
+				<GridCol xs={12} alignCenterXs>
+					<ButtonLinkInternal to="/projects">
+						View All Projects
+					</ButtonLinkInternal>
+				</GridCol>
+			</Section>
 			<Section title="Most Recent Experience">
 				<Grid>
 					<GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
@@ -60,14 +68,6 @@ function IndexPage({ location, data }: BasePageProps & FeaturedBlogPostsQuery) {
 						</ButtonLinkInternal>
 					</GridCol>
 				</Grid>
-			</Section>
-			<Section title="Most Recent Project">
-				<Projects limit={1} />
-				<GridCol xs={12} alignCenterXs>
-					<ButtonLinkInternal to="/projects">
-						View All Projects
-					</ButtonLinkInternal>
-				</GridCol>
 			</Section>
 			{data.allMdx.nodes.length > 0 ? (
 				<Section title="Selected Blog Posts">

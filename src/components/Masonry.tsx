@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StaticImage } from 'gatsby-plugin-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 const Wrapper = styled.div`
 	${({ theme: { media, vr, utils } }) => `
@@ -30,97 +30,50 @@ const Wrapper = styled.div`
 	`}
 `;
 
-function Masonry() {
+interface MasonryDatum {
+	frontmatter: {
+		alt: string;
+		masonry_size: string;
+		image: {
+			childrenImageSharp: {
+				gatsbyImageData: IGatsbyImageData;
+			}[];
+		};
+	};
+	id: string;
+}
+
+interface MasonryData {
+	allMdx: {
+		nodes: MasonryDatum[];
+	};
+}
+
+export interface MasonryProps {
+	data: MasonryData;
+}
+
+function renderMasonryItem({
+	id,
+	frontmatter: { image, alt, masonry_size },
+}: MasonryDatum) {
+	return (
+		<GatsbyImage
+			key={id}
+			image={image.childrenImageSharp[0].gatsbyImageData}
+			alt={alt}
+			className={`gatsby-image-wrapper--${
+				masonry_size === 'short' ? 'short' : 'tall'
+			}`}
+			loading="lazy"
+		/>
+	);
+}
+
+function Masonry({ data }: MasonryProps) {
 	return (
 		<Wrapper>
-			<StaticImage
-				src="../images/photos/thumbnail-bliss-matthew-kosloski.jpg"
-				alt=""
-				placeholder="blurred"
-				imgClassName="masonry-img"
-				className="gatsby-image-wrapper--short"
-				loading="lazy"
-			/>
-			<StaticImage
-				src="../images/photos/thumbnail-antelope-canyone-matthew-kosloski.jpg"
-				alt=""
-				placeholder="blurred"
-				imgClassName="masonry-img"
-				className="gatsby-image-wrapper--tall"
-				loading="lazy"
-			/>
-			<StaticImage
-				src="../images/photos/thumbnail-birch-forest-matthew-kosloski.jpg"
-				alt=""
-				placeholder="blurred"
-				imgClassName="masonry-img"
-				className="gatsby-image-wrapper--short"
-				loading="lazy"
-			/>
-			<StaticImage
-				src="../images/photos/thumbnail-frog-matthew-kosloski.jpg"
-				alt=""
-				placeholder="blurred"
-				imgClassName="masonry-img"
-				className="gatsby-image-wrapper--tall"
-				loading="lazy"
-			/>
-			<StaticImage
-				src="../images/photos/thumbnail-grand-canyon-matthew-kosloski.jpg"
-				alt=""
-				placeholder="blurred"
-				imgClassName="masonry-img"
-				className="gatsby-image-wrapper--short"
-				loading="lazy"
-			/>
-			<StaticImage
-				src="../images/photos/thumbnail-yosemite-matthew-kosloski.jpg"
-				alt=""
-				placeholder="blurred"
-				imgClassName="masonry-img"
-				className="gatsby-image-wrapper--short"
-				loading="lazy"
-			/>
-			<StaticImage
-				src="../images/photos/thumbnail-moon-matthew-kosloski.jpg"
-				alt=""
-				placeholder="blurred"
-				imgClassName="masonry-img"
-				className="gatsby-image-wrapper--tall"
-				loading="lazy"
-			/>
-			<StaticImage
-				src="../images/photos/thumbnail-monsoon-matthew-kosloski.jpg"
-				alt=""
-				placeholder="blurred"
-				imgClassName="masonry-img"
-				className="gatsby-image-wrapper--short"
-				loading="lazy"
-			/>
-			<StaticImage
-				src="../images/photos/thumbnail-rabbit-matthew-kosloski.jpg"
-				alt=""
-				placeholder="blurred"
-				imgClassName="masonry-img"
-				className="gatsby-image-wrapper--tall"
-				loading="lazy"
-			/>
-			<StaticImage
-				src="../images/photos/thumbnail-san-francisco-matthew-kosloski.jpg"
-				alt=""
-				placeholder="blurred"
-				imgClassName="masonry-img"
-				className="gatsby-image-wrapper--short"
-				loading="lazy"
-			/>
-			<StaticImage
-				src="../images/photos/thumbnail-michigan-matthew-kosloski.jpg"
-				alt=""
-				placeholder="blurred"
-				imgClassName="masonry-img"
-				className="gatsby-image-wrapper--short"
-				loading="lazy"
-			/>
+			{data.allMdx.nodes.map((node) => renderMasonryItem(node))}
 		</Wrapper>
 	);
 }

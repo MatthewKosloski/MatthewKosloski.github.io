@@ -28,7 +28,7 @@ function ExperiencePage({ location }: BasePageProps) {
 						<ExperienceTimeline />
 					</GridCol>
 					<GridCol xs={12} alignCenterXs>
-						<ButtonLinkExternal href="">View Resume</ButtonLinkExternal>
+						<ButtonLinkExternal href="/kosloski_matthew_resume.pdf">View Resume</ButtonLinkExternal>
 						<ButtonLinkExternal
 							href="https://www.linkedin.com/in/matthewkosloski/"
 							variant={ButtonLinkVariant.SECONDARY}
@@ -60,7 +60,7 @@ function ExperiencePage({ location }: BasePageProps) {
 						</p>
 						<Flex>
 							<FlexCol>
-								<SubtleLinkExternal href="#">
+								<SubtleLinkExternal href="/kosloski_matthew_senior_paper.pdf">
 									Read my senior paper
 								</SubtleLinkExternal>
 							</FlexCol>
@@ -70,7 +70,7 @@ function ExperiencePage({ location }: BasePageProps) {
 						<Flex justifyCenterXs justifyEndMd>
 							<FlexCol>
 								<StaticImage
-									src="../images/photos/matthew-kosloski-graduation.jpg"
+									src="../../content/experience/matthew-kosloski-graduation.jpg"
 									alt="A portrait photo of Matthew Kosloski wearing graduation attire and holding his diploma"
 									placeholder="blurred"
 									loading="lazy"

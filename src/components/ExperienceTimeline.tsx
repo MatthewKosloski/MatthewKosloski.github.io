@@ -1,5 +1,5 @@
 import React from 'react';
-import experienceYaml from '../../content/experiences.yml';
+import experienceYaml from '../../content/experience/experiences.yml';
 import { Timeline } from '.';
 
 interface ExperienceTimelineProps {

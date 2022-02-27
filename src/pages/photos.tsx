@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { BasePageProps } from '../types';
 import { Grid, GridCol, Layout, Masonry, Section } from '../components';
+import { MasonryProps } from '../components/Masonry';
+import { graphql } from 'gatsby';
 
-function PhotosPage({ location }: BasePageProps) {
+function PhotosPage({ location, data }: BasePageProps & MasonryProps) {
 	return (
 		<Layout location={location} pageTitle="Photography">
 			<Section>
@@ -29,12 +31,34 @@ function PhotosPage({ location }: BasePageProps) {
 						<hr />
 					</GridCol>
 					<GridCol xs={12}>
-						<Masonry />
+						<Masonry data={data} />
 					</GridCol>
 				</Grid>
 			</Section>
 		</Layout>
 	);
 }
+
+export const query = graphql`
+	{
+		allMdx(
+			filter: { fileAbsolutePath: { regex: "/photography/" } }
+			sort: { fields: frontmatter___order, order: ASC }
+		) {
+			nodes {
+				id
+				frontmatter {
+					masonry_size
+					alt
+					image {
+						childrenImageSharp {
+							gatsbyImageData(placeholder: BLURRED, quality: 100)
+						}
+					}
+				}
+			}
+		}
+	}
+`;
 
 export default PhotosPage;
