@@ -50,7 +50,7 @@ function Terminal({ content, preStyles }: TerminalProps) {
 					renderContent(content)
 				) : (
 					<>
-						<PromptSign>$ </PromptSign> <Cursor isActive={false} />
+						<PromptSign>$</PromptSign> <Cursor isActive={false} />
 					</>
 				)}
 			</Code>
