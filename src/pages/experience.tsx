@@ -28,7 +28,9 @@ function ExperiencePage({ location }: BasePageProps) {
 						<ExperienceTimeline />
 					</GridCol>
 					<GridCol xs={12} alignCenterXs>
-						<ButtonLinkExternal href="/kosloski_matthew_resume.pdf">View Resume</ButtonLinkExternal>
+						<ButtonLinkExternal href="/kosloski_matthew_resume.pdf">
+							View Resume
+						</ButtonLinkExternal>
 						<ButtonLinkExternal
 							href="https://www.linkedin.com/in/matthewkosloski/"
 							variant={ButtonLinkVariant.SECONDARY}

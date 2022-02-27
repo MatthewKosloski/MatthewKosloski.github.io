@@ -25,10 +25,14 @@ function PolysentProject({ featureOnLeft = false }: BaseProjectProps) {
 			subtitle="A Single Page Web Application"
 			featuredComponent={<FeaturedComponent />}
 			buttonPrimary={
-				<SubtleLinkExternal href="http://polysent.com/">Visit live website</SubtleLinkExternal>
+				<SubtleLinkExternal href="http://polysent.com/">
+					Visit live website
+				</SubtleLinkExternal>
 			}
 			buttonSecondary={
-				<SubtleLinkExternal href="https://github.com/MatthewKosloski/polysent">View source code</SubtleLinkExternal>
+				<SubtleLinkExternal href="https://github.com/MatthewKosloski/polysent">
+					View source code
+				</SubtleLinkExternal>
 			}
 			featureOnLeft={featureOnLeft}
 		>
