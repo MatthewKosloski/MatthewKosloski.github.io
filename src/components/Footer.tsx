@@ -18,7 +18,6 @@ const SmallTextWrapper = styled.div`
 
 function Footer() {
 	const socialLinks = useSocialLinks();
-	console.log(socialLinks);
 	return (
 		<Wrapper isNewspaper={false}>
 			<SocialMediaLinkSection>
