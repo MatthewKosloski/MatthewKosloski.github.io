@@ -1,11 +1,17 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-function useMenuLinks() {
+export interface MenuLink {
+	text: string;
+	path: string;
+	id: string;
+}
+
+function useMenuLinks(): MenuLink[] {
 	const {
 		site: {
 			siteMetadata: { menuLinks },
 		},
-		allMdx: { nodes: indexableBlogPosts },
+		allMdx: { totalCount },
 	} = useStaticQuery(graphql`
 		{
 			site {
@@ -18,15 +24,13 @@ function useMenuLinks() {
 				}
 			}
 			allMdx(filter: { frontmatter: { indexable: { eq: true } } }) {
-				nodes {
-					id
-				}
+				totalCount
 			}
 		}
 	`);
 
 	let filteredMenuLinks = [...menuLinks];
-	if (indexableBlogPosts.length === 0) {
+	if (totalCount === 0) {
 		filteredMenuLinks = menuLinks.filter(
 			(link: { text: string; path: string }) => link.path !== '/blog'
 		);
