@@ -27,7 +27,7 @@ module.exports = {
 			{
 				id: '1d4dc368-579f-4caa-a440-71b7295be7ac',
 				text: 'Photos',
-				path: '/photos',
+				path: '/photography',
 			},
 			{
 				id: 'c4db28f2-b860-43ca-8ba0-5677b0782bb6',
