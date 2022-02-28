@@ -23,7 +23,7 @@ const SmallTextWrapper = styled.div`
 function Footer() {
 	const socialLinks = useSocialLinks();
 	return (
-		<Wrapper isNewspaper={false}>
+		<Wrapper isFilled={false}>
 			<SocialMediaLinkSection>
 				<Grid>
 					<GridCol xs={12} sm={8} smOffset={3}>
