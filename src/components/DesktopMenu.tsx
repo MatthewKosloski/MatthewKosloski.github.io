@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
-import { useLocation } from '@reach/router';
-import { useMenuLinks } from '../hooks';
+import { MenuLink } from '../hooks/useMenuLinks';
 
 const borderThickness = 4;
 
@@ -52,10 +51,7 @@ const MenuItemLink = styled(GatsbyLink)<{ $isActive: boolean }>`
 	}
 `;
 
-function renderMenuItems() {
-	const { pathname } = useLocation();
-	const menuLinks = useMenuLinks();
-
+function renderMenuItems(pathname: string, menuLinks: MenuLink[]) {
 	return menuLinks.map(
 		({ text, path, id }: { text: string; path: string; id: string }) => (
 			<MenuItem key={id}>
@@ -67,8 +63,13 @@ function renderMenuItems() {
 	);
 }
 
-function DesktopMenu() {
-	return <Wrapper>{renderMenuItems()}</Wrapper>;
+interface DesktopMenuProps {
+	pathname: string;
+	menuLinks: MenuLink[];
+}
+
+function DesktopMenu({ pathname, menuLinks }: DesktopMenuProps) {
+	return <Wrapper>{renderMenuItems(pathname, menuLinks)}</Wrapper>;
 }
 
 export default DesktopMenu;

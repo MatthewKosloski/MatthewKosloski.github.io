@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
-import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby';
+import { Link as GatsbyLink } from 'gatsby';
 import {
 	Menu,
 	MenuButton,
 	MenuItems,
 	MenuPopover,
-	MenuLink,
+	MenuLink as ReachMenuLink,
 	useMenuButtonContext,
 } from '@reach/menu-button';
 import withScreenReaderText from './hoc/withScreenReaderText';
 import { CloseIcon, HamburgerIcon } from './icons';
-import { useMenuLinks } from '../hooks';
+import { MenuLink } from '../hooks/useMenuLinks';
 
 const StyledMenuItems = styled(MenuItems)`
 	${({ theme: { color } }) => css`
@@ -39,9 +39,8 @@ const StyledMenuButton = styled(MenuButton)`
 const ContractIcon = withScreenReaderText(CloseIcon, 'Contract Mobile Menu');
 const ExpandIcon = withScreenReaderText(HamburgerIcon, 'Expand Mobile Menu');
 
-function MobileMenuInner() {
+function MobileMenuInner({ menuLinks }: MobileMenuProps) {
 	const { isExpanded } = useMenuButtonContext();
-	const menuLinks = useMenuLinks();
 	const activeBodyClass = 'has-expanded-mobile-menu';
 
 	useEffect(() => {
@@ -107,9 +106,9 @@ function MobileMenuInner() {
 												key={id}
 												className="mobile-menu-link-wrapper"
 											>
-												<MenuLink as={GatsbyLink} to={path}>
+												<ReachMenuLink as={GatsbyLink} to={path}>
 													{text}
-												</MenuLink>
+												</ReachMenuLink>
 											</motion.div>
 										);
 									}
@@ -123,10 +122,14 @@ function MobileMenuInner() {
 	);
 }
 
-function MobileMenu() {
+interface MobileMenuProps {
+	menuLinks: MenuLink[];
+}
+
+function MobileMenu({ menuLinks }: MobileMenuProps) {
 	return (
 		<Menu>
-			<MobileMenuInner />
+			<MobileMenuInner menuLinks={menuLinks} />
 		</Menu>
 	);
 }

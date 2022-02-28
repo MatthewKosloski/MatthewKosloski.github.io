@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 import { DesktopMenu, Grid, GridCol, MobileMenu } from '.';
+import { useMenuLinks } from '../hooks';
+import { useLocation } from '@reach/router';
 
 const StyledHeader = styled.header`
 	padding-top: ${(p) => p.theme.vr.two.rem};
@@ -59,14 +61,16 @@ interface HeaderProps {
 }
 
 function Header({ pageTitle, pageSubtitle }: HeaderProps) {
+	const menuLinks = useMenuLinks();
+	const { pathname } = useLocation();
 	return (
 		<HeaderWrapper>
 			<Nav>
 				<Logo to="/">
 					<h1 className="h4">Matthew Kosloski</h1>
 				</Logo>
-				<MobileMenu />
-				<DesktopMenu />
+				<MobileMenu menuLinks={menuLinks} />
+				<DesktopMenu menuLinks={menuLinks} pathname={pathname} />
 			</Nav>
 			{pageTitle || pageSubtitle ? (
 				<Grid>
