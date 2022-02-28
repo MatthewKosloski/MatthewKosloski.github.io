@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useSocialLinks } from '../hooks';
 import { Section, Grid, GridCol, SocialLinks, Wrapper } from '.';
 
@@ -7,13 +7,17 @@ const SocialMediaLinkSection = styled(Section).attrs(() => ({
 	as: 'footer',
 	borderBottom: true,
 }))`
-	padding: ${(p) => p.theme.vr.two.rem};
-	padding-bottom: 0;
+	${({ theme: { vr } }) => css`
+		padding: ${vr.two.rem};
+		padding-bottom: 0;
+	`}
 `;
 
 const SmallTextWrapper = styled.div`
-	text-align: center;
-	padding: ${(p) => p.theme.vr.two.rem} ${(p) => p.theme.vr.half.rem};
+	${({ theme: { vr } }) => css`
+		text-align: center;
+		padding: ${vr.two.rem} ${vr.half.rem};
+	`}
 `;
 
 function Footer() {
