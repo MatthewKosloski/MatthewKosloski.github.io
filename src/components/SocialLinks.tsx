@@ -31,7 +31,7 @@ const SocialItem = styled.li`
 			}
 			flex: 0 0 auto;
 			padding: 0;
-		}	
+		}
 		flex-basis: 33%;
 		max-width: 33%;
 		padding: ${vr.half.em};
