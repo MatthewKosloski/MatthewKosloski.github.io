@@ -6,33 +6,35 @@ import { useMenuLinks } from '../hooks';
 import { useLocation } from '@reach/router';
 
 const StyledHeader = styled.header`
-	padding-top: ${(p) => p.theme.vr.two.rem};
+	${({ theme: { color, vr, media, typography } }) => css`
+		padding-top: ${vr.two.rem};
 
-	${({ theme }) => `${theme.media.sm} {
-    padding-top: ${theme.vr.five.rem};
-    max-width: 75%;
-  }`}
+		${media.sm} {
+			padding-top: ${vr.five.rem};
+			max-width: 75%;
+		}
 
-	h2 {
-		color: ${(p) => p.theme.color.white};
-		margin-bottom: ${(p) => p.theme.vr.quarter.rem};
-	}
-	h3 {
-		font-size: 1rem;
-		font-weight: 400;
-		font-family: ${(p) => p.theme.typography.body};
-		color: ${(p) => p.theme.color.white500};
-	}
+		h2 {
+			color: ${color.white};
+			margin-bottom: ${vr.quarter.rem};
+		}
+		h3 {
+			font-size: 1rem;
+			font-weight: 400;
+			font-family: ${typography.body};
+			color: ${color.white500};
+		}
+	`}
 `;
 
 const HeaderWrapper = styled.div`
-	background-color: ${(p) => p.theme.color.haitiPurple};
-	padding: ${(p) => p.theme.vr.one.em} ${(p) => p.theme.vr.one.em}
-		${(p) => p.theme.vr.two.em} ${(p) => p.theme.vr.one.em};
-
-	${({ theme }) => `${theme.media.sm} {
-    padding: 0 ${theme.vr.two.rem} ${theme.vr.four.rem} ${theme.vr.two.rem};
-  }`}
+	${({ theme: { color, vr, media } }) => css`
+		background-color: ${color.haitiPurple};
+		padding: ${vr.one.rem} ${vr.one.rem} ${vr.two.rem} ${vr.one.rem};
+		${media.sm} {
+			padding: 0 ${vr.two.rem} ${vr.four.rem} ${vr.two.rem};
+		}
+	`}
 `;
 
 const Nav = styled.nav`
