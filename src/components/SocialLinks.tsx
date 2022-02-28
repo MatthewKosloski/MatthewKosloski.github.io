@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
 	DribbbleIcon,
 	GitHubIcon,
@@ -11,44 +11,50 @@ import {
 import withScreenReaderText from './hoc/withScreenReaderText';
 
 const ListWrapper = styled.ul`
-	${({ theme }) => `${theme.media.sm} {
-    flex-wrap: nowrap;
-  }`}
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	list-style: none;
+	${({ theme: { media } }) => css`
+		${media.sm} {
+			flex-wrap: nowrap;
+		}
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		list-style: none;
+	`}
 `;
 
 const SocialItem = styled.li`
-	${({ theme }) => `${theme.media.sm} {
-    &:not(:last-child) {
-      margin-right: ${theme.vr.one.em};
-    }
-    flex: 0 0 auto;
-    padding: 0;
-  }`}
-	flex-basis: 33%;
-	max-width: 33%;
-	padding: ${(p) => p.theme.vr.half.em};
+	${({ theme: { media, vr } }) => css`
+		${media.sm} {
+			&:not(:last-child) {
+				margin-right: ${vr.one.em};
+			}
+			flex: 0 0 auto;
+			padding: 0;
+		}	
+		flex-basis: 33%;
+		max-width: 33%;
+		padding: ${vr.half.em};
+	`}
 `;
 
 const SocialLink = styled.a`
-	padding: ${(p) => p.theme.vr.half.em};
-	border-radius: ${(p) => p.theme.utils.pxToEm(5)};
-	color: ${(p) => p.theme.color.ghostlyPurple};
-	transition: 0.15s ease-in-out;
-	svg,
-	& {
-		display: block;
-	}
-	svg {
-		margin: 0 auto;
-	}
-	&:hover {
-		background-color: #b795d0;
-	}
+	${({ theme: { vr, color, utils } }) => css`
+		padding: ${vr.half.em};
+		border-radius: ${utils.pxToEm(5)};
+		color: ${color.ghostlyPurple};
+		transition: 0.15s ease-in-out;
+		svg,
+		& {
+			display: block;
+		}
+		svg {
+			margin: 0 auto;
+		}
+		&:hover {
+			background-color: ${color.eastSidePurple};
+		}
+	`}
 `;
 
 const Twitter = withScreenReaderText(TwitterIcon, 'Twitter');
