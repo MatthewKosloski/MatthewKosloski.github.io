@@ -1,3 +1,4 @@
 import { default as useMenuLinks } from './useMenuLinks';
+import { default as useSocialLinks } from './useSocialLinks';
 
-export { useMenuLinks };
+export { useMenuLinks, useSocialLinks };

@@ -58,40 +58,42 @@ const Instagram = withScreenReaderText(InstagramIcon, 'Instagram');
 const Dribbble = withScreenReaderText(DribbbleIcon, 'Dribbble');
 const Unsplash = withScreenReaderText(UnsplashIcon, 'Unsplash');
 
-function SocialLinks() {
+type Site =
+	| 'Twitter'
+	| 'LinkedIn'
+	| 'GitHub'
+	| 'Instagram'
+	| 'Dribbble'
+	| 'Unsplash';
+
+const siteToIconMap = new Map<Site, JSX.Element>();
+siteToIconMap.set('Twitter', <Twitter />);
+siteToIconMap.set('LinkedIn', <LinkedIn />);
+siteToIconMap.set('GitHub', <GitHub />);
+siteToIconMap.set('Instagram', <Instagram />);
+siteToIconMap.set('Dribbble', <Dribbble />);
+siteToIconMap.set('Unsplash', <Unsplash />);
+
+interface SocialLinkProps {
+	data: {
+		url: string;
+		site: Site;
+		id: string;
+	}[];
+}
+
+function SocialLinks({ data }: SocialLinkProps) {
 	return (
 		<nav>
 			<ListWrapper>
-				<SocialItem>
-					<SocialLink href="https://twitter.com/_mkos">
-						<Twitter />
-					</SocialLink>
-				</SocialItem>
-				<SocialItem>
-					<SocialLink href="https://www.linkedin.com/in/matthewkosloski/">
-						<LinkedIn />
-					</SocialLink>
-				</SocialItem>
-				<SocialItem>
-					<SocialLink href="https://github.com/matthewKosloski">
-						<GitHub />
-					</SocialLink>
-				</SocialItem>
-				<SocialItem>
-					<SocialLink href="https://www.instagram.com/matthewkosloski/">
-						<Instagram />
-					</SocialLink>
-				</SocialItem>
-				<SocialItem>
-					<SocialLink href="https://dribbble.com/matthewkosloski">
-						<Dribbble />
-					</SocialLink>
-				</SocialItem>
-				<SocialItem>
-					<SocialLink href="https://unsplash.com/@matthew">
-						<Unsplash />
-					</SocialLink>
-				</SocialItem>
+				{data.map(({ url, site, id }) => {
+					const Icon = siteToIconMap.get(site);
+					return (
+						<SocialItem key={id}>
+							<SocialLink href={url}>{Icon}</SocialLink>
+						</SocialItem>
+					);
+				})}
 			</ListWrapper>
 		</nav>
 	);

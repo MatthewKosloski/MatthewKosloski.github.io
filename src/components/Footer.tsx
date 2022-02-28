@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSocialLinks } from '../hooks';
 import { Section, Grid, GridCol, SocialLinks, Wrapper } from '.';
 
 const SocialMediaLinkSection = styled(Section).attrs(() => ({
@@ -16,12 +17,14 @@ const SmallTextWrapper = styled.div`
 `;
 
 function Footer() {
+	const socialLinks = useSocialLinks();
+	console.log(socialLinks);
 	return (
 		<Wrapper isNewspaper={false}>
 			<SocialMediaLinkSection>
 				<Grid>
 					<GridCol xs={12} sm={8} smOffset={3}>
-						<SocialLinks />
+						<SocialLinks data={socialLinks} />
 					</GridCol>
 				</Grid>
 			</SocialMediaLinkSection>
