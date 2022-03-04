@@ -14,6 +14,7 @@ interface RendererProps {
 	autoScrollAfterLine?: number;
 	autoScroll?: boolean;
 	trailingNewLines?: number;
+	shouldReplay?: boolean;
 }
 
 function getNumberOfLinesFromTokens(tokens: Token[]) {
@@ -43,6 +44,7 @@ function Renderer({
 	autoScrollAfterLine = 0,
 	autoScroll = true,
 	trailingNewLines = 3,
+	shouldReplay = false
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const contentGeneratorRef = React.useRef<Generator<EditorDatum, undefined>>();
@@ -58,8 +60,13 @@ function Renderer({
 	const [isTypingCode, setIsTypingCode] = React.useState<boolean>(false);
 	const [isTypingVimCommand, setIsTypingVimCommand] =
 		React.useState<boolean>(false);
+	const [shouldReplayInternal, setInternalShouldReplay] =
+		React.useState<boolean>(true);
 
 	React.useEffect(() => {
+
+		if (!shouldReplayInternal) return;
+
 		const numberOfLines = getNumberOfLinesFromTokens(tokens);
 		const lineNumberCapacity = numberOfLines + trailingNewLines;
 
@@ -71,19 +78,22 @@ function Renderer({
 			});
 		}
 		setEditorLineNumbers(initialEditorLineNumbers);
-	}, [tokens, setEditorLineNumbers, trailingNewLines]);
+	}, [tokens, setEditorLineNumbers, trailingNewLines, shouldReplayInternal]);
 
 	React.useEffect(() => {
+		if (!shouldReplayInternal) return;
 		contentGeneratorRef.current = contentGenerator(tokens);
-	}, [tokens]);
+	}, [tokens, shouldReplayInternal]);
 
 	React.useEffect(() => {
+		if (!shouldReplayInternal) return;
 		const timeout = setTimeout(function () {
+			setInternalShouldReplay(false);
 			setIsTypingCode(true);
 		}, delay);
 
 		return () => clearTimeout(timeout);
-	}, [delay, setIsTypingCode]);
+	}, [delay, setIsTypingCode, shouldReplayInternal]);
 
 	React.useEffect(() => {
 		if (isTypingCode && contentGeneratorRef.current) {
@@ -175,6 +185,18 @@ function Renderer({
 		rows,
 		numChars,
 	]);
+
+	// TODO: better replay implementation
+	React.useEffect(() => {
+		if (!isTypingCode && !isTypingVimCommand && editorData.length) {
+			setInternalShouldReplay(true);
+			setEditorData([]);
+			setEditorStatusText('');
+			setCols(1);
+			setRows(1);
+			setNumChars(0);
+		}
+	}, [shouldReplay]);
 
 	return (
 		<Editor
