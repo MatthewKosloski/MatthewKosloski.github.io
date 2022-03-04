@@ -46,7 +46,7 @@ function Renderer({
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const contentGeneratorRef = React.useRef<Generator<EditorDatum, undefined>>();
-	const iteratorRef = React.useRef<Generator<string, undefined>>();
+	const writeCmdGeneratorRef = React.useRef<Generator<string, undefined>>();
 	// prettier-ignore
 	const [editorLineNumbers, setEditorLineNumbers] = React.useState<{ lineNumber: string; id: string; }[]>([]);
 	const [editorData, setEditorData] = React.useState<EditorDatum[]>([]);
@@ -55,7 +55,8 @@ function Renderer({
 	const [cols, setCols] = React.useState<number>(1);
 	const [rows, setRows] = React.useState<number>(1);
 	const [numChars, setNumChars] = React.useState<number>(0);
-	const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
+	const [isTypingCode, setIsTypingCode] = React.useState<boolean>(false);
+	const [isTypingVimCommand, setIsTypingVimCommand] = React.useState<boolean>(false);
 
 	React.useEffect(() => {
 		const numberOfLines = getNumberOfLinesFromTokens(tokens);
@@ -77,18 +78,19 @@ function Renderer({
 
 	React.useEffect(() => {
 		const timeout = setTimeout(function () {
-			setIsPlaying(true);
+			setIsTypingCode(true);
 		}, delay);
 
 		return () => clearTimeout(timeout);
-	}, [delay, setIsPlaying]);
+	}, [delay, setIsTypingCode]);
 
 	React.useEffect(() => {
-		if (isPlaying && contentGeneratorRef.current) {
+		if (isTypingCode && contentGeneratorRef.current) {
 			const interval = window.setInterval(function () {
 				const { value, done } = contentGeneratorRef.current!.next();
 				if (done) {
-					cleanup();
+					clearInterval(intervalRef.current);
+					setIsTypingCode(false);
 				} else if (value) {
 					if (value.char === '\n') {
 						setCols(1);
@@ -117,7 +119,7 @@ function Renderer({
 	}, [
 		speed,
 		editorData,
-		isPlaying,
+		isTypingCode,
 		setEditorData,
 		rows,
 		setRows,
@@ -131,24 +133,26 @@ function Renderer({
 
 	React.useEffect(() => {
 		if (editorData.length) {
-			iteratorRef.current = writeCommandTextGenerator();
+			writeCmdGeneratorRef.current = writeCommandTextGenerator();
 		}
 	}, [editorData]);
 
 	React.useEffect(() => {
 		let interval: NodeJS.Timer;
 
-		if (isPlaying) {
+		if (isTypingCode) {
 			setEditorStatusText('-- INSERT --');
-		} else if (editorData.length) {
+		} else if (!isTypingCode && editorData.length) {
+			setIsTypingVimCommand(true);
 			interval = setInterval(function () {
-				const { value, done } = iteratorRef.current!.next();
+				const { value, done } = writeCmdGeneratorRef.current!.next();
 				if (done) {
 					clearInterval(interval);
 					setEditorCommand('');
 					setEditorStatusText(
 						`"${filename}" [New] ${rows}L, ${numChars}C written`
 					);
+					setIsTypingVimCommand(false);
 				} else if (value) {
 					setEditorCommand(editorCommand + value);
 				}
@@ -159,7 +163,8 @@ function Renderer({
 
 		return () => clearInterval(interval);
 	}, [
-		isPlaying,
+		isTypingCode,
+		setIsTypingVimCommand,
 		setEditorStatusText,
 		editorData,
 		filename,
@@ -170,14 +175,9 @@ function Renderer({
 		numChars,
 	]);
 
-	function cleanup() {
-		clearInterval(intervalRef.current);
-		setIsPlaying(false);
-	}
-
 	return (
 		<Editor
-			isPlaying={isPlaying}
+			isPlaying={isTypingCode}
 			lineNumbers={editorLineNumbers}
 			rows={rows}
 			cols={cols}
