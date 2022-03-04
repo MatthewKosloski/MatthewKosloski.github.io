@@ -56,7 +56,8 @@ function Renderer({
 	const [rows, setRows] = React.useState<number>(1);
 	const [numChars, setNumChars] = React.useState<number>(0);
 	const [isTypingCode, setIsTypingCode] = React.useState<boolean>(false);
-	const [isTypingVimCommand, setIsTypingVimCommand] = React.useState<boolean>(false);
+	const [isTypingVimCommand, setIsTypingVimCommand] =
+		React.useState<boolean>(false);
 
 	React.useEffect(() => {
 		const numberOfLines = getNumberOfLinesFromTokens(tokens);
