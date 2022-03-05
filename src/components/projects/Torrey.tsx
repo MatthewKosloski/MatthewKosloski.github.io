@@ -6,12 +6,8 @@ import { SubtleLinkExternal } from '../SubtleLink';
 import { BaseProjectProps } from './types';
 
 function FeaturedComponent() {
-	const [replay, setReplay] = React.useState<boolean>(false);
-
-
 	return (
 		<>
-		<button onClick={() => setReplay(!replay)}>Replay</button>
 			<AnimatedVimEditor
 				trailingNewLines={1}
 				autoScroll={false}
@@ -177,7 +173,6 @@ function FeaturedComponent() {
 					{ lexeme: ')', type: TokenType.Punctuation },
 				]}
 				speed={12}
-				shouldReplay={replay}
 			/>
 			<AnimatedTerminal
 				delay={7500}
