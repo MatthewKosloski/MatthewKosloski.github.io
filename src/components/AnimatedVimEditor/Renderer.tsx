@@ -61,7 +61,7 @@ function Renderer({
 	autoScrollAfterLine = 0,
 	autoScroll = true,
 	trailingNewLines = 3,
-	highlights = defaultHighlights
+	highlights = defaultHighlights,
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const contentGeneratorRef = React.useRef<Generator<EditorDatum, undefined>>();
