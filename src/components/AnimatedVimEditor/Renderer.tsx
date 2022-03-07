@@ -1,8 +1,25 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import contentGenerator from './editorContentGenerator';
+import contentGenerator, { EditorDatum } from './editorContentGenerator';
 import Editor from './Editor';
-import { EditorDatum, Token } from './types';
+
+export interface Token {
+	lexeme: string;
+	type: TokenType;
+}
+
+export enum TokenType {
+	Comment,
+	Identifier,
+	Integer,
+	Keyword,
+	Operator,
+	Punctuation,
+	Whitespace,
+	Uncategorized,
+	NewLine,
+	Boolean,
+}
 
 interface RendererProps {
 	filename: string;
@@ -14,6 +31,7 @@ interface RendererProps {
 	autoScrollAfterLine?: number;
 	autoScroll?: boolean;
 	trailingNewLines?: number;
+	highlights?: Map<TokenType, string>;
 }
 
 function getNumberOfLinesFromTokens(tokens: Token[]) {
@@ -43,6 +61,7 @@ function Renderer({
 	autoScrollAfterLine = 0,
 	autoScroll = true,
 	trailingNewLines = 3,
+	highlights = defaultHighlights
 }: RendererProps) {
 	const intervalRef = React.useRef<number>();
 	const contentGeneratorRef = React.useRef<Generator<EditorDatum, undefined>>();
@@ -188,8 +207,21 @@ function Renderer({
 			preStyles={preStyles}
 			autoScrollAfterLine={autoScrollAfterLine}
 			autoScroll={autoScroll}
+			highlights={highlights}
 		/>
 	);
 }
+
+const defaultHighlights = new Map<TokenType, string>();
+defaultHighlights.set(TokenType.Whitespace, 'transparent');
+defaultHighlights.set(TokenType.NewLine, 'transparent');
+defaultHighlights.set(TokenType.Uncategorized, '#ffffff');
+defaultHighlights.set(TokenType.Punctuation, '#ffffff');
+defaultHighlights.set(TokenType.Identifier, '#bf616a');
+defaultHighlights.set(TokenType.Integer, '#d08770');
+defaultHighlights.set(TokenType.Keyword, '#b48ead');
+defaultHighlights.set(TokenType.Operator, '#c0c5ce');
+defaultHighlights.set(TokenType.Comment, '#65737e');
+defaultHighlights.set(TokenType.Boolean, '#d08770');
 
 export default Renderer;

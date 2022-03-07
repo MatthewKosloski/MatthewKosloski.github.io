@@ -1,5 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Token, EditorDatum } from './types';
+import { Token, TokenType } from './Renderer';
+
+export interface EditorDatum {
+	char: string;
+	tokenType: TokenType;
+	id: string;
+}
 
 function* editorContentGenerator(
 	tokens: Token[]

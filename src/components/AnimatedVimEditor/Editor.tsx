@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { EditorDatum, TokenType } from './types';
-
+import { EditorDatum } from './editorContentGenerator';
+import { TokenType } from './Renderer';
 interface EditorProps {
 	isPlaying: boolean;
 	data: EditorDatum[];
@@ -78,20 +78,7 @@ const Editor: React.FunctionComponent<EditorProps> = ({
 	);
 };
 
-const defaultHighlights = new Map<TokenType, string>();
-defaultHighlights.set(TokenType.Whitespace, 'transparent');
-defaultHighlights.set(TokenType.NewLine, 'transparent');
-defaultHighlights.set(TokenType.Uncategorized, '#ffffff');
-defaultHighlights.set(TokenType.Punctuation, '#ffffff');
-defaultHighlights.set(TokenType.Identifier, '#bf616a');
-defaultHighlights.set(TokenType.Integer, '#d08770');
-defaultHighlights.set(TokenType.Keyword, '#b48ead');
-defaultHighlights.set(TokenType.Operator, '#c0c5ce');
-defaultHighlights.set(TokenType.Comment, '#65737e');
-defaultHighlights.set(TokenType.Boolean, '#d08770');
-
 Editor.defaultProps = {
-	highlights: defaultHighlights,
 	fallbackHighlight: '#fff',
 };
 
