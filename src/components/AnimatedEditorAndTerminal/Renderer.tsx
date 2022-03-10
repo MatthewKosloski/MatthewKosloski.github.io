@@ -97,7 +97,8 @@ function AnimatedEditorAndTerminal({
 		React.useState<boolean>(false);
 	const [editorAnimationIsDone, setEditorAnimationIsDone] =
 		React.useState<boolean>(false);
-	const [isEditorAnimationReplaying, setEditorAnimationIsReplaying] = React.useState<boolean>(true);
+	const [isEditorAnimationReplaying, setEditorAnimationIsReplaying] =
+		React.useState<boolean>(true);
 
 	React.useEffect(() => {
 		if (isEditorAnimationReplaying) {
@@ -249,8 +250,8 @@ function AnimatedEditorAndTerminal({
 		React.useState<boolean>(false);
 	const [terminalAnimationIsDone, setTerminalAnimationIsDone] =
 		React.useState<boolean>(false);
-		const [isTerminalAnimationReplaying, setTerminalAnimationIsReplaying] = React.useState<boolean>(true);
-	
+	const [isTerminalAnimationReplaying, setTerminalAnimationIsReplaying] =
+		React.useState<boolean>(true);
 
 	React.useEffect(() => {
 		if (isTerminalAnimationReplaying) {
