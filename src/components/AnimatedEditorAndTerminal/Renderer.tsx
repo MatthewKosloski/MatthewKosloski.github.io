@@ -48,35 +48,35 @@ export interface Command {
 }
 
 interface AnimatedEditorAndTerminalProps {
-	filename: string;
-	tokens: Token[];
-	commands: Command[];
+	editorFilename: string;
+	terminalCommands: Command[];
+	editorTokens: Token[];
 	editorSpeed?: number;
-	commandSpeed?: number;
 	editorDelay?: number;
 	editorPreStyles?: React.CSSProperties;
-	autoScrollAfterLine?: number;
-	autoScroll?: boolean;
-	trailingNewLines?: number;
-	highlights?: Map<TokenType, string>;
+	editorTrailingNewLines?: number;
+	editorHighlights?: Map<TokenType, string>;
+	editorCommandSpeed?: number;
+	editorAutoScrollAfterLine?: number;
+	shouldEditorAutoScroll?: boolean;
 	terminalSpeed?: number;
 	terminalDelay?: number;
 	terminalPreStyles?: React.CSSProperties;
 }
 
 function AnimatedEditorAndTerminal({
-	filename,
-	tokens,
+	editorFilename,
+	editorTokens,
+	terminalCommands,
 	terminalSpeed = 75,
 	editorSpeed = 75,
-	commandSpeed = 350,
+	editorCommandSpeed = 350,
 	editorDelay = 1000,
 	terminalDelay = 1000,
-	autoScrollAfterLine = 0,
-	autoScroll = true,
-	trailingNewLines = 3,
-	highlights = defaultHighlights,
-	commands,
+	editorAutoScrollAfterLine = 0,
+	shouldEditorAutoScroll = true,
+	editorTrailingNewLines = 3,
+	editorHighlights = defaultHighlights,
 	terminalPreStyles = {},
 	editorPreStyles = {},
 }: AnimatedEditorAndTerminalProps) {
@@ -99,8 +99,8 @@ function AnimatedEditorAndTerminal({
 		React.useState<boolean>(false);
 
 	React.useEffect(() => {
-		const numberOfLines = getNumberOfLinesFromTokens(tokens);
-		const lineNumberCapacity = numberOfLines + trailingNewLines;
+		const numberOfLines = getNumberOfLinesFromTokens(editorTokens);
+		const lineNumberCapacity = numberOfLines + editorTrailingNewLines;
 
 		const initialEditorLineNumbers = [];
 		for (let i = 0; i < lineNumberCapacity; i++) {
@@ -110,11 +110,11 @@ function AnimatedEditorAndTerminal({
 			});
 		}
 		setEditorLineNumbers(initialEditorLineNumbers);
-	}, [tokens, setEditorLineNumbers, trailingNewLines]);
+	}, [editorTokens, setEditorLineNumbers, editorTrailingNewLines]);
 
 	React.useEffect(() => {
-		editorContentIteratorRef.current = editorContentGenerator(tokens);
-	}, [tokens]);
+		editorContentIteratorRef.current = editorContentGenerator(editorTokens);
+	}, [editorTokens]);
 
 	React.useEffect(() => {
 		const timeout = setTimeout(function () {
@@ -190,15 +190,15 @@ function AnimatedEditorAndTerminal({
 					clearInterval(interval);
 					setEditorCommand('');
 					setEditorStatusText(
-						`"${filename}" [New] ${editorRows}L, ${editorNumChars}C written`
+						`"${editorFilename}" [New] ${editorRows}L, ${editorNumChars}C written`
 					);
 					setIsEditorTypingCommand(false);
 				} else if (value) {
 					setEditorCommand(editorCommand + value);
 				}
-			}, commandSpeed);
+			}, editorCommandSpeed);
 		} else {
-			setEditorStatusText(`"${filename}" [New File]`);
+			setEditorStatusText(`"${editorFilename}" [New File]`);
 		}
 
 		return () => clearInterval(interval);
@@ -207,10 +207,10 @@ function AnimatedEditorAndTerminal({
 		setIsEditorTypingCommand,
 		setEditorStatusText,
 		editorData,
-		filename,
+		editorFilename,
 		editorCommand,
 		setEditorCommand,
-		commandSpeed,
+		editorCommandSpeed,
 		editorRows,
 		editorNumChars,
 	]);
@@ -233,9 +233,9 @@ function AnimatedEditorAndTerminal({
 		if (isTerminalAnimating) {
 			setTerminalContent([]);
 			terminalCurrentContentItemIndexRef.current = 0;
-			terminalIteratorRef.current = terminalContentGenerator(commands);
+			terminalIteratorRef.current = terminalContentGenerator(terminalCommands);
 		}
-	}, [commands, isTerminalAnimating]);
+	}, [terminalCommands, isTerminalAnimating]);
 
 	React.useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -379,9 +379,9 @@ function AnimatedEditorAndTerminal({
 				data={editorData}
 				command={editorCommand}
 				preStyles={editorPreStyles}
-				autoScrollAfterLine={autoScrollAfterLine}
-				autoScroll={autoScroll}
-				highlights={highlights}
+				autoScrollAfterLine={editorAutoScrollAfterLine}
+				autoScroll={shouldEditorAutoScroll}
+				highlights={editorHighlights}
 			/>
 			<Terminal content={terminalContent} preStyles={terminalPreStyles} />
 		</>
