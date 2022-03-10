@@ -45,5 +45,5 @@ export {
 	SubtleLinkInternal,
 	SubtleLinkExternal,
 	Masonry,
-	Posts
-}
+	Posts,
+};
