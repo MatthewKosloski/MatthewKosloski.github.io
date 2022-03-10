@@ -2,7 +2,9 @@ import React from 'react';
 import { Project } from '../';
 import { SubtleLinkExternal } from '../SubtleLink';
 import { BaseProjectProps } from './types';
-import AnimatedEditorAndTerminal, { TokenType } from '../AnimatedEditorAndTerminal/Renderer';
+import AnimatedEditorAndTerminal, {
+	TokenType,
+} from '../AnimatedEditorAndTerminal/Renderer';
 
 function FeaturedComponent() {
 	return (
