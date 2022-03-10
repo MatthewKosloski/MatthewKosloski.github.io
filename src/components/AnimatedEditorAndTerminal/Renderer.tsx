@@ -81,9 +81,12 @@ function AnimatedEditorAndTerminal({
 	editorPreStyles = {},
 }: AnimatedEditorAndTerminalProps) {
 	const editorIntervalRef = React.useRef<number>();
-	const editorContentIteratorRef = React.useRef<Generator<EditorDatum, undefined>>();
+	const editorContentIteratorRef =
+		React.useRef<Generator<EditorDatum, undefined>>();
 	const editorCommandIteratorRef = React.useRef<Generator<string, undefined>>();
-	const [editorLineNumbers, setEditorLineNumbers] = React.useState<{ lineNumber: string; id: string; }[]>([]);
+	const [editorLineNumbers, setEditorLineNumbers] = React.useState<
+		{ lineNumber: string; id: string }[]
+	>([]);
 	const [editorData, setEditorData] = React.useState<EditorDatum[]>([]);
 	const [editorStatusText, setEditorStatusText] = React.useState<string>('');
 	const [editorCommand, setEditorCommand] = React.useState<string>('');
