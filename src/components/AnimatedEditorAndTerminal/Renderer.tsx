@@ -95,42 +95,56 @@ function AnimatedEditorAndTerminal({
 	const [editorNumChars, setEditorNumChars] = React.useState<number>(0);
 	const [isEditorAnimating, setIsEditorAnimating] =
 		React.useState<boolean>(false);
-	const [isTypingVimCommand, setIsEditorTypingCommand] =
+	const [editorAnimationIsDone, setEditorAnimationIsDone] =
 		React.useState<boolean>(false);
+	const [isEditorAnimationReplaying, setEditorAnimationIsReplaying] = React.useState<boolean>(true);
 
 	React.useEffect(() => {
-		const numberOfLines = getNumberOfLinesFromTokens(editorTokens);
-		const lineNumberCapacity = numberOfLines + editorTrailingNewLines;
+		if (isEditorAnimationReplaying) {
+			setEditorAnimationIsDone(false);
+			setEditorData([]);
+			setEditorStatusText('');
+			setEditorCommand('');
+			setEditorCols(1);
+			setEditorRows(1);
+			setEditorNumChars(0);
+			editorContentIteratorRef.current = editorContentGenerator(editorTokens);
 
-		const initialEditorLineNumbers = [];
-		for (let i = 0; i < lineNumberCapacity; i++) {
-			initialEditorLineNumbers.push({
-				lineNumber: i === 0 ? '1' : '~',
-				id: uuidv4(),
-			});
+			const numberOfLines = getNumberOfLinesFromTokens(editorTokens);
+			const lineNumberCapacity = numberOfLines + editorTrailingNewLines;
+
+			const initialEditorLineNumbers = [];
+			for (let i = 0; i < lineNumberCapacity; i++) {
+				initialEditorLineNumbers.push({
+					lineNumber: i === 0 ? '1' : '~',
+					id: uuidv4(),
+				});
+			}
+			setEditorLineNumbers(initialEditorLineNumbers);
 		}
-		setEditorLineNumbers(initialEditorLineNumbers);
-	}, [editorTokens, setEditorLineNumbers, editorTrailingNewLines]);
-
-	React.useEffect(() => {
-		editorContentIteratorRef.current = editorContentGenerator(editorTokens);
-	}, [editorTokens]);
+	}, [
+		editorTokens,
+		isEditorAnimationReplaying,
+		setEditorLineNumbers,
+		editorTrailingNewLines,
+	]);
 
 	React.useEffect(() => {
 		const timeout = setTimeout(function () {
-			setIsEditorAnimating(true);
+			if (isEditorAnimationReplaying) {
+				setIsEditorAnimating(true);
+			}
 		}, editorDelay);
 
 		return () => clearTimeout(timeout);
-	}, [editorDelay, setIsEditorAnimating]);
+	}, [editorDelay, setIsEditorAnimating, isEditorAnimationReplaying]);
 
 	React.useEffect(() => {
 		if (isEditorAnimating && editorContentIteratorRef.current) {
 			const interval = window.setInterval(function () {
 				const { value, done } = editorContentIteratorRef.current!.next();
 				if (done) {
-					clearInterval(editorIntervalRef.current);
-					setIsEditorAnimating(false);
+					cleanupEditorAnimation();
 				} else if (value) {
 					if (value.char === '\n') {
 						setEditorCols(1);
@@ -183,7 +197,6 @@ function AnimatedEditorAndTerminal({
 		if (isEditorAnimating) {
 			setEditorStatusText('-- INSERT --');
 		} else if (!isEditorAnimating && editorData.length) {
-			setIsEditorTypingCommand(true);
 			interval = setInterval(function () {
 				const { value, done } = editorCommandIteratorRef.current!.next();
 				if (done) {
@@ -192,7 +205,7 @@ function AnimatedEditorAndTerminal({
 					setEditorStatusText(
 						`"${editorFilename}" [New] ${editorRows}L, ${editorNumChars}C written`
 					);
-					setIsEditorTypingCommand(false);
+					setEditorAnimationIsDone(true);
 				} else if (value) {
 					setEditorCommand(editorCommand + value);
 				}
@@ -204,8 +217,8 @@ function AnimatedEditorAndTerminal({
 		return () => clearInterval(interval);
 	}, [
 		isEditorAnimating,
-		setIsEditorTypingCommand,
 		setEditorStatusText,
+		setEditorAnimationIsDone,
 		editorData,
 		editorFilename,
 		editorCommand,
@@ -214,6 +227,12 @@ function AnimatedEditorAndTerminal({
 		editorRows,
 		editorNumChars,
 	]);
+
+	function cleanupEditorAnimation() {
+		clearInterval(editorIntervalRef.current);
+		setIsEditorAnimating(false);
+		setEditorAnimationIsReplaying(false);
+	}
 
 	// Start of Terminal logic
 
@@ -228,22 +247,29 @@ function AnimatedEditorAndTerminal({
 	>([]);
 	const [isTerminalAnimating, setIsTerminalAnimating] =
 		React.useState<boolean>(false);
+	const [terminalAnimationIsDone, setTerminalAnimationIsDone] =
+		React.useState<boolean>(false);
+		const [isTerminalAnimationReplaying, setTerminalAnimationIsReplaying] = React.useState<boolean>(true);
+	
 
 	React.useEffect(() => {
-		if (isTerminalAnimating) {
+		if (isTerminalAnimationReplaying) {
+			setTerminalAnimationIsDone(false);
 			setTerminalContent([]);
 			terminalCurrentContentItemIndexRef.current = 0;
 			terminalIteratorRef.current = terminalContentGenerator(terminalCommands);
 		}
-	}, [terminalCommands, isTerminalAnimating]);
+	}, [terminalCommands, isTerminalAnimationReplaying]);
 
 	React.useEffect(() => {
 		const timeout = setTimeout(() => {
-			setIsTerminalAnimating(true);
+			if (isTerminalAnimationReplaying) {
+				setIsTerminalAnimating(true);
+			}
 		}, terminalDelay);
 
 		return () => clearTimeout(timeout);
-	}, [terminalDelay, setIsTerminalAnimating]);
+	}, [terminalDelay, setIsTerminalAnimating, isTerminalAnimationReplaying]);
 
 	React.useEffect(() => {
 		if (!(isTerminalAnimating && terminalIteratorRef.current)) return;
@@ -353,23 +379,25 @@ function AnimatedEditorAndTerminal({
 		clearInterval(terminalIntervalRef.current);
 		clearTimeout(terminalTimeoutRef.current);
 		setIsTerminalAnimating(false);
+		setTerminalAnimationIsDone(true);
+		setTerminalAnimationIsReplaying(false);
 	}
 
 	function handleReplay() {
-		if (
-			!isEditorAnimating &&
-			!isTerminalAnimating &&
-			editorData.length &&
-			terminalContent.length
-		) {
-			setIsTerminalAnimating(true);
-			setIsEditorAnimating(true);
+		if (editorAnimationIsDone && terminalAnimationIsDone) {
+			setTerminalAnimationIsReplaying(true);
+			setEditorAnimationIsReplaying(true);
 		}
 	}
 
 	return (
 		<>
-			<button onClick={handleReplay}>Replay</button>
+			<button
+				onClick={handleReplay}
+				disabled={!(editorAnimationIsDone && terminalAnimationIsDone)}
+			>
+				Replay
+			</button>
 			<Editor
 				isAnimating={isEditorAnimating}
 				lineNumbers={editorLineNumbers}
