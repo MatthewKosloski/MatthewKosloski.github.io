@@ -1,19 +1,18 @@
 import React from 'react';
 import { Project } from '../';
-import AnimatedTerminal from '../AnimatedTerminal';
-import AnimatedVimEditor, { TokenType } from '../AnimatedVimEditor';
 import { SubtleLinkExternal } from '../SubtleLink';
 import { BaseProjectProps } from './types';
+import AnimatedEditorAndTerminal, { TokenType } from '../AnimatedEditorAndTerminal/Renderer';
 
 function FeaturedComponent() {
 	return (
 		<>
-			<AnimatedVimEditor
-				trailingNewLines={1}
-				autoScroll={false}
-				filename="program.torrey"
-				preStyles={{ height: '350px', borderRadius: '8px 8px 0 0' }}
-				tokens={[
+			<AnimatedEditorAndTerminal
+				editorTrailingNewLines={1}
+				shouldEditorAutoScroll={false}
+				editorFilename="program.torrey"
+				editorPreStyles={{ height: '350px', borderRadius: '8px 8px 0 0' }}
+				editorTokens={[
 					{ lexeme: '; This is a Torrey program :)', type: TokenType.Comment },
 					{ lexeme: '\n', type: TokenType.NewLine },
 					{ lexeme: '\n', type: TokenType.NewLine },
@@ -172,12 +171,12 @@ function FeaturedComponent() {
 					{ lexeme: ')', type: TokenType.Punctuation },
 					{ lexeme: ')', type: TokenType.Punctuation },
 				]}
-				speed={12}
-			/>
-			<AnimatedTerminal
-				delay={7500}
-				preStyles={{ height: '250px', borderRadius: '0 0 8px 8px' }}
-				commands={[
+				editorDelay={3000}
+				editorSpeed={1}
+				terminalSpeed={1}
+				terminalDelay={8000}
+				terminalPreStyles={{ height: '250px', borderRadius: '0 0 8px 8px' }}
+				terminalCommands={[
 					{
 						cmd: 'wget -q https://github.com/MatthewKosloski/torrey/releases/download/3.1.1/release.zip && unzip release.zip && rm release.zip && cp release/* . && rm -rf release',
 						delayAfterCmd: 1500,
