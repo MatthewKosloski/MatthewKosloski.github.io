@@ -72,17 +72,18 @@ const StyledHeader = styled.header`
 	`}
 `;
 
-const HeaderWrapper = styled.div<{ isHomepage: boolean; }>`
+const HeaderWrapper = styled.div<{ isHomepage: boolean }>`
 	${({ theme: { color, vr, media }, isHomepage }) => css`
 		background-color: ${color.haitiPurple};
-		padding: ${vr.one.rem} ${vr.one.rem} ${isHomepage ? 0 : vr.two.rem} ${vr.one.rem};
+		padding: ${vr.one.rem} ${vr.one.rem} ${isHomepage ? 0 : vr.two.rem}
+			${vr.one.rem};
 		${media.sm} {
 			padding: 0 ${vr.two.rem} ${isHomepage ? 0 : vr.four.rem} ${vr.two.rem};
 		}
 	`}
 `;
 
-const Nav = styled.nav<{ isHomepage: boolean; }>`
+const Nav = styled.nav<{ isHomepage: boolean }>`
 	${({ isHomepage }) => `
 		display: flex;
 		align-items: flex-end;
