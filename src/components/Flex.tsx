@@ -16,6 +16,10 @@ const justifyEndCss = css`
 	justify-content: flex-end;
 `;
 
+const alignCenterCss = css`
+	align-items: center;
+`;
+
 interface FlexProps {
 	flexRowXs?: boolean;
 	flexRowSm?: boolean;
@@ -37,6 +41,11 @@ interface FlexProps {
 	justifyEndMd?: boolean;
 	justifyEndLg?: boolean;
 	justifyEndXl?: boolean;
+	alignCenterXs?: boolean;
+	alignCenterSm?: boolean;
+	alignCenterMd?: boolean;
+	alignCenterLg?: boolean;
+	alignCenterXl?: boolean;
 }
 
 const Flex = styled.div<FlexProps>`
@@ -160,6 +169,36 @@ ${({ justifyEndXl, theme }) =>
 		justifyEndXl &&
 		`${theme.media.xl} {
 ${justifyEndCss}
+}`}
+
+${({ alignCenterXs, theme }) =>
+		alignCenterXs &&
+		`${theme.media.xs} {
+${alignCenterCss}
+}`}
+
+${({ alignCenterSm, theme }) =>
+		alignCenterSm &&
+		`${theme.media.sm} {
+${alignCenterCss}
+}`}
+
+${({ alignCenterMd, theme }) =>
+		alignCenterMd &&
+		`${theme.media.md} {
+${alignCenterCss}
+}`}
+
+${({ alignCenterLg, theme }) =>
+		alignCenterLg &&
+		`${theme.media.lg} {
+${alignCenterCss}
+}`}
+
+${({ alignCenterXl, theme }) =>
+		alignCenterXl &&
+		`${theme.media.xl} {
+${alignCenterCss}
 }`}
 `;
 
