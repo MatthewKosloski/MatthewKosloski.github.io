@@ -1,28 +1,42 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
-import { DesktopMenu, Grid, GridCol, MobileMenu } from '.';
+import { DesktopMenu, Flex, Grid, GridCol, MobileMenu } from '.';
 import { useMenuLinks } from '../hooks';
 import { useLocation } from '@reach/router';
+import FlexCol from './FlexCol';
 
 interface HeaderProps {
 	pageTitle?: string;
 	pageSubtitle?: string;
+	isHomepage?: boolean;
 }
 
-function Header({ pageTitle, pageSubtitle }: HeaderProps) {
+function Header({ pageTitle, pageSubtitle, isHomepage = false }: HeaderProps) {
 	const menuLinks = useMenuLinks();
 	const { pathname } = useLocation();
 	return (
-		<HeaderWrapper>
-			<Nav>
-				<Logo to="/">
-					<h1 className="h4">Matthew Kosloski</h1>
-				</Logo>
+		<HeaderWrapper isHomepage={isHomepage}>
+			<Nav isHomepage={isHomepage}>
+				{!isHomepage && (
+					<Logo to="/">
+						<h1 className="h4">Matthew Kosloski</h1>
+					</Logo>
+				)}
 				<MobileMenu menuLinks={menuLinks} />
 				<DesktopMenu menuLinks={menuLinks} pathname={pathname} />
 			</Nav>
-			{pageTitle || pageSubtitle ? (
+			{isHomepage && (
+				<HeroWrapper>
+					<FlexCol xs={6}>
+						<p>Left side of hero</p>
+					</FlexCol>
+					<FlexCol xs={6}>
+						<p>Right side of hero</p>
+					</FlexCol>
+				</HeroWrapper>
+			)}
+			{!isHomepage && (pageTitle || pageSubtitle) ? (
 				<Grid>
 					<GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
 						<StyledHeader>
@@ -58,20 +72,22 @@ const StyledHeader = styled.header`
 	`}
 `;
 
-const HeaderWrapper = styled.div`
-	${({ theme: { color, vr, media } }) => css`
+const HeaderWrapper = styled.div<{ isHomepage: boolean; }>`
+	${({ theme: { color, vr, media }, isHomepage }) => css`
 		background-color: ${color.haitiPurple};
-		padding: ${vr.one.rem} ${vr.one.rem} ${vr.two.rem} ${vr.one.rem};
+		padding: ${vr.one.rem} ${vr.one.rem} ${isHomepage ? 0 : vr.two.rem} ${vr.one.rem};
 		${media.sm} {
-			padding: 0 ${vr.two.rem} ${vr.four.rem} ${vr.two.rem};
+			padding: 0 ${vr.two.rem} ${isHomepage ? 0 : vr.four.rem} ${vr.two.rem};
 		}
 	`}
 `;
 
-const Nav = styled.nav`
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-between;
+const Nav = styled.nav<{ isHomepage: boolean; }>`
+	${({ isHomepage }) => `
+		display: flex;
+		align-items: flex-end;
+		justify-content: ${isHomepage ? 'center' : 'space-between'};
+	`}
 `;
 
 const Logo = styled(Link)`
@@ -85,6 +101,12 @@ const Logo = styled(Link)`
 			}
 			color: ${color.white};
 		}
+	`}
+`;
+
+const HeroWrapper = styled(Flex)`
+	${({ theme: { color } }) => css`
+		color: ${color.white500};
 	`}
 `;
 

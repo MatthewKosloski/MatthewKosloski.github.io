@@ -10,16 +10,17 @@ interface LayoutProps {
 	location: WindowLocation;
 	pageTitle?: string;
 	pageSubtitle?: string;
+	isHomepage?: boolean;
 }
 
-function Layout({ children, location, pageTitle, pageSubtitle }: LayoutProps) {
+function Layout({ children, location, pageTitle, pageSubtitle, isHomepage = false }: LayoutProps) {
 	return (
 		<ThemeProvider theme={theme}>
 			<>
 				<Head title={pageTitle} location={location} />
 				<GlobalStyle />
 				<Wrapper>
-					<Header pageTitle={pageTitle} pageSubtitle={pageSubtitle} />
+					<Header pageTitle={pageTitle} pageSubtitle={pageSubtitle} isHomepage={isHomepage} />
 					<main>{children}</main>
 				</Wrapper>
 				<Footer />

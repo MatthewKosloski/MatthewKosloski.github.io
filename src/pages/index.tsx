@@ -14,7 +14,7 @@ import { Projects } from '../components/projects';
 
 function IndexPage({ location, data }: BasePageProps & FeaturedBlogPostsQuery) {
 	return (
-		<Layout location={location}>
+		<Layout location={location} isHomepage={true}>
 			<Section>
 				<Grid>
 					<GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
