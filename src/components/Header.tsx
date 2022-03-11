@@ -5,6 +5,37 @@ import { DesktopMenu, Grid, GridCol, MobileMenu } from '.';
 import { useMenuLinks } from '../hooks';
 import { useLocation } from '@reach/router';
 
+interface HeaderProps {
+	pageTitle?: string;
+	pageSubtitle?: string;
+}
+
+function Header({ pageTitle, pageSubtitle }: HeaderProps) {
+	const menuLinks = useMenuLinks();
+	const { pathname } = useLocation();
+	return (
+		<HeaderWrapper>
+			<Nav>
+				<Logo to="/">
+					<h1 className="h4">Matthew Kosloski</h1>
+				</Logo>
+				<MobileMenu menuLinks={menuLinks} />
+				<DesktopMenu menuLinks={menuLinks} pathname={pathname} />
+			</Nav>
+			{pageTitle || pageSubtitle ? (
+				<Grid>
+					<GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
+						<StyledHeader>
+							{pageTitle && <h2>{pageTitle}</h2>}
+							{pageSubtitle && <h3>{pageSubtitle}</h3>}
+						</StyledHeader>
+					</GridCol>
+				</Grid>
+			) : null}
+		</HeaderWrapper>
+	);
+}
+
 const StyledHeader = styled.header`
 	${({ theme: { color, vr, media, typography } }) => css`
 		padding-top: ${vr.two.rem};
@@ -56,36 +87,5 @@ const Logo = styled(Link)`
 		}
 	`}
 `;
-
-interface HeaderProps {
-	pageTitle?: string;
-	pageSubtitle?: string;
-}
-
-function Header({ pageTitle, pageSubtitle }: HeaderProps) {
-	const menuLinks = useMenuLinks();
-	const { pathname } = useLocation();
-	return (
-		<HeaderWrapper>
-			<Nav>
-				<Logo to="/">
-					<h1 className="h4">Matthew Kosloski</h1>
-				</Logo>
-				<MobileMenu menuLinks={menuLinks} />
-				<DesktopMenu menuLinks={menuLinks} pathname={pathname} />
-			</Nav>
-			{pageTitle || pageSubtitle ? (
-				<Grid>
-					<GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
-						<StyledHeader>
-							{pageTitle && <h2>{pageTitle}</h2>}
-							{pageSubtitle && <h3>{pageSubtitle}</h3>}
-						</StyledHeader>
-					</GridCol>
-				</Grid>
-			) : null}
-		</HeaderWrapper>
-	);
-}
 
 export default Header;
