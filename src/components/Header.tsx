@@ -1,10 +1,18 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
-import { DesktopMenu, Flex, Grid, GridCol, MobileMenu } from '.';
+import {
+	ButtonLinkExternal,
+	DesktopMenu,
+	Flex,
+	Grid,
+	GridCol,
+	MobileMenu,
+} from '.';
 import { useMenuLinks } from '../hooks';
 import { useLocation } from '@reach/router';
 import FlexCol from './FlexCol';
+import { StaticImage } from 'gatsby-plugin-image';
 
 interface HeaderProps {
 	pageTitle?: string;
@@ -28,12 +36,27 @@ function Header({ pageTitle, pageSubtitle, isHomepage = false }: HeaderProps) {
 			</Nav>
 			{isHomepage && (
 				<HeroWrapper>
-					<FlexCol xs={6}>
-						<p>Left side of hero</p>
-					</FlexCol>
-					<FlexCol xs={6}>
-						<p>Right side of hero</p>
-					</FlexCol>
+					<Flex alignCenterXs>
+						<FlexCol xs={12} md={6}>
+							<h1 className="h2">Matthew Kosloski</h1>
+							<p>
+								Software Developer, Amateur Photographer, Wannabe Compiler
+								Engineer, Casual Gamer, And Mexican Food Consumer
+							</p>
+							<ButtonLinkExternal href="/kosloski_matthew_resume.pdf">
+								View Resume
+							</ButtonLinkExternal>
+						</FlexCol>
+						<FlexCol xs={6} displayNoneXs flexMd justifyEndMd>
+							<StaticImage
+								src="../../content/index/matthew-kosloski-hero.png"
+								alt="A portrait photo of Matthew Kosloski in a purple plaid shirt"
+								placeholder="blurred"
+								loading="lazy"
+								quality={100}
+							/>
+						</FlexCol>
+					</Flex>
 				</HeroWrapper>
 			)}
 			{!isHomepage && (pageTitle || pageSubtitle) ? (
@@ -84,10 +107,13 @@ const HeaderWrapper = styled.div<{ isHomepage: boolean }>`
 `;
 
 const Nav = styled.nav<{ isHomepage: boolean }>`
-	${({ isHomepage }) => `
+	${({ isHomepage, theme: { media } }) => `
 		display: flex;
 		align-items: flex-end;
-		justify-content: ${isHomepage ? 'center' : 'space-between'};
+		justify-content: ${isHomepage ? 'flex-end' : 'space-between'};
+		${media.sm} {
+			justify-content: ${isHomepage ? 'center' : 'space-between'}
+		}
 	`}
 `;
 
@@ -105,8 +131,23 @@ const Logo = styled(Link)`
 	`}
 `;
 
-const HeroWrapper = styled(Flex)`
-	${({ theme: { color } }) => css`
+const HeroWrapper = styled.div`
+	${({ theme: { color, media, vr } }) => `
+		h1 {
+			margin: 0;
+			color: ${color.white};
+		}
+		p {
+			margin-bottom: ${vr.one.rem};
+			width: 75%;
+			${media.md} {
+				width: 100%;
+			}
+		}
+		padding: ${vr.two.rem} 0;
+		${media.md} {
+			padding-bottom: 0;
+		}
 		color: ${color.white500};
 	`}
 `;
