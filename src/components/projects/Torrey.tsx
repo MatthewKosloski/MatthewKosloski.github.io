@@ -173,9 +173,9 @@ function FeaturedComponent() {
 					{ lexeme: ')', type: TokenType.Punctuation },
 					{ lexeme: ')', type: TokenType.Punctuation },
 				]}
-				editorDelay={3000}
-				editorSpeed={1}
-				terminalSpeed={1}
+				editorDelay={1000}
+				editorSpeed={12}
+				terminalSpeed={24}
 				terminalDelay={8000}
 				terminalPreStyles={{ height: '250px', borderRadius: '0 0 8px 8px' }}
 				terminalCommands={[
@@ -322,12 +322,13 @@ function TorreyProject({ featureOnLeft = false }: BaseProjectProps) {
 			featureOnLeft={featureOnLeft}
 		>
 			<p>
-				Torrey is a novel, Lisp-like programming language. The{' '}
+				Torrey is a Lisp-like programming language implemented via compilation.{' '}
+				<a href="https://github.com/MatthewKosloski/torrey#grammar">Here</a> is
+				the{' '}
 				<a href="https://en.wikipedia.org/wiki/Context-free_grammar">
 					context-free grammar
 				</a>{' '}
-				of the language can be found{' '}
-				<a href="https://github.com/MatthewKosloski/torrey#grammar">here</a>.
+				of the language.
 			</p>
 			<p>
 				Language features include: type inference, integer and boolean primitive
