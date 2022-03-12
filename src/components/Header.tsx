@@ -51,7 +51,7 @@ function Header({ pageTitle, pageSubtitle, isHomepage = false }: HeaderProps) {
 							<StaticImage
 								src="../../content/index/matthew-kosloski-hero.png"
 								alt="A portrait photo of Matthew Kosloski in a purple plaid shirt"
-								placeholder="blurred"
+								placeholder="none"
 								loading="lazy"
 								quality={100}
 							/>
