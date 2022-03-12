@@ -26,6 +26,7 @@ function Head({
 						siteUrl
 						title
 						description
+						name
 						social {
 							twitter
 							cardUrl
@@ -37,8 +38,20 @@ function Head({
 	);
 
 	const metaDescription = description || site.siteMetadata.description;
-	const defaultTitle = site.siteMetadata?.title;
+	const defaultTitle = site.siteMetadata.title;
 	const canonicalUrl = `${site.siteMetadata.siteUrl}${location.pathname}`;
+
+	const schemaOrgJSONLD = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		name: defaultTitle,
+		description: metaDescription,
+		url: canonicalUrl,
+		publisher: {
+			'@type': 'Person',
+			name: site.siteMetadata.name,
+		},
+	};
 
 	return (
 		<Helmet
@@ -88,8 +101,11 @@ function Head({
 					name: `twitter:description`,
 					content: metaDescription,
 				},
-			].concat(meta)}
-		/>
+			].concat(meta)}>
+				<script type="application/ld+json">
+					{JSON.stringify(schemaOrgJSONLD)}
+				</script>
+		</Helmet>
 	);
 }
 
