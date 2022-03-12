@@ -37,11 +37,6 @@ module.exports = {
 		],
 		socialLinks: [
 			{
-				id: 'c0784c04-64d3-4496-a5d0-46a52a3305db',
-				url: 'https://twitter.com/_mkos',
-				site: 'Twitter',
-			},
-			{
 				id: '97758bf6-7297-4e9e-9e3f-537e54876ead',
 				url: 'https://github.com/matthewKosloski',
 				site: 'GitHub',
@@ -50,11 +45,6 @@ module.exports = {
 				id: 'c2698ffe-ac12-4d2f-89c4-b51acd526418',
 				url: 'https://www.linkedin.com/in/matthewkosloski/',
 				site: 'LinkedIn',
-			},
-			{
-				id: 'c4780b1f-ea3f-4aa7-8379-60d9eda305c2',
-				url: 'https://www.instagram.com/matthewkosloski/',
-				site: 'Instagram',
 			},
 			{
 				id: '68d5bf17-04b0-431f-aaba-19e0d2ba48fc',
