@@ -100,7 +100,7 @@ const HeaderWrapper = styled.div<{ isHomepage: boolean }>`
 		background-color: ${color.haitiPurple};
 		padding: ${vr.one.rem} ${vr.one.rem} ${isHomepage ? 0 : vr.two.rem}
 			${vr.one.rem};
-		${media.sm} {
+		${media.md} {
 			padding: 0 ${vr.two.rem} ${isHomepage ? 0 : vr.four.rem} ${vr.two.rem};
 		}
 	`}
@@ -111,7 +111,7 @@ const Nav = styled.nav<{ isHomepage: boolean }>`
 		display: flex;
 		align-items: flex-end;
 		justify-content: ${isHomepage ? 'flex-end' : 'space-between'};
-		${media.sm} {
+		${media.md} {
 			justify-content: ${isHomepage ? 'center' : 'space-between'}
 		}
 	`}
@@ -124,7 +124,7 @@ const Logo = styled(Link)`
 			margin-bottom: ${vr.zero.em};
 			padding: 0;
 			${media.md} {
-				padding: ${vr.half.rem} ${vr.quarter.rem} ${vr.quarter.rem};
+				padding: ${vr.half.rem} ${vr.half.rem} ${vr.quarter.rem} ${vr.half.rem};
 			}
 			color: ${color.white};
 		}

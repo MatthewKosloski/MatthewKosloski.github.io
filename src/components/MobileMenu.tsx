@@ -26,7 +26,7 @@ const StyledMenuItems = styled(MenuItems)`
 
 const StyledMenuButton = styled(MenuButton)`
 	${({ theme: { color, media } }) => css`
-		${media.sm} {
+		${media.md} {
 			display: none;
 		}
 		background-color: transparent;

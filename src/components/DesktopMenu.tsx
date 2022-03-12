@@ -7,7 +7,7 @@ const borderThickness = 4;
 
 const Wrapper = styled.ul`
 	${({ theme: { media } }) => css`
-		${media.sm} {
+		${media.md} {
 			display: flex;
 		}
 		list-style: none;
@@ -32,7 +32,7 @@ const MenuItemLink = styled(GatsbyLink)<{ $isActive: boolean }>`
 		letter-spacing: ${utils.pxToEm(1)};
 		transition: color 0.15s ease-in-out;
 		padding: calc(${vr.two.rem} - ${utils.pxToEm(borderThickness)})
-			${vr.quarter.rem} ${vr.half.rem} ${vr.quarter.rem};
+			${vr.half.rem} ${vr.half.rem} ${vr.half.rem};
 		&:before {
 			content: '';
 			display: block;
