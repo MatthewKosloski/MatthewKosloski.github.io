@@ -60,7 +60,7 @@ function IndexPage({ location, data }: BasePageProps & FeaturedBlogPostsQuery) {
 			<Section title="Most Recent Experience">
 				<Grid>
 					<GridCol xs={12} md={10} mdOffset={2} lg={8} lgOffset={3}>
-						<ExperienceTimeline limit={2} />
+						<ExperienceTimeline limit={1} />
 					</GridCol>
 					<GridCol xs={12} alignCenterXs>
 						<ButtonLinkInternal to="/experience">
