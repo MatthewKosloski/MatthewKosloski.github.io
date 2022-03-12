@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { WindowLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
+import favicon from '../assets/favicon-32x32.png';
 
 interface HeadProps {
 	description?: string;
@@ -102,6 +103,7 @@ function Head({
 					content: metaDescription,
 				},
 			].concat(meta)}>
+				<link rel="shortcut icon" type="image/png" href={favicon} />
 				<script type="application/ld+json">
 					{JSON.stringify(schemaOrgJSONLD)}
 				</script>
