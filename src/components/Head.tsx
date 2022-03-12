@@ -102,11 +102,12 @@ function Head({
 					name: `twitter:description`,
 					content: metaDescription,
 				},
-			].concat(meta)}>
-				<link rel="shortcut icon" type="image/png" href={favicon} />
-				<script type="application/ld+json">
-					{JSON.stringify(schemaOrgJSONLD)}
-				</script>
+			].concat(meta)}
+		>
+			<link rel="shortcut icon" type="image/png" href={favicon} />
+			<script type="application/ld+json">
+				{JSON.stringify(schemaOrgJSONLD)}
+			</script>
 		</Helmet>
 	);
 }
