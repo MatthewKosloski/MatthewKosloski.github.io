@@ -41,7 +41,7 @@ function Header({ pageTitle, pageSubtitle, isHomepage = false }: HeaderProps) {
 							<h1 className="h2">Matthew Kosloski</h1>
 							<p>
 								Software Developer, Amateur Photographer, Wannabe Compiler
-								Engineer, Casual Gamer, And Mexican Food Consumer
+								Engineer, Casual Gamer, and Mexican Food Consumer
 							</p>
 							<ButtonLinkExternal href="/kosloski_matthew_resume.pdf">
 								View Resume
