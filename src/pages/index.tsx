@@ -10,7 +10,7 @@ import {
 	Posts,
 	Section,
 } from '../components';
-import { Projects } from '../components/projects';
+import Projects from '../components/projects';
 
 function IndexPage({ location, data }: BasePageProps & FeaturedBlogPostsQuery) {
 	return (
