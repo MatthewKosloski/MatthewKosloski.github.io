@@ -7,7 +7,7 @@ function FeaturedComponent() {
 	return (
 		<StaticImage
 			src="../../../content/projects/polysent.jpg"
-			alt="A portrait photo of Matthew Kosloski wearing graduation attire and holding his diploma"
+			alt="A photo showing the homepage of Polysent"
 			placeholder="blurred"
 			loading="lazy"
 			imgClassName="rounded"
