@@ -4,9 +4,10 @@ data:
     subtitle: Full Stack Developer
     description: |
       Implementing a new microservice in C#/.Net Core that exposes Open API endpoints to enable our customers to easily integrate third-party applications with Epic, which is Applied's flagship software. 
-      Writes comprehensive unit and integration tests using xUnit and Moq and performs rigorous API security testing.
+      Within the company's Google Cloud organization, performs modifications to existing Apigee API proxies to enable our customers to consume endpoints exposed by the microservice.
+      Writes comprehensive unit and integration tests using xUnit, Jest, and Moq and performs rigorous API security testing.
       By way of documentation, video recordings, and impromptu voice calls, mentors developers on configuring their development environments and troubleshooting of applications.
-      Collaborated with the team's SDET to create a Docker image of a SQL test database for the purpose of running end-to-end tests in CI pipeline review apps.
+      Collaborated with the team's SDET to create a Docker image of a SQL test database for the purpose of running end-to-end tests in CI pipelines.
       Proactively fixes defects in the enterprise design system, consequently improving the UX of screens and increasing unit test code coverage of React components.
       Utilizing TypeScript, implements features and fixes bugs in UI screens that leverage the enterprise design system, writing tests using Jest, Cypress, and React Testing Library.
       Increased team productivity by writing a Postman pre-request script to automate the fetching of access tokens before API requests.
