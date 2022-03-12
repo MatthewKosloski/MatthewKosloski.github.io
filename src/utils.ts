@@ -31,9 +31,9 @@ function verticalRhythm(step: Steps, ratio: number, unit: RelativeUnit) {
 }
 
 /**
- * Returns a value on the modular scale in rem units. The modular 
+ * Returns a value on the modular scale in rem units. The modular
  * scale is a set of values obtained from a base ratio.
- * 
+ *
  * @see https://www.modularscale.com/
 
  * @param step The step on the modular scale.

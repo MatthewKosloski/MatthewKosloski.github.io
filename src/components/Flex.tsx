@@ -80,7 +80,7 @@ const Flex = styled.div<FlexProps>`
 		`${theme.media.xl} {
     ${flexColCss}
   }`}
-  
+
   ${({ flexRowXs, theme }) =>
 		flexRowXs &&
 		`${theme.media.xs} {

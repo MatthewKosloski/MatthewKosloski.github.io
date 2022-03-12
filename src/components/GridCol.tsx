@@ -49,8 +49,8 @@ const gridColCss = (
 									justify-content: center;
 							  `
 							: ''
-					} 
-          ${orderInitial ? 'order: initial;' : ''} 
+					}
+          ${orderInitial ? 'order: initial;' : ''}
           ${orderLast ? 'order: 999;' : ''}
         }
       `;

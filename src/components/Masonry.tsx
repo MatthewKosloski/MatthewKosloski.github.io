@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 				grid-row: span 5;
 			}
 		}
-	
+
 		.gatsby-image-wrapper--tall {
 			grid-row: span 10;
 		}
