@@ -39,7 +39,8 @@ function PixemProject({ featureOnLeft = false }: BaseProjectProps) {
 			<p>
 				Pixem is an intuitive unit conversion tool for stylesheets. Essentially,
 				it is an interactive dashboard that takes in a CSS stylesheet with REM
-				or EM units and outputs a stylesheet with pixel units. Pixem received over 3,000 unique pageviews in 2021.
+				or EM units and outputs a stylesheet with pixel units. Pixem received
+				over 3,000 unique pageviews in 2021.
 			</p>
 			<p>
 				The project was built using <a href="https://reactjs.org/">React</a> and{' '}
