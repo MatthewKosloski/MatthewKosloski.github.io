@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmatthewkosloski_github_io=self.webpackChunkmatthewkosloski_github_io||[]).push([[317],{2897:function(e,t,i){i.r(t);var n=i(7294),o=i(634),a=i(3850);t.default=function(e){var t=e.location;return n.createElement(o.Ar,{location:t,pageTitle:"Projects",pageSubtitle:"In my free time, I like to design and develop applications. This gives me an opportunity to become acquainted with new tools and technologies"},n.createElement(o.$0,null,n.createElement(a.Z,null)))}}}]);
+//# sourceMappingURL=component---src-pages-projects-tsx-947c84bc83b4a023f130.js.map
