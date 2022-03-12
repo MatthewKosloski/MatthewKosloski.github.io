@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmatthewkosloski_github_io=self.webpackChunkmatthewkosloski_github_io||[]).push([[643],{3353:function(e,t,l){l.r(t);var a=l(7294),n=l(634);t.default=function(e){var t=e.location,l=e.data;return a.createElement(n.Ar,{location:t,pageTitle:"Blog"},a.createElement(n.$0,null,a.createElement(n.rj,null,a.createElement(n.$W,{xs:12,md:10,mdOffset:2,lg:8,lgOffset:3},a.createElement(n.V8,{data:l.allMdx.nodes})))))}}}]);
+//# sourceMappingURL=component---src-pages-blog-index-tsx-3d69cf08ea51c53e86da.js.map

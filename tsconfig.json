@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"paths": {
+			"*": ["./src/declarations/*"]
+		},
+		"jsx": "react",
+		"esModuleInterop": true,
+		"strict": true,
+		"module": "CommonJS"
+	}
+}
