@@ -2,6 +2,10 @@
 
 The source code for [matthewkosloski.me](https://matthewkosloski.me/), my personal website.
 
+## The Build
+
+The build lives in the `/docs` directory because that's where GitHub pages expects it to be.
+
 ## Built With
 
 - [TypeScript](https://github.com/microsoft/TypeScript) - A superset of JavaScript that provides static type checking and compiles to clean JavaScript output.
